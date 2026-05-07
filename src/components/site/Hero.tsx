@@ -77,14 +77,14 @@ export function Hero() {
         >
           <a
             href="#cta"
-            className="group inline-flex items-center gap-2 rounded-full bg-brand-gradient text-brand-foreground px-5 py-3 text-sm font-medium shadow-brand hover:shadow-brand-strong transition-all"
+            className="group inline-flex items-center gap-2 rounded-full bg-background text-brand px-5 py-3 text-sm font-medium shadow-elegant hover:shadow-accent-glow transition-all"
           >
             Agendar demonstração
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
             href="#plataforma"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/30 bg-transparent px-5 py-3 text-sm font-medium text-brand-foreground hover:bg-brand-foreground/10 transition-colors"
           >
             Conhecer plataforma
           </a>
