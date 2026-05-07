@@ -24,7 +24,7 @@ export function CTA() {
               </a>
               <a
                 href="#plataforma"
-                className="inline-flex items-center justify-center rounded-full border border-brand-foreground/30 bg-transparent px-5 py-3 text-sm font-medium text-brand-foreground hover:bg-brand-foreground/10 transition-colors"
+                className="inline-flex items-center justify-center rounded-full border-2 border-accent bg-transparent px-5 py-3 text-sm font-medium text-brand-foreground hover:bg-accent/10 transition-colors"
               >
                 Conheça nossas soluções
               </a>
