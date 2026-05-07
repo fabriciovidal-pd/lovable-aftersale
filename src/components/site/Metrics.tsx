@@ -36,7 +36,7 @@ export function Metrics() {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div className="max-w-2xl">
             <p className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur px-3 py-1 text-brand-foreground/80 text-2xl">Resultados mensuráveis</p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
+            <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-brand">
               Métricas que movem o negócio.
             </h2>
           </div>

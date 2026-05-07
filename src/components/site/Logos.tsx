@@ -21,7 +21,7 @@ export function Logos() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand-gradient text-brand-foreground px-3 py-1 text-xs font-medium tracking-wider shadow-brand">CLIENTES</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
+          <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-brand">
             +400 clientes confiam
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
