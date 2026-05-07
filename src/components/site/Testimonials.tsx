@@ -37,9 +37,10 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative rounded-2xl border border-border bg-card p-8 lg:p-10 shadow-card hover:shadow-elegant transition-all"
+              className="relative rounded-2xl border border-brand/15 bg-card p-8 lg:p-10 shadow-card hover:shadow-brand transition-all"
             >
-              <Quote className="size-8 text-brand opacity-70" />
+              <div className="absolute top-0 left-8 right-8 h-1 bg-brand-gradient rounded-b-full" aria-hidden />
+              <Quote className="size-10 text-brand" />
               <blockquote className="mt-6 text-lg text-foreground leading-relaxed">
                 "{t.quote}"
               </blockquote>

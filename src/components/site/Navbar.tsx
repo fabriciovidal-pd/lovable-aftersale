@@ -58,7 +58,7 @@ export function Navbar() {
             </a>
             <a
               href="#cta"
-              className="text-sm px-4 py-2 rounded-full bg-foreground text-background hover:opacity-90 transition-all shadow-elegant"
+              className="text-sm px-4 py-2 rounded-full bg-brand-gradient text-brand-foreground hover:opacity-95 transition-all shadow-brand"
             >
               Agendar demonstração
             </a>
@@ -93,7 +93,7 @@ export function Navbar() {
                 <a href="#plataforma" className="text-sm px-4 py-2 rounded-full bg-secondary text-center">
                   Conhecer plataforma
                 </a>
-                <a href="#cta" className="text-sm px-4 py-2 rounded-full bg-foreground text-background text-center">
+                <a href="#cta" className="text-sm px-4 py-2 rounded-full bg-brand-gradient text-brand-foreground text-center shadow-brand">
                   Agendar demonstração
                 </a>
               </div>

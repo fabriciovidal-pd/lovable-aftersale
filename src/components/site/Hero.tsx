@@ -57,7 +57,7 @@ export function Hero() {
           >
             <a
               href="#cta"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-3 text-sm font-medium shadow-elegant hover:shadow-glow transition-all"
+              className="group inline-flex items-center gap-2 rounded-full bg-brand-gradient text-brand-foreground px-5 py-3 text-sm font-medium shadow-brand hover:shadow-brand-strong transition-all"
             >
               Agendar demonstração
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
