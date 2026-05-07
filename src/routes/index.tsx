@@ -3,19 +3,22 @@ import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { Problem } from "@/components/site/Problem";
 import { Metrics } from "@/components/site/Metrics";
+import { Logos } from "@/components/site/Logos";
+import { Testimonials } from "@/components/site/Testimonials";
+import { Timeline } from "@/components/site/Timeline";
 import { CTA } from "@/components/site/CTA";
 import { Footer } from "@/components/site/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Reversa — Plataforma de pós-venda, trocas e devoluções" },
+      { title: "Aftersale — Plataforma de pós-venda, trocas e devoluções" },
       {
         name: "description",
         content:
           "Plataforma SaaS de pós-venda para e-commerce e varejo. Automatize trocas, devoluções e logística reversa com experiência premium para o cliente.",
       },
-      { property: "og:title", content: "Reversa — Pós-venda inteligente" },
+      { property: "og:title", content: "Aftersale — Pós-venda inteligente" },
       {
         property: "og:description",
         content: "Transforme trocas e devoluções em fidelização. Agende uma demonstração.",
@@ -34,6 +37,9 @@ function Index() {
         <div id="plataforma" />
         <Problem />
         <Metrics />
+        <Logos />
+        <Testimonials />
+        <Timeline />
         <div id="recursos" />
         <CTA />
       </main>
