@@ -4,7 +4,7 @@ import dashboard from "@/assets/dashboard-mockup.png";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 bg-hero overflow-hidden">
+    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 bg-brand-gradient overflow-hidden">
       {/* floating accents */}
       <motion.div
         aria-hidden
