@@ -195,13 +195,25 @@
     background-clip: text;
     color: transparent;
   }
-  .bg-hero {
-    background: var(--gradient-hero);
-  }
-  .bg-brand-gradient {
+  .text-brand-gradient {
     background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
+  .bg-hero { background: var(--gradient-hero); }
+  .bg-brand-gradient { background: var(--gradient-brand); }
+  .bg-brand-soft { background: var(--gradient-brand-soft); }
+  .bg-accent-gradient { background: var(--gradient-accent); }
+  .bg-brand-accent-gradient { background: var(--gradient-brand-accent); }
+  .ring-brand { box-shadow: 0 0 0 1px color-mix(in oklab, var(--brand) 40%, transparent); }
+  .ring-accent { box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 60%, transparent); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
-  .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-brand { box-shadow: var(--shadow-brand); }
+  .shadow-brand-strong { box-shadow: var(--shadow-brand-strong); }
+  .shadow-accent { box-shadow: var(--shadow-accent); }
+  .shadow-accent-glow { box-shadow: var(--shadow-accent-glow); }
 }
