@@ -122,12 +122,6 @@
   --accent-soft: color-mix(in oklab, oklch(0.91 0.17 95) 18%, white);
   --accent-strong: oklch(0.85 0.19 90);
   --accent-foreground: oklch(0.18 0.03 280);
-  --brand-glow: oklch(0.62 0.26 295);
-  --brand-foreground: oklch(1 0 0);
-
-  /* 10% — #FFDE42 (accent yellow) */
-  --accent: oklch(0.91 0.17 95);
-  --accent-foreground: oklch(0.18 0.03 280);
 
   --secondary: oklch(0.97 0.008 285);
   --secondary-foreground: oklch(0.22 0.03 280);
