@@ -36,15 +36,26 @@
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-brand-glow: var(--brand-glow);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-strong: var(--brand-strong);
+  --color-accent-glow: var(--accent-glow);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-strong: var(--accent-strong);
 
   --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
+  --shadow-soft: 0 2px 8px -2px rgba(15, 23, 42, 0.06);
   --shadow-elegant: 0 1px 2px rgba(15, 23, 42, 0.04),
     0 8px 24px -8px rgba(15, 23, 42, 0.08);
-  --shadow-glow: 0 30px 80px -30px color-mix(in oklab, var(--brand) 35%, transparent);
   --shadow-card: 0 1px 0 rgba(15, 23, 42, 0.04),
     0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-glow: 0 30px 80px -30px color-mix(in oklab, var(--brand) 35%, transparent);
+  --shadow-brand: 0 10px 30px -10px color-mix(in oklab, var(--brand) 45%, transparent);
+  --shadow-brand-strong: 0 20px 60px -20px color-mix(in oklab, var(--brand) 60%, transparent);
+  --shadow-accent: 0 10px 30px -10px color-mix(in oklab, var(--accent) 55%, transparent);
+  --shadow-accent-glow: 0 0 0 4px color-mix(in oklab, var(--accent) 25%, transparent),
+    0 18px 50px -18px color-mix(in oklab, var(--accent) 60%, transparent);
 
   --gradient-hero: radial-gradient(
       80% 60% at 50% 0%,
@@ -53,16 +64,28 @@
     ),
     radial-gradient(
       40% 30% at 90% 10%,
-      color-mix(in oklab, var(--brand-glow) 18%, transparent) 0%,
+      color-mix(in oklab, var(--accent) 12%, transparent) 0%,
       transparent 70%
     ),
     linear-gradient(180deg, var(--background) 0%, var(--surface) 100%);
   --gradient-text: linear-gradient(
     135deg,
     var(--foreground) 0%,
-    color-mix(in oklab, var(--foreground) 70%, var(--brand) 30%) 100%
+    color-mix(in oklab, var(--foreground) 60%, var(--brand) 40%) 100%
   );
   --gradient-brand: linear-gradient(135deg, var(--brand) 0%, var(--brand-glow) 100%);
+  --gradient-brand-soft: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--brand) 14%, var(--background)) 0%,
+    color-mix(in oklab, var(--brand-glow) 10%, var(--background)) 100%
+  );
+  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-glow) 100%);
+  --gradient-brand-accent: linear-gradient(
+    135deg,
+    var(--brand) 0%,
+    var(--brand-glow) 55%,
+    var(--accent) 100%
+  );
 
   --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -89,10 +112,15 @@
   /* 30% — #9012FF (primary brand purple) */
   --brand: oklch(0.4938 0.305 295.5);
   --brand-glow: oklch(0.62 0.26 295);
+  --brand-soft: color-mix(in oklab, oklch(0.4938 0.305 295.5) 12%, white);
+  --brand-strong: oklch(0.42 0.31 295);
   --brand-foreground: oklch(1 0 0);
 
   /* 10% — #FFDE42 (accent yellow) */
   --accent: oklch(0.91 0.17 95);
+  --accent-glow: oklch(0.95 0.15 100);
+  --accent-soft: color-mix(in oklab, oklch(0.91 0.17 95) 18%, white);
+  --accent-strong: oklch(0.85 0.19 90);
   --accent-foreground: oklch(0.18 0.03 280);
 
   --secondary: oklch(0.97 0.008 285);
@@ -124,11 +152,19 @@
   --secondary-foreground: oklch(0.98 0.003 265);
   --muted: oklch(0.24 0.03 265);
   --muted-foreground: oklch(0.7 0.02 265);
-  --accent: oklch(0.24 0.03 265);
-  --accent-foreground: oklch(0.98 0.003 265);
+  --accent: oklch(0.91 0.17 95);
+  --accent-glow: oklch(0.95 0.15 100);
+  --accent-soft: color-mix(in oklab, oklch(0.91 0.17 95) 22%, oklch(0.18 0.025 265));
+  --accent-strong: oklch(0.85 0.19 90);
+  --accent-foreground: oklch(0.18 0.03 280);
+  --brand: oklch(0.62 0.28 295);
+  --brand-glow: oklch(0.72 0.22 290);
+  --brand-soft: color-mix(in oklab, oklch(0.62 0.28 295) 22%, oklch(0.18 0.025 265));
+  --brand-strong: oklch(0.55 0.3 295);
+  --brand-foreground: oklch(1 0 0);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.7 0.16 240);
+  --ring: oklch(0.62 0.28 295);
 }
 
 @layer base {
@@ -159,13 +195,25 @@
     background-clip: text;
     color: transparent;
   }
-  .bg-hero {
-    background: var(--gradient-hero);
-  }
-  .bg-brand-gradient {
+  .text-brand-gradient {
     background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
+  .bg-hero { background: var(--gradient-hero); }
+  .bg-brand-gradient { background: var(--gradient-brand); }
+  .bg-brand-soft { background: var(--gradient-brand-soft); }
+  .bg-accent-gradient { background: var(--gradient-accent); }
+  .bg-brand-accent-gradient { background: var(--gradient-brand-accent); }
+  .ring-brand { box-shadow: 0 0 0 1px color-mix(in oklab, var(--brand) 40%, transparent); }
+  .ring-accent { box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 60%, transparent); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
-  .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-brand { box-shadow: var(--shadow-brand); }
+  .shadow-brand-strong { box-shadow: var(--shadow-brand-strong); }
+  .shadow-accent { box-shadow: var(--shadow-accent); }
+  .shadow-accent-glow { box-shadow: var(--shadow-accent-glow); }
 }
