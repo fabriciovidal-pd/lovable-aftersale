@@ -75,7 +75,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3 }}
-          className="relative mt-20"
+          className="relative mt-16"
         >
           <div className="absolute inset-x-10 -bottom-10 h-24 bg-brand-gradient opacity-30 blur-3xl" />
           <div className="relative rounded-2xl border border-border bg-card/60 backdrop-blur p-2 shadow-elegant">
@@ -87,6 +87,27 @@ export function Hero() {
               className="rounded-xl w-full h-auto"
             />
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3"
+        >
+          <a
+            href="#cta"
+            className="group inline-flex items-center gap-2 rounded-full bg-brand-gradient text-brand-foreground px-5 py-3 text-sm font-medium shadow-brand hover:shadow-brand-strong transition-all"
+          >
+            Agendar demonstração
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
+          <a
+            href="#plataforma"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
+          >
+            Conhecer plataforma
+          </a>
         </motion.div>
       </div>
     </section>
