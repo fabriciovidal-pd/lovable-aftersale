@@ -34,7 +34,7 @@ export function Problem() {
               transition={{ duration: 0.5, delay: i * 0.05 }}
               className="group bg-card p-8 hover:bg-surface transition-colors"
             >
-              <div className="size-10 rounded-lg bg-brand-soft border border-brand/20 grid place-items-center text-brand group-hover:bg-brand-gradient group-hover:text-brand-foreground group-hover:border-brand transition-all">
+              <div className="size-10 rounded-lg bg-brand-soft border border-brand/20 grid place-items-center text-brand group-hover:bg-brand-soft group-hover:text-brand group-hover:border-brand/40 transition-all">
                 <p.icon className="size-5" strokeWidth={1.75} />
               </div>
               <h3 className="mt-5 text-base font-semibold text-foreground">{p.title}</h3>
