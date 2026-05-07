@@ -2,7 +2,7 @@ import { Package } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-surface">
+    <footer className="border-t-4 border-brand bg-surface">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-center gap-2">

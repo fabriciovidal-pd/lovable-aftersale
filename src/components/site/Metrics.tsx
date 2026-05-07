@@ -53,9 +53,9 @@ export function Metrics() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative rounded-2xl border border-border bg-card p-7 shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500"
+              className="group relative rounded-2xl border border-border bg-card p-7 shadow-card hover:shadow-brand hover:border-brand/30 hover:-translate-y-1 transition-all duration-500"
             >
-              <div className="text-5xl font-display font-semibold tracking-tight text-foreground">
+              <div className="text-5xl font-display font-semibold tracking-tight text-brand-gradient">
                 <Counter to={s.value} suffix={s.suffix} decimals={s.decimals ?? 0} />
               </div>
               <div className="mt-4 text-sm font-medium text-foreground">{s.label}</div>
