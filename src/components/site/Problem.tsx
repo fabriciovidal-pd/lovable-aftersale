@@ -15,7 +15,7 @@ export function Problem() {
     <section id="problema" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-medium text-brand">O reposicionamento do pós-venda</p>
+          <p className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur px-3 py-1 text-brand-foreground/80 text-base">O reposicionamento do pós-venda</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
             De centro de custo a motor de experiência do cliente.
           </h2>
