@@ -34,7 +34,7 @@ export function Timeline() {
     <section id="historia" className="py-24 lg:py-32 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-medium text-brand tracking-[0.2em]">NOSSA TRAJETÓRIA</p>
+          <p className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur px-3 py-1 text-brand-foreground/80 text-base tracking-[0.2em]">NOSSA TRAJETÓRIA</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
             Nossa história
           </h2>
