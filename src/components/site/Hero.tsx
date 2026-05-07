@@ -4,7 +4,7 @@ import dashboard from "@/assets/dashboard-mockup.png";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 bg-hero overflow-hidden">
+    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 bg-brand-gradient overflow-hidden">
       {/* floating accents */}
       <motion.div
         aria-hidden
@@ -25,9 +25,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-3 py-1 text-xs text-muted-foreground"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur px-3 py-1 text-xs text-brand-foreground/80"
           >
-            <Sparkles className="size-3.5 text-brand" />
+            <Sparkles className="size-3.5 text-accent" />
             Pós-venda inteligente para e-commerce e varejo
           </motion.div>
 
@@ -35,7 +35,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="mt-6 text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-gradient leading-[1.05]"
+            className="mt-6 text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-brand-foreground leading-[1.05]"
           >
             Transforme trocas e devoluções em fidelização.
           </motion.h1>
@@ -44,7 +44,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"
+            className="mt-6 text-lg text-brand-foreground/80 max-w-2xl mx-auto"
           >
             A plataforma que automatiza, mensura e eleva toda a jornada de pós-venda — de centro de custo a vantagem competitiva.
           </motion.p>
@@ -77,14 +77,14 @@ export function Hero() {
         >
           <a
             href="#cta"
-            className="group inline-flex items-center gap-2 rounded-full bg-brand-gradient text-brand-foreground px-5 py-3 text-sm font-medium shadow-brand hover:shadow-brand-strong transition-all"
+            className="group inline-flex items-center gap-2 rounded-full bg-background text-brand px-5 py-3 text-sm font-medium shadow-elegant hover:shadow-accent-glow transition-all"
           >
             Agendar demonstração
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
             href="#plataforma"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/30 bg-transparent px-5 py-3 text-sm font-medium text-brand-foreground hover:bg-brand-foreground/10 transition-colors"
           >
             Conhecer plataforma
           </a>
