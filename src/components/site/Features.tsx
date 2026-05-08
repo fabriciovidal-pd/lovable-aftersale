@@ -60,6 +60,10 @@ export function Features() {
             </motion.div>
           ))}
         </div>
+
+        <p className="mt-16 text-center text-2xl md:text-3xl font-display font-bold text-brand-strong max-w-4xl mx-auto leading-snug">
+          As maiores marcas do Brasil transformaram sua operação de troca e devolução com a Aftersale.
+        </p>
       </div>
     </section>
   );

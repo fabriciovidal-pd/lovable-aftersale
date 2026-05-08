@@ -12,19 +12,19 @@ const cards = [
     icon: EyeOff,
     eyebrow: "O CUSTO INVISÍVEL DAS EXCEÇÕES",
     title: "O maior erro é aceitar a devolução rápido demais",
-    desc: "Para cada troca automatizada, existem dezenas de exceções resolvidas manualmente pelo time de atendimento. Acertar isso no automático parece ótimo, mas gera inconsistência, retrabalho e custos que nunca aparecem no dashboard.",
+    desc: "Para cada troca automatizada, existem dezenas de exceções resolvidas manualmente pelo time de atendimento. Acertar isso no automático parece ótimo, mas gera inconsistência, retrabalho e custos que nunca aparecem no dashboard. Piorar os excessos virou o primeiro passo para controlar isso.",
   },
   {
     icon: TrendingUp,
     eyebrow: "POR QUE REGRAS SIMPLES QUEBRAM EM ESCALA",
     title: "Se sua taxa de devolução sobe e ninguém sabe por quê, você não está sozinho",
-    desc: "Um e-commerce com 500 pedidos/mês resolve trocas com planilha e boa vontade. Com 50.000 pedidos, as mesmas regras geram gargalos, atrito e inconsistência.",
+    desc: "Um e-commerce com 500 pedidos/mês resolve trocas com planilha e boa vontade. Com 50.000 pedidos, as mesmas regras geram gargalos, atrito e inconsistência. A complexidade não cresce linearmente. Ela explode. Sua operação precisa de um sistema que evolua junto e mostre as causas reais.",
   },
   {
     icon: Coins,
     eyebrow: "TROCA E DEVOLUÇÃO COMO SISTEMA ECONÔMICO",
     title: "Todo mundo fala em vender mais. A gente fala em proteger e perder menos.",
-    desc: "Cada reversa movimenta estoque, frete, pessoas, crédito, recompra e confiança.",
+    desc: "Cada reversa movimenta estoque, frete, pessoas, crédito, recompra e confiança. Quando bem orquestrado, o fluxo de troca e devolução gera receita recorrente, reduz custo de aquisição e aumenta LTV. Se ele é tratado por volume de chamados... isso vira prejuízo econômico no seu P&L.",
   },
 ];
 

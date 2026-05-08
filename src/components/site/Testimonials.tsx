@@ -11,24 +11,10 @@ const items = [
   },
   {
     quote:
-      "Com a implantação da ferramenta, em qualquer lugar, você faz 100 atendimentos manuais por hora para conseguir fazer com outro fornecedor.",
+      "Com a implantação da ferramenta, em qualquer lugar, você faz 100 atendimentos manuais por hora para conseguir fazer com outro fornecedor. Quer ganhar agilidade e facilidade de comunicação com seu cliente? Ative a Aftersale.",
     name: "Virlane Castro",
     role: "Owner",
     company: "Oscar Calçados",
-  },
-  {
-    quote:
-      "A Genius Returns transformou nossa logística reversa em uma operação previsível, com dados claros para decisões de margem e fidelização.",
-    name: "Equipe de Operações",
-    role: "Cliente Genius Returns",
-    company: "Genius Returns",
-  },
-  {
-    quote:
-      "Com a inteligência da plataforma, reduzimos retrabalho e aumentamos significativamente a conversão de troca sobre reembolso.",
-    name: "Diretoria de E-commerce",
-    role: "Cliente Genius Returns",
-    company: "Genius Returns",
   },
 ];
 
