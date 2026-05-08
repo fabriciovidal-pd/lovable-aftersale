@@ -18,7 +18,7 @@ const cards = [
     icon: TrendingUp,
     eyebrow: "POR QUE REGRAS SIMPLES QUEBRAM EM ESCALA",
     title: "Se sua taxa de devolução sobe e ninguém sabe por quê, você não está sozinho",
-    desc: "Um e-commerce com 500 pedidos/mês resolve trocas com planilha e boa vontade. Com 50.000 pedidos, as mesmas regras geram gargalos, atrito e inconsistência.",
+    desc: "Um e-commerce com 500 pedidos/mês resolve trocas com planilha e boa vontade. Com 50.000 pedidos, as mesmas regras geram gargalos, atrito e inconsistência. A complexidade não cresce linearmente. Ela explode. Sua operação precisa de um sistema que evolua junto e mostre as causas reais.",
   },
   {
     icon: Coins,
