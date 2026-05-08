@@ -1,7 +1,7 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
 
-function Counter({ to, suffix = "", decimals = 0 }: { to: number; suffix?: string; decimals?: number }) {
+function Counter({ to, prefix = "", suffix = "", decimals = 0 }: { to: number; prefix?: string; suffix?: string; decimals?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const mv = useMotionValue(0);
@@ -16,6 +16,7 @@ function Counter({ to, suffix = "", decimals = 0 }: { to: number; suffix?: strin
 
   return (
     <span ref={ref} className="tabular-nums">
+      {prefix}
       <motion.span>{rounded}</motion.span>
       {suffix}
     </span>
@@ -23,25 +24,30 @@ function Counter({ to, suffix = "", decimals = 0 }: { to: number; suffix?: strin
 }
 
 const stats = [
-  { value: 68, suffix: "%", label: "Redução no tempo médio de resolução", desc: "Automação de fluxos elimina etapas manuais e atrito operacional." },
-  { value: 3.4, suffix: "x", decimals: 1, label: "Aumento na taxa de recompra", desc: "Clientes com experiência fluida voltam mais e gastam mais." },
-  { value: 42, suffix: "%", label: "Mais conversão em troca vs reembolso", desc: "Retenção de receita por meio de jornadas inteligentes." },
-  { value: 99.9, suffix: "%", decimals: 1, label: "Disponibilidade da plataforma", desc: "Infraestrutura corporativa pronta para alto volume." },
+  { value: 90, suffix: "%", label: "Atendimento de troca rápido" },
+  { value: 30, suffix: "%", label: "Redução na retenção de chamados" },
+  { value: 40, suffix: "%", label: "Upsell entre trocas reversas" },
+  { value: 6, prefix: "+", suffix: "M", label: "Reversas processadas" },
+];
+
+const highlights = [
+  { metric: "até 60%", text: "de redução em custo logístico com leilão de frete." },
+  { metric: "71%", text: "dos consumidores satisfeitos tendem a comprar novamente. (RD Station)" },
 ];
 
 export function Metrics() {
   return (
-    <section id="metricas" className="py-24 lg:py-32 bg-surface">
+    <section id="resultados" className="py-24 lg:py-32 bg-surface">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-          <div className="max-w-2xl">
-            <p className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur px-3 py-1 text-brand-foreground/80 text-2xl">Resultados mensuráveis</p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-brand">
-              Métricas que movem o negócio.
-            </h2>
-          </div>
-          <p className="text-muted-foreground max-w-md">
-            Resultados médios observados em operações que adotaram a Reversa para gerir pós-venda em escala.
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-4 py-1.5 text-xs font-semibold text-brand tracking-wider">
+            RESULTADOS COMPROVADOS
+          </p>
+          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-brand-strong leading-[1.1]">
+            Números que comprovam
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+            Resultados reais de mais de 400 clientes que transformaram sua operação de troca e devolução.
           </p>
         </div>
 
@@ -55,23 +61,38 @@ export function Metrics() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group relative rounded-2xl border border-border bg-card p-7 shadow-card hover:shadow-brand hover:border-brand/30 hover:-translate-y-1 transition-all duration-500"
             >
-              <div className="text-5xl font-display font-semibold tracking-tight text-brand-gradient">
-                <Counter to={s.value} suffix={s.suffix} decimals={s.decimals ?? 0} />
+              <div className="text-5xl lg:text-6xl font-display font-bold tracking-tight text-brand-strong">
+                <Counter to={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
               <div className="mt-4 text-sm font-medium text-foreground">{s.label}</div>
-              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-              <div className="absolute inset-x-7 bottom-0 h-px bg-brand-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-70">
-          {["NORTHWAVE", "LUMEN", "ATLAS RETAIL", "OBJECT", "MERIDIAN", "FORMA"].map((b) => (
-            <span key={b} className="text-sm tracking-[0.2em] text-muted-foreground font-medium">
-              {b}
-            </span>
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="rounded-2xl bg-brand-gradient p-7 shadow-brand text-brand-foreground">
+            <div className="text-3xl font-display font-bold">IA-First</div>
+            <div className="mt-2 text-sm opacity-90">Decisões inteligentes em cada reversa.</div>
+          </div>
+          {highlights.map((h) => (
+            <div key={h.metric} className="rounded-2xl border border-border bg-card p-7 shadow-card">
+              <div className="text-3xl font-display font-bold text-brand-strong">{h.metric}</div>
+              <div className="mt-2 text-sm text-muted-foreground leading-relaxed">{h.text}</div>
+            </div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-2xl md:text-3xl font-display font-bold text-foreground">
+            Tem muito dinheiro na mesa.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
