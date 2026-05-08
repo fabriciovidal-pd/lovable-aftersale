@@ -44,7 +44,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-6 text-lg text-brand-foreground/80 max-w-2xl mx-auto"
+            className="mt-6 text-lg text-brand-foreground/80 max-w-4xl"
           >
             Muitas devoluções no e-commerce poderiam ser evitadas antes mesmo da logística reversa acontecer. Nossa solução atua de forma preventiva para reduzir impactos operacionais e financeiros em toda a operação.
           </motion.p>
