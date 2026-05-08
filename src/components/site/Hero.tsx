@@ -28,7 +28,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-brand-foreground/10 backdrop-blur px-3 py-1 text-xs text-white"
           >
             <Sparkles className="size-3.5 text-accent" />
-            Pós-venda inteligente para e-commerce e varejo
+            Líder em trocas e devoluções desde 2017
           </motion.div>
 
           <motion.h1
