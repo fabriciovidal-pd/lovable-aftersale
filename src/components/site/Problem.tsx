@@ -24,7 +24,7 @@ const cards = [
     icon: Coins,
     eyebrow: "TROCA E DEVOLUÇÃO COMO SISTEMA ECONÔMICO",
     title: "Todo mundo fala em vender mais. A gente fala em proteger e perder menos.",
-    desc: "Cada reversa movimenta estoque, frete, pessoas, crédito, recompra e confiança.",
+    desc: "Cada reversa movimenta estoque, frete, pessoas, crédito, recompra e confiança. Quando bem orquestrado, o fluxo de troca e devolução gera receita recorrente, reduz custo de aquisição e aumenta LTV. Se ele é tratado por volume de chamados... isso vira prejuízo econômico no seu P&L.",
   },
 ];
 
