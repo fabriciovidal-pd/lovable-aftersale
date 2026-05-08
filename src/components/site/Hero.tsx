@@ -37,7 +37,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.05 }}
             className="mt-6 text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-brand-foreground leading-[1.05]"
           >
-            Transforme trocas e devoluções em fidelização.
+            Nós ajudamos na redução do custo de trocas e devolução da sua operação, maximizando a proteção e a geração da sua receita.
           </motion.h1>
 
           <motion.p
@@ -46,7 +46,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="mt-6 text-lg text-brand-foreground/80 max-w-2xl mx-auto"
           >
-            A plataforma que automatiza, mensura e eleva toda a jornada de pós-venda — de centro de custo a vantagem competitiva.
+            Muitas devoluções no e-commerce poderiam ser evitadas antes mesmo da logística reversa acontecer. Nossa solução atua de forma preventiva para reduzir impactos operacionais e financeiros em toda a operação.
           </motion.p>
 
         </div>

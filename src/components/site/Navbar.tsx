@@ -34,7 +34,7 @@ export function Navbar() {
             <span className="grid place-items-center size-8 rounded-lg bg-background text-brand shadow-glow">
               <Package className="size-4" />
             </span>
-            <span className="text-base tracking-tight">Reversa</span>
+            <span className="text-base tracking-tight">Aftersale</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
