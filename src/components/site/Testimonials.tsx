@@ -26,7 +26,7 @@ export function Testimonials() {
           <p className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-4 py-1.5 text-xs font-semibold text-brand tracking-wider">
             DEPOIMENTOS
           </p>
-          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-brand-strong">
+          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight text-brand-strong">
             Nossos parceiros recomendam
           </h2>
         </div>

@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
-            <div className="font-display font-bold text-2xl tracking-tight">
+            <div className="font-display font-medium text-2xl tracking-tight">
               AFTERSALE<span className="text-accent">.com</span>
             </div>
             <p className="mt-4 text-sm text-brand-foreground/70 max-w-sm leading-relaxed">

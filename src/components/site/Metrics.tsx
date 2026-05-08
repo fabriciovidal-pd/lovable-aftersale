@@ -43,7 +43,7 @@ export function Metrics() {
           <p className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-4 py-1.5 text-xs font-semibold text-brand tracking-wider">
             RESULTADOS COMPROVADOS
           </p>
-          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-brand-strong leading-[1.1]">
+          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight text-brand-strong leading-[1.1]">
             Números que comprovam
           </h2>
           <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
@@ -61,7 +61,7 @@ export function Metrics() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group relative rounded-2xl border border-border bg-card p-7 shadow-card hover:shadow-brand hover:border-brand/30 hover:-translate-y-1 transition-all duration-500"
             >
-              <div className="text-5xl lg:text-6xl font-display font-bold tracking-tight text-brand-strong">
+              <div className="text-5xl lg:text-6xl font-display font-medium tracking-tight text-brand-strong">
                 <Counter to={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
               <div className="mt-4 text-sm font-medium text-foreground">{s.label}</div>
@@ -71,12 +71,12 @@ export function Metrics() {
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div className="rounded-2xl bg-brand-gradient p-7 shadow-brand text-brand-foreground">
-            <div className="text-3xl font-display font-bold">IA-First</div>
+            <div className="text-3xl font-display font-medium">IA-First</div>
             <div className="mt-2 text-sm opacity-90">Decisões inteligentes em cada reversa.</div>
           </div>
           {highlights.map((h) => (
             <div key={h.metric} className="rounded-2xl border border-border bg-card p-7 shadow-card">
-              <div className="text-3xl font-display font-bold text-brand-strong">{h.metric}</div>
+              <div className="text-3xl font-display font-medium text-brand-strong">{h.metric}</div>
               <div className="mt-2 text-sm text-muted-foreground leading-relaxed">{h.text}</div>
             </div>
           ))}
@@ -89,7 +89,7 @@ export function Metrics() {
           transition={{ duration: 0.6 }}
           className="mt-16 text-center"
         >
-          <p className="text-2xl md:text-3xl font-display font-bold text-foreground">
+          <p className="text-2xl md:text-3xl font-display font-medium text-foreground">
             Tem muito dinheiro na mesa!
           </p>
         </motion.div>

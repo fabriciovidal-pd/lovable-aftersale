@@ -33,7 +33,7 @@ export function Features() {
           <p className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-4 py-1.5 text-xs font-semibold text-brand tracking-wider">
             PLATAFORMA COMPLETA
           </p>
-          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-brand-strong leading-[1.1]">
+          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight text-brand-strong leading-[1.1]">
             Tudo que seu e-commerce precisa
           </h2>
           <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
@@ -54,14 +54,14 @@ export function Features() {
               <div className="size-11 rounded-xl bg-brand-soft border border-brand/15 grid place-items-center text-brand group-hover:bg-brand group-hover:text-brand-foreground transition-all">
                 <f.icon className="size-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-5 text-lg font-display font-bold tracking-tight text-foreground">{f.title}</h3>
+              <h3 className="mt-5 text-lg font-display font-medium tracking-tight text-foreground">{f.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
               <div className="absolute -bottom-px left-7 right-7 h-px bg-brand-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.div>
           ))}
         </div>
 
-        <p className="mt-16 text-center text-2xl md:text-3xl font-display font-bold text-brand-strong max-w-4xl mx-auto leading-snug">
+        <p className="mt-16 text-center text-2xl md:text-3xl font-display font-medium text-brand-strong max-w-4xl mx-auto leading-snug">
           As maiores marcas do Brasil transformaram sua operação de troca e devolução com a Aftersale.
         </p>
       </div>

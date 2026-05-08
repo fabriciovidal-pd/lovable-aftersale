@@ -23,7 +23,7 @@ export function Logos() {
           <p className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-4 py-1.5 text-xs font-semibold text-brand tracking-wider">
             CLIENTES
           </p>
-          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-brand-strong">
+          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight text-brand-strong">
             +400 clientes confiam
           </h2>
           <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
@@ -42,7 +42,7 @@ export function Logos() {
               className="group h-24 rounded-2xl border border-border bg-card grid place-items-center px-4 hover:border-brand/30 hover:shadow-brand transition-all"
             >
               <span
-                className="font-display font-bold text-base tracking-tight text-center transition-colors"
+                className="font-display font-medium text-base tracking-tight text-center transition-colors"
                 style={{ color: c.color }}
               >
                 {c.name}

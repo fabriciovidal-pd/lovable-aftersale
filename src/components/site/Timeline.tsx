@@ -17,7 +17,7 @@ export function Timeline() {
           <p className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-4 py-1.5 text-xs font-semibold text-brand tracking-wider">
             NOSSA TRAJETÓRIA
           </p>
-          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-brand-strong">
+          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight text-brand-strong">
             Nossa história
           </h2>
           <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
@@ -43,7 +43,7 @@ export function Timeline() {
                   <span className="absolute left-4 md:left-1/2 top-2 size-3 rounded-full bg-brand-gradient ring-4 ring-surface md:-translate-x-1/2" aria-hidden />
                   <div className={`pl-12 md:pl-0 ${isLeft ? "md:pr-16 md:text-right" : "md:col-start-2 md:pl-16"}`}>
                     <div className="text-sm font-semibold text-brand tracking-wider">{m.year}</div>
-                    <h3 className="mt-2 text-2xl font-display font-bold tracking-tight text-foreground">{m.title}</h3>
+                    <h3 className="mt-2 text-2xl font-display font-medium tracking-tight text-foreground">{m.title}</h3>
                     <p className="mt-3 text-muted-foreground leading-relaxed">{m.desc}</p>
                   </div>
                 </motion.div>
@@ -67,7 +67,7 @@ export function Timeline() {
                       Novo ciclo · IA First
                     </div>
                     <div className="mt-5 text-sm font-semibold text-accent tracking-wider">2026</div>
-                    <h3 className="mt-2 text-3xl md:text-5xl font-display font-bold tracking-tight text-brand-foreground">
+                    <h3 className="mt-2 text-3xl md:text-5xl font-display font-medium tracking-tight text-brand-foreground">
                       Aquisição da Genius Returns
                     </h3>
                     <p className="mt-4 text-lg text-brand-foreground/85 max-w-2xl leading-relaxed">
