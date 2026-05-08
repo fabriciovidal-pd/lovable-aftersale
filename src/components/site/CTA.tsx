@@ -12,7 +12,7 @@ export function CTA() {
               Sua troca e devolução é um sistema econômico. Trate-a assim.
             </h2>
             <p className="mt-5 text-lg text-brand-foreground/80">
-              Pare de medir por volume de chamados. Meça pelo impacto no seu P&amp;L. Agende uma conversa estratégica.
+              Pare de medir por volume de chamados, meça pelo impacto no seu P&amp;L. Agende uma conversa estratégica.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
