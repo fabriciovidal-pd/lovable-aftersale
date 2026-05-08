@@ -34,7 +34,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="mt-6 text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-brand-foreground leading-[1.05]"
+            className="mt-6 text-4xl md:text-6xl lg:text-7xl font-display font-medium tracking-tight text-brand-foreground leading-[1.05]"
           >
             Nós ajudamos na redução do custo da sua operação, maximizando a proteção e a geração da sua receita.
           </motion.h1>

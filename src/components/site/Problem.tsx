@@ -36,7 +36,7 @@ export function Problem() {
           <p className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-4 py-1.5 text-xs font-semibold text-brand tracking-wider">
             REPOSICIONANDO A CATEGORIA
           </p>
-          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-brand-strong leading-[1.1]">
+          <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight text-brand-strong leading-[1.1]">
             A troca e devolução que você conhece não foi feita para escalar
           </h2>
           <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
@@ -58,7 +58,7 @@ export function Problem() {
                 <c.icon className="size-6" strokeWidth={1.75} />
               </div>
               <p className="mt-6 text-[11px] font-semibold tracking-[0.18em] text-brand">{c.eyebrow}</p>
-              <h3 className="mt-3 text-2xl font-display font-bold tracking-tight text-foreground leading-snug">
+              <h3 className="mt-3 text-2xl font-display font-medium tracking-tight text-foreground leading-snug">
                 {c.title}
               </h3>
               <p className="mt-4 text-base text-muted-foreground leading-relaxed">{c.desc}</p>
