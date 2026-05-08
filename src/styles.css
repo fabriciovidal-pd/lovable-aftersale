@@ -42,8 +42,8 @@
   --color-accent-soft: var(--accent-soft);
   --color-accent-strong: var(--accent-strong);
 
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Rubik", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --shadow-soft: 0 2px 8px -2px rgba(15, 23, 42, 0.06);
   --shadow-elegant: 0 1px 2px rgba(15, 23, 42, 0.04),
@@ -109,19 +109,20 @@
   --primary: oklch(0.18 0.03 280);
   --primary-foreground: oklch(1 0 0);
 
-  /* 30% — #9012FF (primary brand purple) */
-  --brand: oklch(0.4938 0.305 295.5);
-  --brand-glow: oklch(0.62 0.26 295);
-  --brand-soft: color-mix(in oklab, oklch(0.4938 0.305 295.5) 12%, white);
-  --brand-strong: oklch(0.42 0.31 295);
-  --brand-foreground: oklch(1 0 0);
+  /* 30% — #832FF6 (primary brand purple) */
+  --brand: #832FF6;
+  --brand-glow: #A915FF;
+  --brand-soft: color-mix(in oklab, #832FF6 12%, white);
+  /* #A915FF — title purple */
+  --brand-strong: #A915FF;
+  --brand-foreground: #FFFFFF;
 
   /* 10% — #FFDE42 (accent yellow) */
-  --accent: oklch(0.91 0.17 95);
-  --accent-glow: oklch(0.95 0.15 100);
-  --accent-soft: color-mix(in oklab, oklch(0.91 0.17 95) 18%, white);
-  --accent-strong: oklch(0.85 0.19 90);
-  --accent-foreground: oklch(0.18 0.03 280);
+  --accent: #FFDE42;
+  --accent-glow: #FFE970;
+  --accent-soft: color-mix(in oklab, #FFDE42 18%, white);
+  --accent-strong: #F4C800;
+  --accent-foreground: #FFFFFF;
 
   --secondary: oklch(0.97 0.008 285);
   --secondary-foreground: oklch(0.22 0.03 280);
@@ -134,7 +135,7 @@
 
   --border: oklch(0.92 0.01 285);
   --input: oklch(0.92 0.01 285);
-  --ring: oklch(0.4938 0.305 295.5);
+  --ring: #832FF6;
 }
 
 .dark {
