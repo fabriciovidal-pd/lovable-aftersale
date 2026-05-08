@@ -90,7 +90,7 @@ export function Metrics() {
           className="mt-16 text-center"
         >
           <p className="text-2xl md:text-3xl font-display font-bold text-foreground">
-            Tem muito dinheiro na mesa.
+            Tem muito dinheiro na mesa!
           </p>
         </motion.div>
       </div>
