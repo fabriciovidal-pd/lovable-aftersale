@@ -25,7 +25,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur px-3 py-1 text-xs text-brand-foreground/80"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-brand-foreground/10 backdrop-blur px-3 py-1 text-xs text-brand-foreground/80"
           >
             <Sparkles className="size-3.5 text-accent" />
             Pós-venda inteligente para e-commerce e varejo
