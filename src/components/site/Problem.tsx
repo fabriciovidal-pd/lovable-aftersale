@@ -12,7 +12,7 @@ const cards = [
     icon: EyeOff,
     eyebrow: "O CUSTO INVISÍVEL DAS EXCEÇÕES",
     title: "O maior erro é aceitar a devolução rápido demais",
-    desc: "Para cada troca automatizada, existem dezenas de exceções resolvidas manualmente pelo time de atendimento. Acertar isso no automático parece ótimo, mas gera inconsistência, retrabalho e custos que nunca aparecem no dashboard.",
+    desc: "Para cada troca automatizada, existem dezenas de exceções resolvidas manualmente pelo time de atendimento. Acertar isso no automático parece ótimo, mas gera inconsistência, retrabalho e custos que nunca aparecem no dashboard. Piorar os excessos virou o primeiro passo para controlar isso.",
   },
   {
     icon: TrendingUp,
