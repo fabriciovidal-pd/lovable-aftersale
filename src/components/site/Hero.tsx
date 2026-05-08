@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
-import dashboard from "@/assets/dashboard-mockup.png";
+const dashboard = "/dashboard-mockup-new.png";
 
 export function Hero() {
   return (
