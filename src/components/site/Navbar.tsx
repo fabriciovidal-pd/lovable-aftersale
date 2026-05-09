@@ -24,14 +24,14 @@ export function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-brand/90 backdrop-blur-xl border-b border-brand-foreground/10"
+          ? "bg-white/80 backdrop-blur-xl border-b border-zinc-200/60"
           : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <a href="#" className="flex items-center gap-2 font-display font-semibold text-brand-foreground">
-            <span className="grid place-items-center size-8 rounded-lg bg-background text-brand shadow-glow">
+          <a href="#" className="flex items-center gap-2 font-display font-semibold text-brand">
+            <span className="grid place-items-center size-8 rounded-lg bg-brand text-white shadow-elegant">
               <Package className="size-4" />
             </span>
             <span className="text-base tracking-tight">Aftersale</span>
@@ -42,7 +42,7 @@ export function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm text-brand-foreground/80 hover:text-brand-foreground transition-colors"
+                className="text-sm text-brand hover:opacity-80 transition-colors"
               >
                 {l.label}
               </a>
@@ -52,20 +52,20 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-2">
             <a
               href="#plataforma"
-              className="text-sm px-4 py-2 rounded-full text-brand-foreground hover:bg-brand-foreground/10 transition-colors"
+              className="text-sm px-4 py-2 rounded-full border-2 border-brand text-brand hover:bg-brand/5 transition-colors"
             >
               Conhecer plataforma
             </a>
             <a
               href="#cta"
-              className="text-sm px-4 py-2 rounded-full bg-background text-brand hover:opacity-95 transition-all shadow-elegant"
+              className="text-sm px-4 py-2 rounded-full bg-brand text-white hover:bg-brand/90 transition-all shadow-elegant"
             >
               Agendar demonstração
             </a>
           </div>
 
           <button
-            className="md:hidden p-2 rounded-md text-brand-foreground"
+            className="md:hidden p-2 rounded-md text-brand"
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
           >
