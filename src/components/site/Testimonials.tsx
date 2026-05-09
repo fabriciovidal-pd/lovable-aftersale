@@ -13,7 +13,7 @@ const items = [
     quote:
       "Com a implantação da ferramenta, em qualquer lugar, você faz 100 atendimentos manuais por hora para conseguir fazer com outro fornecedor. Quer ganhar agilidade e facilidade de comunicação com seu cliente? Ative a Aftersale.",
     name: "Virlane Castro",
-    role: "Owner Calçados",
+    role: "O setor de troca e devoluções é um sistema econômico, faça valer a pena.",
     company: "Oscar Calçados",
   },
 ];
