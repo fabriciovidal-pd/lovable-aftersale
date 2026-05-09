@@ -25,9 +25,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-brand-foreground/10 backdrop-blur px-3 py-1 text-xs text-white"
+            className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 text-xs font-medium text-white shadow-elegant"
           >
-            <Sparkles className="size-3.5 text-accent" />
+            <Sparkles className="size-3.5 text-white" />
             Líder em trocas e devoluções desde 2017
           </motion.div>
 
@@ -44,7 +44,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-6 text-lg text-brand-foreground/80 max-w-5xl text-left"
+            className="mt-6 text-lg text-zinc-500 max-w-5xl text-left"
           >
             Muitas devoluções no e-commerce poderiam ser evitadas antes mesmo da logística reversa acontecer. Nossa solução atua de forma preventiva para reduzir impactos operacionais e financeiros em toda a operação.
           </motion.p>
