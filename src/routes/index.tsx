@@ -40,6 +40,7 @@ function Index() {
         <Problem />
         <Metrics />
         <Logos />
+        <Features />
         <Testimonials />
         <Timeline />
         <div id="recursos" />
