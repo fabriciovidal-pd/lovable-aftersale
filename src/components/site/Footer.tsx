@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <img src={logoWhite} alt="Aftersale" className="h-14 w-auto" />
+            <img src={logoWhite} alt="Aftersale" className="h-10 sm:h-12 md:h-14 w-auto" />
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-white">
             <a href="#plataforma" className="hover:opacity-80 transition-opacity">Plataforma</a>
