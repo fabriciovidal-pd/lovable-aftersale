@@ -7,6 +7,7 @@ import { Logos } from "@/components/site/Logos";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Timeline } from "@/components/site/Timeline";
 import { CTA } from "@/components/site/CTA";
+import { Features } from "@/components/site/Features";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
 
@@ -39,6 +40,7 @@ function Index() {
         <Problem />
         <Metrics />
         <Logos />
+        <Features />
         <Testimonials />
         <Timeline />
         <div id="recursos" />
