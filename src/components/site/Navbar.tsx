@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Package } from "lucide-react";
+import logo from "@/assets/aftersale-logo.png";
 
 const links = [
   { label: "Plataforma", href: "#plataforma" },
@@ -30,11 +31,8 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <a href="#" className="flex items-center gap-2 font-display font-semibold text-brand">
-            <span className="grid place-items-center size-8 rounded-lg bg-brand text-white shadow-elegant">
-              <Package className="size-4" />
-            </span>
-            <span className="text-base tracking-tight">Aftersale</span>
+          <a href="#" className="flex items-center font-display font-semibold text-brand">
+            <img src={logo} alt="Aftersale" className="h-9 w-auto" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
