@@ -32,7 +32,7 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <a href="#" className="flex items-center font-display font-semibold text-brand">
-            <img src={logo} alt="Aftersale" className="h-9 w-auto" />
+            <img src={logo} alt="Aftersale" className="h-14 w-auto" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
