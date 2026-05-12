@@ -4,7 +4,7 @@ import dashboard from "@/assets/dashboard-new.png";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 bg-white overflow-hidden">
+    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden" style={{ backgroundColor: "#AD7AFC" }}>
       {/* floating accents */}
       <motion.div
         aria-hidden
