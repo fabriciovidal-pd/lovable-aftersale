@@ -1,80 +1,134 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Play, Check, Sparkles } from "lucide-react";
 import dashboard from "@/assets/dashboard-new.png";
+
+const trustSignals = [
+  "Líder desde 2017",
+  "+6M reversas processadas",
+  "IA-First",
+];
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-white">
-
+    <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-white">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="grid lg:grid-cols-[minmax(0,520px)_1fr] gap-12 lg:gap-16 items-center">
+          {/* Copy — left */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5"
+            >
+              <span className="size-1.5 rounded-full bg-brand" />
+              <Sparkles className="size-3.5 text-brand" />
+              <span className="text-xs font-medium text-brand">
+                Líder em trocas e devoluções desde 2017
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="mt-6 text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.05] text-brand"
+            >
+              Reduza o custo de trocas e devoluções e{" "}
+              <span className="bg-gradient-to-r from-brand to-[#AD7AFC] bg-clip-text text-transparent">
+                proteja sua receita
+              </span>{" "}
+              da operação.
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="mt-6 text-lg leading-relaxed text-zinc-500 max-w-md"
+            >
+              Muitas devoluções no e-commerce poderiam ser evitadas antes mesmo da
+              logística reversa. Atuamos de forma preventiva para reduzir impactos
+              operacionais e financeiros em toda a operação.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mt-8 flex flex-wrap items-center gap-3"
+            >
+              <a
+                href="#cta"
+                className="group inline-flex items-center gap-2 rounded-xl bg-brand text-white px-6 py-3.5 text-sm font-semibold shadow-elegant hover:bg-brand/90 hover:-translate-y-0.5 hover:shadow-brand transition-all"
+              >
+                Agendar demonstração
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+              <a
+                href="#plataforma"
+                className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white text-zinc-700 px-5 py-3 text-sm font-medium hover:bg-zinc-50 transition-colors"
+              >
+                <Play className="size-3.5" />
+                Conhecer plataforma
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2"
+            >
+              {trustSignals.map((f) => (
+                <div key={f} className="flex items-center gap-1.5">
+                  <span className="inline-flex size-4 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                    <Check className="size-2.5" strokeWidth={3} />
+                  </span>
+                  <span className="text-xs text-zinc-500">{f}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Product screenshot — right */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 text-xs font-medium text-white shadow-elegant"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
           >
-            <Sparkles className="size-3.5 text-white" />
-            Líder em trocas e devoluções desde 2017
+            <div className="absolute -inset-6 bg-gradient-to-tr from-brand/20 via-[#AD7AFC]/15 to-transparent blur-3xl rounded-3xl" />
+            <div className="relative rounded-2xl border border-zinc-200 bg-white shadow-elegant p-2">
+              <img
+                src={dashboard}
+                alt="Painel da plataforma de pós-venda Aftersale"
+                width={1920}
+                height={1080}
+                className="rounded-xl w-full h-auto"
+              />
+            </div>
           </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.05 }}
-            className="mt-6 text-5xl md:text-6xl tracking-tight text-brand leading-[1.05] font-medium text-left px-0 py-0 lg:text-5xl"
-          >
-            Nós ajudamos na redução do custo de trocas e devolução da sua operação, maximizando a proteção e a geração da sua receita.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-6 text-lg text-zinc-500 max-w-5xl text-left"
-          >
-            Muitas devoluções no e-commerce poderiam ser evitadas antes mesmo da logística reversa acontecer. Nossa solução atua de forma preventiva para reduzir impactos operacionais e financeiros em toda a operação.
-          </motion.p>
-
         </div>
 
+        {/* Social proof bar */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3 }}
-          className="relative mt-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-16 lg:mt-20 pt-8 border-t border-zinc-100 flex flex-wrap items-center gap-x-10 gap-y-4"
         >
-          <div className="absolute inset-x-10 -bottom-10 h-24 bg-brand-gradient opacity-30 blur-3xl" />
-          <div className="relative rounded-2xl border border-border bg-card/60 backdrop-blur p-2 shadow-elegant">
-            <img
-              src={dashboard}
-              alt="Painel da plataforma de pós-venda"
-              width={1920}
-              height={1080}
-              className="rounded-xl w-full h-auto"
-            />
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3"
-        >
-          <a
-            href="#cta"
-            className="group inline-flex items-center gap-2 rounded-full bg-brand text-white px-5 py-3 text-sm font-medium shadow-elegant hover:bg-brand/90 hover:shadow-brand transition-all"
-          >
-            Agendar demonstração
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href="#plataforma"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-brand bg-transparent px-5 py-3 text-sm font-medium text-brand hover:bg-brand/5 transition-colors"
-          >
-            Conhecer plataforma
-          </a>
+          <span className="text-xs uppercase tracking-widest text-zinc-400 whitespace-nowrap">
+            Marcas que confiam na Aftersale
+          </span>
+          {["Track&Field", "Reserva", "Animale", "Farm", "Osklen"].map((co) => (
+            <span
+              key={co}
+              className="text-sm font-semibold text-zinc-300 tracking-tight"
+            >
+              {co}
+            </span>
+          ))}
         </motion.div>
       </div>
     </section>
