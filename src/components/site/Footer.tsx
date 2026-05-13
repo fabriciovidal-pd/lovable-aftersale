@@ -1,25 +1,19 @@
-import { Youtube, Linkedin, ShieldCheck, Award, BadgeCheck } from "lucide-react";
+import { Youtube, Linkedin } from "lucide-react";
 import logoWhite from "@/assets/aftersale-logo-white.png";
+import selo1 from "@/assets/selo-1.svg";
+import selo2 from "@/assets/selo-2.png";
 
 export function Footer() {
   return (
     <footer className="border-t-4 border-brand" style={{ backgroundColor: "#9012FF" }}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-14">
-        {/* Selos de parceiros */}
-        <div className="mb-12">
-          <p className="text-xs uppercase tracking-widest text-white/70 mb-4">
-            Selos de parceiros
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-            {[ShieldCheck, Award, BadgeCheck, ShieldCheck, Award].map((Icon, i) => (
-              <div
-                key={i}
-                className="flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white/80 text-xs hover:bg-white/10 transition-colors"
-              >
-                <Icon className="size-4" />
-                <span>Parceiro {i + 1}</span>
-              </div>
-            ))}
+        {/* Selos */}
+        <div className="mb-10 flex flex-wrap items-center justify-center md:justify-start gap-6">
+          <div className="bg-white rounded-xl p-3 flex items-center justify-center h-16">
+            <img src={selo1} alt="Selo de parceiro" className="h-10 w-auto" />
+          </div>
+          <div className="bg-white rounded-xl p-3 flex items-center justify-center h-16">
+            <img src={selo2} alt="Shopify Partner" className="h-10 w-auto" />
           </div>
         </div>
 
@@ -30,9 +24,10 @@ export function Footer() {
             <img src={logoWhite} alt="Aftersale" className="h-10 sm:h-12 md:h-14 w-auto" />
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-white">
-            <a href="#plataforma" className="hover:opacity-80 transition-opacity">Plataforma</a>
-            <a href="#clientes" className="hover:opacity-80 transition-opacity">Clientes</a>
-            <a href="#depoimentos" className="hover:opacity-80 transition-opacity">Depoimentos</a>
+            <a href="#reposicionamento" className="hover:opacity-80 transition-opacity">Soluções</a>
+            <a href="#metricas" className="hover:opacity-80 transition-opacity">Resultados</a>
+            <a href="#produto" className="hover:opacity-80 transition-opacity">Produto</a>
+            <a href="#depoimentos" className="hover:opacity-80 transition-opacity">Clientes</a>
             <a href="#historia" className="hover:opacity-80 transition-opacity">História</a>
             <a href="#cta" className="hover:opacity-80 transition-opacity">Contato</a>
           </div>
