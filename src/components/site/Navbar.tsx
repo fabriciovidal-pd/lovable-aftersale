@@ -1,14 +1,39 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Package } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import logo from "@/assets/aftersale-logo.png";
 
 const links = [
-  { label: "Plataforma", href: "#plataforma" },
-  { label: "Soluções", href: "#problema" },
+  { label: "Soluções", href: "#reposicionamento" },
   { label: "Resultados", href: "#metricas" },
-  { label: "Recursos", href: "#recursos" },
+  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "R.P.", href: "#historia" },
 ];
+
+function LanguageSelector({ className = "" }: { className?: string }) {
+  const [lang, setLang] = useState<"PT" | "ES" | "EN">("PT");
+  const options: Array<"PT" | "ES" | "EN"> = ["PT", "ES", "EN"];
+  return (
+    <div
+      className={`inline-flex items-center gap-1 rounded-full border border-brand/30 px-1 py-1 text-xs ${className}`}
+    >
+      <Globe className="size-3.5 text-brand ml-1.5" />
+      {options.map((o) => (
+        <button
+          key={o}
+          onClick={() => setLang(o)}
+          className={`px-2 py-0.5 rounded-full transition-colors ${
+            lang === o
+              ? "bg-brand text-white"
+              : "text-brand hover:bg-brand/5"
+          }`}
+        >
+          {o}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,9 +55,9 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 md:h-24 items-center justify-between">
           <a href="#" className="flex items-center font-display font-semibold text-brand">
-            <img src={logo} alt="Aftersale" className="h-9 sm:h-11 md:h-14 w-auto" />
+            <img src={logo} alt="Aftersale" className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto" />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -47,7 +72,7 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-3">
             <a
               href="#plataforma"
               className="text-sm px-4 py-2 rounded-full border-2 border-brand text-brand hover:bg-brand/5 transition-colors"
@@ -60,6 +85,7 @@ export function Navbar() {
             >
               Agendar demonstração
             </a>
+            <LanguageSelector />
           </div>
 
           <button
@@ -94,6 +120,9 @@ export function Navbar() {
                 <a href="#cta" className="text-sm px-4 py-2 rounded-full bg-brand-gradient text-brand-foreground text-center shadow-brand">
                   Agendar demonstração
                 </a>
+                <div className="pt-2 flex justify-center">
+                  <LanguageSelector />
+                </div>
               </div>
             </div>
           </motion.div>
