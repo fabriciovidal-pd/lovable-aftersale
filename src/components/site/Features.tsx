@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import {
-  Smartphone,
-  Workflow,
+  ShieldCheck,
+  GitBranch,
   Plug,
   BarChart3,
   Gift,
-  ShieldCheck,
-  Ruler,
+  Lock,
+  Repeat,
   MessageCircle,
   Wallet,
   Truck,
@@ -14,74 +14,89 @@ import {
 
 const features = [
   {
-    icon: Smartphone,
-    title: "Portal de Autoatendimento",
-    desc: "Interface mobile e desktop onde o cliente inicia trocas e devoluções 24/7.",
+    icon: ShieldCheck,
+    title: "Autorização Inteligente",
+    description:
+      "Aprove ou bloqueie trocas com base em regras de negócio personalizáveis.",
   },
   {
-    icon: Workflow,
-    title: "Fluxos Customizáveis",
-    desc: "Crie regras, jornadas e decisões sob medida para políticas, fretes e canais.",
+    icon: GitBranch,
+    title: "Fluxo Personalizável",
+    description:
+      "Monte o fluxo ideal para troca, devolução ou crédito — sem código.",
   },
   {
     icon: Plug,
-    title: "Integrações — API Robusta e Flexível",
-    desc: "Conecte com ERPs, plataformas de e-commerce, gateways e APIs diversas.",
+    title: "Integração — API Simples e Flexível",
+    description:
+      "Conecte com qualquer plataforma de e-commerce em minutos.",
   },
   {
     icon: BarChart3,
-    title: "Relatórios em Tempo Real",
-    desc: "Indicadores de desempenho, motivos e benchmarking para decisões estratégicas.",
+    title: "Dashboards em Tempo Real",
+    description:
+      "Monitore volume, motivos e impacto financeiro das devoluções ao vivo.",
   },
   {
     icon: Gift,
     title: "Retenção Programada",
-    desc: "Ofertas de recompra com vouchers, cashback e incentivos de retenção automatizados.",
+    description:
+      "Ofertas de recompra com vouchers e cashback automatizados.",
   },
   {
-    icon: ShieldCheck,
+    icon: Lock,
     title: "Security First",
-    desc: "Criptografia de dados, conformidade com LGPD e auditoria completa de interações.",
+    description:
+      "Dados protegidos com criptografia end-to-end e compliance PCI.",
   },
   {
-    icon: Ruler,
-    title: "Troca de Tamanho facilitada",
-    desc: "Experiência fluída e intuitiva para clientes que só precisam ajustar o tamanho do produto.",
+    icon: Repeat,
+    title: "Fluxo de Troca Contínua",
+    description:
+      "Transforme devoluções em novas vendas com sugestões automáticas de troca.",
   },
   {
     icon: MessageCircle,
-    title: "Jornada de devolução via Whatsapp",
-    desc: "Seu cliente resolve tudo pelo canal que ele já usa — simples, rápido e com alta taxa de engajamento.",
+    title: "Solicitação via WhatsApp e e-mail",
+    description:
+      "Cliente abre a troca pelo canal que preferir, sem atrito.",
   },
   {
     icon: Wallet,
     title: "Estorno e vale-compras automatizado",
-    desc: "Ofereça opções ágeis de reembolso ou crédito na loja, aumentando a confiança do cliente.",
+    description:
+      "Processe reembolsos e registre novas compras de forma automática.",
   },
   {
     icon: Truck,
-    title: "Logística Inteligente com autonomia para o cliente",
-    desc: "Automatize a logística reversa, sem fricção e sem depender do atendimento.",
+    title: "Logística Reversa Integrada",
+    description:
+      "Etiquetas, rastreio e reembolso centralizados em uma única tela.",
   },
 ];
 
 export function Features() {
   return (
-    <section id="produto" className="py-24 lg:py-32 bg-background">
+    <section
+      id="produto"
+      className="py-24 lg:py-32"
+      style={{ backgroundColor: "#5C159B" }}
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-3 py-1 text-xs font-medium tracking-[0.2em] text-brand">
-            PLATAFORMA COMPLETA
-          </span>
-          <h2 className="mt-5 text-4xl md:text-5xl font-display font-medium tracking-tight text-brand">
+          <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-white/55">
+            Plataforma completa
+          </p>
+          <h2 className="mt-4 text-4xl md:text-5xl font-display font-semibold tracking-tight text-white leading-[1.1]">
             Tudo que seu e-commerce precisa
           </h2>
-          <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-            Automatize a operação de pós-compra e transforme cada interação em oportunidade de fidelização.
+          <p className="mt-5 text-lg text-white/65 leading-relaxed max-w-xl mx-auto">
+            Funcionalidades que se encaixam na sua operação desde o primeiro
+            pedido de troca.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-px rounded-2xl overflow-hidden bg-white/5">
           {features.map((f, i) => (
             <motion.div
               key={f.title}
@@ -89,15 +104,17 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: (i % 5) * 0.06 }}
-              className="group relative rounded-2xl border border-border bg-card p-6 shadow-card hover:shadow-brand hover:border-brand/30 hover:-translate-y-1 transition-all duration-500"
+              className="group bg-white/[0.07] hover:bg-white/[0.13] transition-colors p-7 flex flex-col gap-3"
             >
-              <div className="size-11 rounded-xl bg-brand-soft border border-brand/15 grid place-items-center text-brand group-hover:bg-brand-gradient group-hover:text-brand-foreground group-hover:border-transparent transition-all">
+              <div className="size-11 rounded-xl bg-white/10 grid place-items-center text-white">
                 <f.icon className="size-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-5 text-base font-semibold text-foreground leading-snug">
+              <h3 className="text-sm font-semibold text-white leading-snug tracking-tight">
                 {f.title}
               </h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+              <p className="text-[13px] text-white/60 leading-relaxed">
+                {f.description}
+              </p>
             </motion.div>
           ))}
         </div>
