@@ -9,7 +9,7 @@ export function CTA() {
           <div className="absolute -bottom-40 -left-20 size-96 rounded-full bg-brand-gradient opacity-40 blur-3xl mix-blend-overlay" />
           <div className="relative max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-brand-foreground leading-tight">
-              Sua troca e devolução é um sistema econômico. Trate-a assim.
+              Trocas e devoluções fazem parte de um sistema econômico, saiba como fazer bom uso dele.
             </h2>
             <p className="mt-5 text-lg text-brand-foreground/80">
               Pare de medir por volume de chamados, meça pelo impacto no seu P&amp;L. Agende uma conversa estratégica.
