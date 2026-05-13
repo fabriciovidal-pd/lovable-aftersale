@@ -4,20 +4,7 @@ import dashboard from "@/assets/dashboard-new.png";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden" style={{ backgroundColor: "#AD7AFC" }}>
-      {/* floating accents */}
-      <motion.div
-        aria-hidden
-        className="absolute -top-20 -left-20 size-80 rounded-full bg-brand-gradient opacity-20 blur-3xl"
-        animate={{ y: [0, 20, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute top-40 -right-24 size-96 rounded-full bg-brand-gradient opacity-15 blur-3xl"
-        animate={{ y: [0, -25, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
+    <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-white">
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-5xl text-center">
