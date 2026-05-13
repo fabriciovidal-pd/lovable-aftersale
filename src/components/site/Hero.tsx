@@ -45,11 +45,8 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="mt-6 text-lg leading-relaxed text-zinc-500 max-w-md"
             >
-              Muitas devoluções no e-commerce poderiam ser evitadas antes mesmo da
-              logística reversa. Atuamos de forma preventiva para reduzir impactos
-              operacionais e financeiros em toda a operação.
+              Owner
             </motion.p>
 
             <motion.div
