@@ -36,14 +36,12 @@ function Index() {
       <Navbar />
       <main>
         <Hero />
-        <div id="plataforma" />
         <Problem />
         <Metrics />
-        <Logos />
         <Features />
+        <Logos />
         <Testimonials />
         <Timeline />
-        <div id="recursos" />
         <CTA />
       </main>
       <Footer />
