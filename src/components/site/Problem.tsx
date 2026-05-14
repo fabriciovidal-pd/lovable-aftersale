@@ -33,8 +33,8 @@ const items = [
 export function Problem() {
   return (
     <section
-      id="reposicionamento"
-      className="py-24 lg:py-32"
+      id="trocas"
+      className="py-20 lg:py-24"
       style={{ backgroundColor: "#5C159B" }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -58,7 +58,7 @@ export function Problem() {
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-px rounded-2xl overflow-hidden bg-white/5">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-px rounded-2xl overflow-hidden bg-white/5">
           {items.map((c, i) => (
             <motion.article
               key={c.title}
@@ -66,15 +66,30 @@ export function Problem() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative bg-white/[0.07] hover:bg-white/[0.12] transition-colors p-8 lg:p-10"
+              className="group relative bg-white/[0.07] hover:bg-white/[0.12] transition-colors"
+              style={{ padding: "28px 32px" }}
             >
-              <div className="size-11 rounded-xl bg-white/10 grid place-items-center text-white">
-                <c.icon className="size-5" strokeWidth={1.75} />
+              <div className="flex items-start gap-3">
+                <div
+                  className="grid place-items-center text-white shrink-0"
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 9,
+                    background: "rgba(255,255,255,0.12)",
+                    marginTop: 1,
+                  }}
+                >
+                  <c.icon className="size-[18px]" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-base font-bold text-white leading-snug tracking-tight m-0">
+                  {c.title}
+                </h3>
               </div>
-              <h3 className="mt-5 text-lg md:text-xl font-semibold tracking-tight text-white leading-snug">
-                {c.title}
-              </h3>
-              <p className="mt-3 text-[15px] text-white/60 leading-relaxed">
+              <p
+                className="text-[14px] text-white/60 leading-relaxed"
+                style={{ paddingLeft: 48, marginTop: 10 }}
+              >
                 {c.description}
               </p>
             </motion.article>
