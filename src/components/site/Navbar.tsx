@@ -4,10 +4,11 @@ import { Menu, X, Globe, ChevronDown, Check } from "lucide-react";
 import logo from "@/assets/aftersale-logo.png";
 
 const links = [
-  { label: "Produtos", href: "#produtos" },
+  { label: "Trocas e Devoluções", href: "#trocas" },
+  { label: "Resultados", href: "#resultados" },
+  { label: "Produto", href: "#produtos" },
   { label: "Clientes", href: "#clientes" },
-  { label: "Parceiros", href: "#depoimentos" },
-  { label: "Nossa história", href: "#historia" },
+  { label: "Nossa História", href: "#historia" },
 ];
 
 type Lang = "PT" | "EN" | "ES";
