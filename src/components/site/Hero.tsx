@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Check, Sparkles } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
 import dashboard from "@/assets/dashboard-new.png";
 
 const trustSignals = [
@@ -57,16 +57,14 @@ export function Hero() {
             >
               <a
                 href="#cta"
-                className="group inline-flex items-center gap-2 rounded-xl bg-brand text-white px-6 py-3.5 text-sm font-semibold shadow-elegant hover:bg-brand/90 hover:-translate-y-0.5 hover:shadow-brand transition-all"
+                className="inline-flex items-center justify-center rounded-xl bg-brand text-white px-6 py-3.5 text-sm font-semibold shadow-elegant hover:bg-brand/90 hover:-translate-y-0.5 hover:shadow-brand transition-all"
               >
                 Agendar demonstração
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
               </a>
               <a
-                href="#plataforma"
-                className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white text-zinc-700 px-5 py-3 text-sm font-medium hover:bg-zinc-50 transition-colors"
+                href="#produtos"
+                className="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-700 px-5 py-3 text-sm font-medium hover:bg-zinc-50 transition-colors"
               >
-                <Play className="size-3.5" />
                 Conhecer plataforma
               </a>
             </motion.div>
@@ -118,7 +116,7 @@ export function Hero() {
           <span className="text-xs uppercase tracking-widest text-zinc-400 whitespace-nowrap">
             Marcas que confiam na Aftersale
           </span>
-          {["Track&Field", "Reserva", "Animale", "Farm", "Osklen"].map((co) => (
+          {["Samsung", "Hugo Boss", "Lofty", "Farm", "Ri Happy"].map((co) => (
             <span
               key={co}
               className="text-sm font-semibold text-zinc-300 tracking-tight"

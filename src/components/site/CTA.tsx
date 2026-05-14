@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react";
-
 export function CTA() {
   return (
     <section id="cta" className="py-24 lg:py-32">
@@ -17,10 +15,9 @@ export function CTA() {
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
                 href="#"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-background text-brand px-5 py-3 text-sm font-medium shadow-elegant hover:shadow-accent-glow transition-all"
+                className="inline-flex items-center justify-center rounded-full bg-background text-brand px-5 py-3 text-sm font-medium shadow-elegant hover:shadow-accent-glow transition-all"
               >
                 Agende uma reunião
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
               </a>
               <a
                 href="#plataforma"

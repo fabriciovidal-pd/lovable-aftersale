@@ -4,12 +4,10 @@ import { Menu, X, Globe, ChevronDown, Check } from "lucide-react";
 import logo from "@/assets/aftersale-logo.png";
 
 const links = [
-  { label: "Soluções", href: "#reposicionamento" },
-  { label: "Resultados", href: "#metricas" },
-  { label: "Produto", href: "#produto" },
-  { label: "Clientes", href: "#depoimentos" },
-  { label: "História", href: "#historia" },
-  { label: "Contato", href: "#cta" },
+  { label: "Produtos", href: "#produtos" },
+  { label: "Clientes", href: "#clientes" },
+  { label: "Parceiros", href: "#depoimentos" },
+  { label: "Nossa história", href: "#historia" },
 ];
 
 type Lang = "PT" | "EN" | "ES";
@@ -91,7 +89,11 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-20 md:h-24 items-center justify-between">
           <a href="#" className="flex items-center font-display font-semibold text-brand">
-            <img src={logo} alt="Aftersale" className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto" />
+            <img
+              src={logo}
+              alt="Aftersale"
+              style={{ height: 52, width: "auto", objectFit: "contain", background: "transparent", mixBlendMode: "multiply" }}
+            />
           </a>
 
           <nav className="hidden lg:flex items-center gap-7">
