@@ -39,9 +39,16 @@ export function Problem() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-white/55">
+          <span
+            className="inline-block rounded-full px-3.5 py-1 text-[12px] font-semibold uppercase text-white"
+            style={{
+              background: "rgba(255,255,255,0.12)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              letterSpacing: "0.06em",
+            }}
+          >
             Por que escalar muda tudo
-          </p>
+          </span>
           <h2 className="mt-4 text-4xl md:text-5xl font-display font-semibold tracking-tight text-white leading-[1.1]">
             A troca e devolução que você conhece não foi feita para escalar
           </h2>

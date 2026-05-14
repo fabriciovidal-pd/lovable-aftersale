@@ -48,7 +48,6 @@ const stats: Stat[] = [
   { value: 30, suffix: "%", label: "Redução na retenção de chamados" },
   { value: 40, suffix: "%", label: "Upsell entre trocas reversas" },
   { value: 6, prefix: "+", suffix: "M", label: "Reversas processadas" },
-  { display: "IA-First", label: "Decisões inteligentes" },
   { display: "Até 60%", label: "Redução em custo logístico com leilão de frete" },
   {
     value: 71,
@@ -64,8 +63,16 @@ export function Metrics() {
     <section id="metricas" className="py-24 lg:py-32 bg-surface">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-3 py-1 text-xs font-medium tracking-[0.2em] text-brand">
-            PROVA SOCIAL
+          <span
+            className="inline-block rounded-full px-3.5 py-1 text-[12px] font-semibold uppercase"
+            style={{
+              background: "rgba(92,21,155,0.07)",
+              border: "1px solid rgba(92,21,155,0.18)",
+              color: "#5C159B",
+              letterSpacing: "0.06em",
+            }}
+          >
+            Resultados
           </span>
           <h2 className="mt-5 text-4xl md:text-5xl font-display font-medium tracking-tight text-brand">
             Números que comprovam
