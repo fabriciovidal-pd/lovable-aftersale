@@ -54,13 +54,12 @@ const stats: Stat[] = [
     suffix: "%",
     label:
       "dos consumidores satisfeitos com o atendimento pós-venda tendem a retornar e comprar novamente",
-    source: "RD Station",
   },
 ];
 
 export function Metrics() {
   return (
-    <section id="metricas" className="py-24 lg:py-32 bg-surface">
+    <section id="resultados" className="py-24 lg:py-32 bg-surface">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <span
