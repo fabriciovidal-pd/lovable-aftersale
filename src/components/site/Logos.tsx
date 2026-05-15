@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const clientLogos = [
   "Samsung", "Tramontina", "Decathlon", "Malwee", "Calvin Klein",
@@ -32,21 +31,20 @@ function LogoPlaceholder({ name }: { name: string }) {
 }
 
 function LogoCarousel() {
-  const [offset, setOffset] = useState(0);
-  const itemWidth = 160;
-  const total = clientLogos.length;
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setOffset((prev) => (prev + 1) % total);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [total]);
-
   const doubled = [...clientLogos, ...clientLogos];
 
   return (
     <div style={{ overflow: "hidden", width: "100%", position: "relative" }}>
+      <style>{`
+        @keyframes logo-marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .logo-marquee-track {
+          animation: logo-marquee 35s linear infinite;
+        }
+        .logo-marquee-track:hover { animation-play-state: paused; }
+      `}</style>
       <div
         style={{
           position: "absolute", left: 0, top: 0, bottom: 0, width: 80,
@@ -62,11 +60,10 @@ function LogoCarousel() {
         }}
       />
       <div
+        className="logo-marquee-track"
         style={{
           display: "flex",
           gap: 16,
-          transform: `translateX(-${offset * itemWidth}px)`,
-          transition: "transform 0.6s ease",
           width: "max-content",
         }}
       >
@@ -151,23 +148,11 @@ export function Logos() {
               </p>
               <div style={{ width: 40, height: 2, background: "rgba(92,21,155,0.2)", borderRadius: 2, marginBottom: 16 }} />
               <p
-                className="text-[16px] font-medium leading-[1.55] italic mb-6"
+                className="text-[16px] font-medium leading-[1.55] italic"
                 style={{ color: "#555555" }}
               >
                 "Hoje processamos milhares de trocas por mês com fluxos automatizados e visibilidade total — uma transformação que impactou diretamente nossa margem."
               </p>
-              <a
-                href="#"
-                className="text-sm font-semibold"
-                style={{
-                  color: "#5C159B",
-                  textDecoration: "none",
-                  borderBottom: "1px solid rgba(92,21,155,0.3)",
-                  paddingBottom: 2,
-                }}
-              >
-                Ler o caso completo →
-              </a>
             </motion.div>
 
             {/* Card Oscar Calçados */}
@@ -184,12 +169,19 @@ export function Logos() {
                 alt="Oscar Calçados"
                 style={{ height: 40, width: "auto", objectFit: "contain", marginBottom: 20 }}
               />
-              <p className="text-[15px] leading-[1.65] mb-3.5" style={{ color: "#444444" }}>
-                "A integração foi simples e os resultados vieram rápido. A Aftersale virou parte essencial da nossa operação de pós-venda."
+              <p
+                className="text-[22px] lg:text-[24px] font-bold leading-[1.3] mb-4"
+                style={{ color: "#0A0A0A", letterSpacing: "-0.02em" }}
+              >
+                "A integração foi simples e os resultados vieram rápido — a Aftersale virou parte essencial da nossa operação."
               </p>
-              <a href="#" className="text-[13px] font-semibold" style={{ color: "#5C159B", textDecoration: "none", opacity: 0.75 }}>
-                Ver caso →
-              </a>
+              <div style={{ width: 40, height: 2, background: "rgba(92,21,155,0.2)", borderRadius: 2, marginBottom: 16 }} />
+              <p
+                className="text-[16px] font-medium leading-[1.55] italic"
+                style={{ color: "#555555" }}
+              >
+                "Ganhamos visibilidade total da jornada de pós-venda e reduzimos drasticamente o tempo de tratamento de cada solicitação de troca."
+              </p>
             </motion.div>
           </div>
         </div>
