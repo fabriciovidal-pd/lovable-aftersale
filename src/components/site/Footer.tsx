@@ -38,7 +38,7 @@ export function Footer() {
           {/* Logo + selos */}
           <div>
             <img
-              src="/Logotipo_Aftersale-S-assinatura_Confi_3.svg"
+              src="/Aftersale_negativo.svg"
               alt="Aftersale"
               style={{ width: 390, height: 221, objectFit: "contain", maxWidth: "100%" }}
             />
