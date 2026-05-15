@@ -21,13 +21,29 @@ const IconX = () => (
   </svg>
 );
 
-const navLinks = [
-  { label: "Trocas e Devoluções", href: "#trocas" },
-  { label: "Resultados", href: "#resultados" },
-  { label: "Produto", href: "#produtos" },
-  { label: "Clientes", href: "#clientes" },
-  { label: "Nossa História", href: "#historia" },
-  { label: "Fale Conosco", href: "#cta" },
+const footerColumns = [
+  {
+    title: "Navegação",
+    links: [
+      { label: "Trocas e Devoluções", href: "#trocas" },
+      { label: "Resultados", href: "#resultados" },
+      { label: "Produto", href: "#produtos" },
+    ],
+  },
+  {
+    title: "Empresa",
+    links: [
+      { label: "Clientes", href: "#clientes" },
+      { label: "Nossa História", href: "#historia" },
+    ],
+  },
+  {
+    title: "Fale Conosco",
+    links: [
+      { label: "comercial@aftersale.com.br", href: "mailto:comercial@aftersale.com.br" },
+      { label: "Agendar demonstração", href: "#cta" },
+    ],
+  },
 ];
 
 export function Footer() {
