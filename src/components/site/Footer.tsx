@@ -1,4 +1,3 @@
-import logo from "@/assets/aftersale-logo.png";
 import selo1 from "@/assets/selo-1.svg";
 import selo2 from "@/assets/selo-2.png";
 
@@ -22,80 +21,80 @@ const IconX = () => (
   </svg>
 );
 
-const columns = [
-  { title: "Empresa", links: ["Sobre nós", "Contato", "Privacidade", "Termos"] },
-  { title: "Produto", links: ["Integrações", "API", "Status", "Changelog"] },
-  { title: "Recursos", links: ["Blog", "Suporte", "Comunidade", "Parceiros"] },
-  { title: "Aftersale para", links: ["E-commerce", "Marcas", "Operadores"] },
+const navLinks = [
+  { label: "Trocas e Devoluções", href: "#trocas" },
+  { label: "Resultados", href: "#resultados" },
+  { label: "Produto", href: "#produtos" },
+  { label: "Clientes", href: "#clientes" },
+  { label: "Nossa História", href: "#historia" },
+  { label: "Fale Conosco", href: "#cta" },
 ];
 
 export function Footer() {
   return (
-    <footer style={{ background: "#FFFFFF", borderTop: "1px solid #E5E5E5" }} className="px-6 lg:px-16 pt-16 pb-8">
+    <footer style={{ background: "#5C159B" }} className="px-6 lg:px-16 pt-16 pb-8">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-[260px_repeat(4,1fr)] gap-10 mb-12">
-          {/* Coluna logo + sociais + selos */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 mb-12 items-start">
+          {/* Logo + selos */}
           <div>
             <img
-              src={logo}
+              src="/Logotipo_Aftersale-S-assinatura_Confi_3.svg"
               alt="Aftersale"
-              style={{ height: 56, width: "auto", objectFit: "contain", background: "transparent", mixBlendMode: "multiply" }}
+              style={{ width: 390, height: 221, objectFit: "contain", maxWidth: "100%" }}
             />
-            <div className="mt-6 flex items-center gap-4" style={{ color: "#666666" }}>
-              <a href="#" aria-label="Instagram" className="transition-colors hover:text-[#5C159B]"><IconInstagram /></a>
-              <a href="#" aria-label="LinkedIn" className="transition-colors hover:text-[#5C159B]"><IconLinkedin /></a>
-              <a href="#" aria-label="X" className="transition-colors hover:text-[#5C159B]"><IconX /></a>
-            </div>
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <div className="bg-white rounded-xl p-2 flex items-center justify-center h-14" style={{ border: "1px solid #E5E5E5" }}>
-                <img src={selo1} alt="Selo de parceiro" className="h-9 w-auto" />
+              <div
+                className="rounded-xl p-2 flex items-center justify-center h-14"
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                }}
+              >
+                <img src={selo1} alt="Selo de parceiro" className="h-9 w-auto" style={{ filter: "brightness(0) invert(1)" }} />
               </div>
-              <div className="bg-white rounded-xl p-2 flex items-center justify-center h-14" style={{ border: "1px solid #E5E5E5" }}>
-                <img src={selo2} alt="Shopify Partner" className="h-9 w-auto" />
+              <div
+                className="rounded-xl p-2 flex items-center justify-center h-14"
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                }}
+              >
+                <img src={selo2} alt="Shopify Partner" className="h-9 w-auto" style={{ filter: "brightness(0) invert(1)" }} />
               </div>
             </div>
           </div>
 
-          {columns.map((col) => (
-            <div key={col.title}>
-              <div
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "#999999",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
-                  marginBottom: 16,
-                }}
-              >
-                {col.title}
-              </div>
-              <ul className="space-y-2">
-                {col.links.map((l) => (
-                  <li key={l}>
-                    <a
-                      href="#"
-                      className="transition-colors"
-                      style={{ fontSize: 14, color: "#333333", lineHeight: 2, textDecoration: "none" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "#5C159B")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "#333333")}
-                    >
-                      {l}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          {/* Nav + sociais à direita */}
+          <div className="flex flex-col md:items-end gap-6">
+            <nav className="flex flex-col md:items-end gap-3">
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="transition-colors"
+                  style={{ color: "rgba(255,255,255,0.8)", fontSize: 15, fontWeight: 500, textDecoration: "none" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+            <div className="flex items-center gap-4" style={{ color: "rgba(255,255,255,0.7)" }}>
+              <a href="#" aria-label="Instagram" className="transition-colors" onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")} onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}><IconInstagram /></a>
+              <a href="#" aria-label="LinkedIn" className="transition-colors" onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")} onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}><IconLinkedin /></a>
+              <a href="#" aria-label="X" className="transition-colors" onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")} onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}><IconX /></a>
             </div>
-          ))}
+          </div>
         </div>
 
         <div
           style={{
-            borderTop: "1px solid #E5E5E5",
+            borderTop: "1px solid rgba(255,255,255,0.15)",
             paddingTop: 24,
             marginTop: 16,
             fontSize: 13,
-            color: "#999999",
+            color: "rgba(255,255,255,0.45)",
           }}
         >
           © {new Date().getFullYear()} Aftersale. Todos os direitos reservados.

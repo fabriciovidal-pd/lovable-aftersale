@@ -91,9 +91,9 @@ export function Navbar() {
         <div className="flex h-20 md:h-24 items-center justify-between">
           <a href="#" className="flex items-center font-display font-semibold text-brand">
             <img
-              src={logo}
+              src="/Logotipo_Aftersale-S-assinatura_Confi_3.svg"
               alt="Aftersale"
-              style={{ height: 52, width: "auto", objectFit: "contain", background: "transparent", mixBlendMode: "multiply" }}
+              style={{ width: 220, height: 58, objectFit: "contain" }}
             />
           </a>
 

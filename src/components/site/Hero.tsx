@@ -38,15 +38,16 @@ export function Hero() {
               <span className="bg-gradient-to-r from-brand to-[#AD7AFC] bg-clip-text text-transparent">
                 proteja sua receita
               </span>{" "}
-              da operação.
+              de sua operação
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
+              className="mt-5 text-lg text-zinc-600 leading-relaxed"
             >
-              Owner
+              Reduzir devoluções começa antes do produto voltar. Trabalhamos para evitar ocorrências desnecessárias, diminuindo custos e aumentando a eficiência da operação.
             </motion.p>
 
             <motion.div

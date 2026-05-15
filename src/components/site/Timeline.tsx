@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
@@ -29,6 +30,49 @@ const milestones = [
   },
 ];
 
+const cardStyle = {
+  background: "#FFFFFF",
+  border: "1px solid #E5E5E5",
+  borderRadius: "14px",
+  padding: "24px 28px",
+  boxShadow: "0 2px 12px rgba(92,21,155,0.05)",
+} as const;
+
+function RevealCard({ isLeft, children }: { isLeft: boolean; children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const offsetX = isLeft ? "-20px" : "20px";
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        ...cardStyle,
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translate(0, 0)" : `translate(${offsetX}, 20px)`,
+        transition: "opacity 0.5s ease, transform 0.5s ease",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function Timeline() {
   return (
     <section id="historia" className="py-24 lg:py-32 bg-background">
@@ -51,23 +95,21 @@ export function Timeline() {
             {milestones.map((m, i) => {
               const isLeft = i % 2 === 0;
               return (
-                <motion.div
+                <div
                   key={m.year}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.6, delay: i * 0.05 }}
                   className="relative md:grid md:grid-cols-2 md:gap-16 items-center"
                 >
                   {/* dot */}
                   <span className="absolute left-4 md:left-1/2 top-2 size-3 rounded-full bg-brand-gradient ring-4 ring-background md:-translate-x-1/2" aria-hidden />
 
-                  <div className={`pl-12 md:pl-0 ${isLeft ? "md:pr-16 md:text-right" : "md:col-start-2 md:pl-16"}`}>
-                    <div className="text-sm font-medium text-brand tracking-wider">{m.year}</div>
-                    <h3 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">{m.title}</h3>
-                    <p className="mt-3 text-muted-foreground leading-relaxed">{m.desc}</p>
+                  <div className={`pl-12 md:pl-0 ${isLeft ? "md:pr-16" : "md:col-start-2 md:pl-16"}`}>
+                    <RevealCard isLeft={isLeft}>
+                      <div className="text-sm font-medium text-brand tracking-wider">{m.year}</div>
+                      <h3 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">{m.title}</h3>
+                      <p className="mt-3 text-muted-foreground leading-relaxed">{m.desc}</p>
+                    </RevealCard>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
 
