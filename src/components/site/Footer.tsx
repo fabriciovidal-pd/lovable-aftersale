@@ -50,13 +50,13 @@ export function Footer() {
   return (
     <footer style={{ background: "#5C159B" }} className="px-6 lg:px-16 pt-16 pb-8">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 mb-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_2fr] gap-12 mb-12 items-start">
           {/* Logo + selos */}
           <div>
             <img
               src="/Aftersale_negativo.svg"
               alt="Aftersale"
-              style={{ width: 390, height: 221, objectFit: "contain", maxWidth: "100%" }}
+              style={{ width: 320, height: "auto", objectFit: "contain", maxWidth: "100%" }}
             />
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <div
@@ -80,23 +80,39 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Nav + sociais à direita */}
-          <div className="flex flex-col md:items-end gap-6">
-            <nav className="flex flex-col md:items-end gap-3">
-              {navLinks.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  className="transition-colors"
-                  style={{ color: "rgba(255,255,255,0.8)", fontSize: 15, fontWeight: 500, textDecoration: "none" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
+          {/* Colunas de menus balanceadas */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
+            {footerColumns.map((col) => (
+              <div key={col.title}>
+                <h4
+                  style={{
+                    color: "#FFFFFF",
+                    fontSize: 15,
+                    fontWeight: 600,
+                    marginBottom: 16,
+                    letterSpacing: "-0.01em",
+                  }}
                 >
-                  {l.label}
-                </a>
-              ))}
-            </nav>
-            <div className="flex items-center gap-4" style={{ color: "rgba(255,255,255,0.7)" }}>
+                  {col.title}
+                </h4>
+                <ul className="flex flex-col gap-3">
+                  {col.links.map((l) => (
+                    <li key={l.href}>
+                      <a
+                        href={l.href}
+                        className="transition-colors"
+                        style={{ color: "rgba(255,255,255,0.75)", fontSize: 14, fontWeight: 400, textDecoration: "none" }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.75)")}
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <div className="sm:col-span-3 flex items-center gap-4 mt-2" style={{ color: "rgba(255,255,255,0.7)" }}>
               <a href="#" aria-label="Instagram" className="transition-colors" onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")} onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}><IconInstagram /></a>
               <a href="#" aria-label="LinkedIn" className="transition-colors" onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")} onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}><IconLinkedin /></a>
               <a href="#" aria-label="X" className="transition-colors" onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")} onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}><IconX /></a>
