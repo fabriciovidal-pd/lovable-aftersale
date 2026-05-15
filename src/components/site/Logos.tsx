@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const clientLogos = [
   "Samsung", "Tramontina", "Decathlon", "Malwee", "Calvin Klein",
@@ -32,21 +31,20 @@ function LogoPlaceholder({ name }: { name: string }) {
 }
 
 function LogoCarousel() {
-  const [offset, setOffset] = useState(0);
-  const itemWidth = 160;
-  const total = clientLogos.length;
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setOffset((prev) => (prev + 1) % total);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [total]);
-
   const doubled = [...clientLogos, ...clientLogos];
 
   return (
     <div style={{ overflow: "hidden", width: "100%", position: "relative" }}>
+      <style>{`
+        @keyframes logo-marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .logo-marquee-track {
+          animation: logo-marquee 35s linear infinite;
+        }
+        .logo-marquee-track:hover { animation-play-state: paused; }
+      `}</style>
       <div
         style={{
           position: "absolute", left: 0, top: 0, bottom: 0, width: 80,
@@ -62,11 +60,10 @@ function LogoCarousel() {
         }}
       />
       <div
+        className="logo-marquee-track"
         style={{
           display: "flex",
           gap: 16,
-          transform: `translateX(-${offset * itemWidth}px)`,
-          transition: "transform 0.6s ease",
           width: "max-content",
         }}
       >
