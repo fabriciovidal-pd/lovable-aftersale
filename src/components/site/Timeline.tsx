@@ -75,8 +75,32 @@ function RevealCard({ isLeft, children }: { isLeft: boolean; children: ReactNode
 
 export function Timeline() {
   return (
-    <section id="historia" className="py-24 lg:py-32 bg-background">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section id="historia" className="relative overflow-hidden py-24 lg:py-32 bg-background">
+      {/* subtle dotted background */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(92,21,155,0.08) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 80%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 80%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 -left-24 size-[480px] rounded-full blur-3xl opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(92,21,155,0.18), transparent 70%)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-32 -right-24 size-[520px] rounded-full blur-3xl opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(92,21,155,0.14), transparent 70%)" }}
+      />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur px-3 py-1 text-brand-foreground/80 text-base tracking-[0.2em]">NOSSA TRAJETÓRIA</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-brand">
