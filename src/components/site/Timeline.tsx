@@ -1,65 +1,48 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
 
-const timeline = [
+const milestones = [
   {
-    ano: "2018",
-    titulo: "O início",
-    descricao:
-      "A Aftersale nasce com a missão de transformar o pós-venda no Brasil. Identificamos que devoluções e trocas eram o maior ponto cego do e-commerce nacional.",
+    year: "2017–18",
+    title: "O começo",
+    desc: "Nascemos como empresa de pontos de entrega e criamos o produto de troca e devolução.",
   },
   {
-    ano: "2019",
-    titulo: "Primeiros clientes",
-    descricao:
-      "Chegamos aos primeiros 50 clientes, validando a proposta de valor e consolidando as bases da plataforma com feedback real de operações.",
+    year: "2019–20",
+    title: "Vale do Silício",
+    desc: "Única empresa brasileira aceita no programa 500 Startups no Vale do Silício.",
   },
   {
-    ano: "2020",
-    titulo: "Escala e automação",
-    descricao:
-      "Lançamos o motor de regras inteligentes, permitindo que marcas automatizassem 80% das decisões de troca sem intervenção humana.",
+    year: "2021–22",
+    title: "Ecossistema Confi",
+    desc: "A soma de experiências consolida. Nos tornamos parte do ecossistema Confi.",
   },
   {
-    ano: "2021",
-    titulo: "Expansão nacional",
-    descricao:
-      "Ultrapassamos 150 clientes ativos. Tramontina, Ri Happy e Hugo Boss passam a usar a Aftersale para gerenciar sua logística reversa.",
+    year: "2023+",
+    title: "Liderança consolidada",
+    desc: "+400 clientes, +6M reversas. Líderes consolidados no mercado de troca e devolução.",
   },
   {
-    ano: "2022",
-    titulo: "Integração omnichannel",
-    descricao:
-      "Lançamos integrações nativas com VTEX, Shopify e os principais ERPs do mercado, tornando a adoção ainda mais simples.",
-  },
-  {
-    ano: "2023",
-    titulo: "IA no pós-venda",
-    descricao:
-      "Incorporamos inteligência artificial à plataforma para prever devoluções, identificar padrões e sugerir ações preventivas automaticamente.",
-  },
-  {
-    ano: "2024",
-    titulo: "+400 clientes",
-    descricao:
-      "Chegamos à marca de 400 clientes e consolidamos nossa posição como a principal plataforma de gestão de trocas e devoluções do Brasil.",
+    year: "2025",
+    title: "Reposicionamento tecnológico",
+    desc: "Reestruturação do produto com foco em operações maduras, orientadas a dados e governança.",
   },
 ];
 
-type CardProps = {
-  ano: string;
-  titulo: string;
-  descricao: string;
-  isLeft: boolean;
-  index: number;
-};
+const cardStyle = {
+  background: "#FFFFFF",
+  border: "1px solid #E5E5E5",
+  borderRadius: "14px",
+  padding: "24px 28px",
+  boxShadow: "0 2px 12px rgba(92,21,155,0.05)",
+} as const;
 
-function TimelineCard({ ano, titulo, descricao, isLeft, index }: CardProps) {
+function RevealCard({ isLeft, children }: { isLeft: boolean; children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -67,219 +50,123 @@ function TimelineCard({ ano, titulo, descricao, isLeft, index }: CardProps) {
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.2 }
     );
-    observer.observe(el);
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
+
+  const offsetX = isLeft ? "-20px" : "20px";
 
   return (
     <div
       ref={ref}
       style={{
-        gridColumn: isLeft ? "1" : "3",
-        display: "flex",
-        justifyContent: isLeft ? "flex-end" : "flex-start",
-        paddingRight: isLeft ? 16 : 0,
-        paddingLeft: isLeft ? 0 : 16,
+        ...cardStyle,
         opacity: visible ? 1 : 0,
-        transform: visible
-          ? "translateX(0)"
-          : isLeft
-          ? "translateX(-20px)"
-          : "translateX(20px)",
-        transition: `opacity 0.45s ease ${index * 0.06}s, transform 0.45s ease ${index * 0.06}s`,
+        transform: visible ? "translate(0, 0)" : `translate(${offsetX}, 20px)`,
+        transition: "opacity 0.5s ease, transform 0.5s ease",
       }}
     >
-      <div
-        style={{
-          background: "#FFFFFF",
-          border: "1px solid #EAE0F5",
-          borderRadius: 12,
-          padding: "20px 22px",
-          maxWidth: 400,
-          width: "100%",
-          boxShadow: visible ? "0 2px 12px rgba(92,21,155,0.07)" : "none",
-          transition: "box-shadow 0.4s ease",
-        }}
-      >
-        <span
-          style={{
-            display: "inline-block",
-            background: "rgba(92,21,155,0.07)",
-            border: "1px solid rgba(92,21,155,0.18)",
-            borderRadius: "999px",
-            padding: "2px 10px",
-            fontSize: 11,
-            fontWeight: 700,
-            color: "#5C159B",
-            letterSpacing: "0.04em",
-            marginBottom: 8,
-          }}
-        >
-          {ano}
-        </span>
-        <h3
-          style={{
-            fontSize: 16,
-            fontWeight: 700,
-            color: "#0A0A0A",
-            lineHeight: 1.3,
-            marginBottom: 6,
-          }}
-        >
-          {titulo}
-        </h3>
-        <p style={{ fontSize: 13, lineHeight: 1.65, color: "#666666", margin: 0 }}>
-          {descricao}
-        </p>
-      </div>
+      {children}
     </div>
   );
 }
 
 export function Timeline() {
-  const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [dotsVisible, setDotsVisible] = useState<boolean[]>(
-    Array(timeline.length).fill(false)
-  );
-
-  useEffect(() => {
-    const observers = dotRefs.current.map((el, i) => {
-      if (!el) return null;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setDotsVisible((prev) => {
-              const next = [...prev];
-              next[i] = true;
-              return next;
-            });
-            obs.disconnect();
-          }
-        },
-        { threshold: 0.5 }
-      );
-      obs.observe(el);
-      return obs;
-    });
-    return () => observers.forEach((o) => o?.disconnect());
-  }, []);
-
   return (
-    <section
-      id="historia"
-      style={{
-        background:
-          "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(92,21,155,0.04) 0%, transparent 70%), #F8F7FC",
-        padding: "72px 64px",
-        fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
-      }}
-    >
-      <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 16 }}>
-          <span
-            style={{
-              display: "inline-block",
-              background: "rgba(92,21,155,0.07)",
-              border: "1px solid rgba(92,21,155,0.18)",
-              borderRadius: "999px",
-              padding: "4px 14px",
-              fontSize: 12,
-              fontWeight: 600,
-              color: "#5C159B",
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-            }}
-          >
-            Nossa História
-          </span>
+    <section id="historia" className="relative overflow-hidden py-24 lg:py-32 bg-background">
+      {/* subtle dotted background */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(92,21,155,0.08) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 80%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 80%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 -left-24 size-[480px] rounded-full blur-3xl opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(92,21,155,0.18), transparent 70%)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-32 -right-24 size-[520px] rounded-full blur-3xl opacity-40"
+        style={{ background: "radial-gradient(circle, rgba(92,21,155,0.14), transparent 70%)" }}
+      />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-brand-foreground/20 bg-brand-foreground/10 backdrop-blur px-3 py-1 text-brand-foreground/80 text-base tracking-[0.2em]">NOSSA TRAJETÓRIA</p>
+          <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-brand">
+            Nossa história
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            De startup de ponto de entrega à líder em troca e devolução no Brasil.
+          </p>
         </div>
-        <h2
-          style={{
-            fontSize: 40,
-            fontWeight: 800,
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-            color: "#0A0A0A",
-            textAlign: "center",
-            marginBottom: 56,
-          }}
-        >
-          De ideia a referência no Brasil
-        </h2>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 24px 1fr",
-            rowGap: 24,
-            position: "relative",
-          }}
-        >
-          <div
-            style={{
-              gridColumn: "2",
-              gridRow: `1 / ${timeline.length + 1}`,
-              display: "flex",
-              justifyContent: "center",
-              pointerEvents: "none",
-            }}
-          >
-            <div
-              style={{
-                width: 1,
-                background: "rgba(92,21,155,0.12)",
-                borderRadius: 1,
-              }}
-            />
-          </div>
+        <div className="relative mt-20">
+          {/* vertical line */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" aria-hidden />
 
-          {timeline.map((item, i) => {
-            const isLeft = i % 2 === 0;
-            return [
-              <TimelineCard
-                key={`card-${item.ano}`}
-                {...item}
-                isLeft={isLeft}
-                index={i}
-              />,
-              <div
-                key={`dot-${item.ano}`}
-                ref={(el) => {
-                  dotRefs.current[i] = el;
-                }}
-                style={{
-                  gridColumn: "2",
-                  display: "flex",
-                  alignItems: "flex-start",
-                  justifyContent: "center",
-                  paddingTop: 28,
-                }}
-              >
+          <div className="space-y-12 md:space-y-20">
+            {milestones.map((m, i) => {
+              const isLeft = i % 2 === 0;
+              return (
                 <div
-                  style={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    background: dotsVisible[i] ? "#5C159B" : "rgba(92,21,155,0.2)",
-                    border: "2px solid #F8F7FC",
-                    boxShadow: dotsVisible[i]
-                      ? "0 0 0 2px rgba(92,21,155,0.2)"
-                      : "none",
-                    transition: "background 0.5s ease, box-shadow 0.5s ease",
-                    flexShrink: 0,
-                    position: "relative",
-                    zIndex: 2,
-                  }}
-                />
-              </div>,
-              <div
-                key={`empty-${item.ano}`}
-                style={{ gridColumn: isLeft ? "3" : "1" }}
-              />,
-            ];
-          })}
+                  key={m.year}
+                  className="relative md:grid md:grid-cols-2 md:gap-16 items-center"
+                >
+                  {/* dot */}
+                  <span className="absolute left-4 md:left-1/2 top-2 size-3 rounded-full bg-brand-gradient ring-4 ring-background md:-translate-x-1/2" aria-hidden />
+
+                  <div className={`pl-12 md:pl-0 ${isLeft ? "md:pr-16" : "md:col-start-2 md:pl-16"}`}>
+                    <RevealCard isLeft={isLeft}>
+                      <div className="text-sm font-medium text-brand tracking-wider">{m.year}</div>
+                      <h3 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">{m.title}</h3>
+                      <p className="mt-3 text-muted-foreground leading-relaxed">{m.desc}</p>
+                    </RevealCard>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* 2026 highlight milestone */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7 }}
+              className="relative pl-12 md:pl-0 md:grid md:grid-cols-12 md:gap-8 items-center"
+            >
+              <span className="absolute left-4 md:left-1/2 top-6 size-4 rounded-full bg-brand-gradient ring-4 ring-background md:-translate-x-1/2 shadow-glow" aria-hidden />
+              <div className="md:col-span-12">
+                <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 lg:p-12 shadow-elegant">
+                  <div className="absolute -top-24 -right-24 size-72 rounded-full bg-brand-gradient opacity-20 blur-3xl" aria-hidden />
+                  <div className="relative">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 backdrop-blur px-3 py-1 text-xs text-muted-foreground">
+                      <Sparkles className="size-3.5 text-brand" />
+                      Novo ciclo · IA First
+                    </div>
+                    <div className="mt-5 text-sm font-medium text-brand tracking-wider">2026</div>
+                    <h3 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight text-gradient">
+                      Aquisição da Genius Returns
+                    </h3>
+                    <p className="mt-4 text-lg text-muted-foreground max-w-2xl leading-relaxed">
+                      Embarcamos portfólio, tecnologia, capital intelectual e market share — consolidando a Aftersale como
+                      a plataforma definitiva de pós-venda no Brasil, agora orientada a inteligência artificial.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
