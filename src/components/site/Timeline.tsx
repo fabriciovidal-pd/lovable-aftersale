@@ -1,147 +1,212 @@
 import { useEffect, useRef, useState } from "react";
 
-const timeline = [
-  {
-    ano: "2018",
-    titulo: "O início",
-    descricao:
-      "A Aftersale nasce com a missão de transformar o pós-venda no Brasil. Identificamos que devoluções e trocas eram o maior ponto cego do e-commerce nacional.",
-  },
-  {
-    ano: "2019",
-    titulo: "Primeiros clientes",
-    descricao:
-      "Chegamos aos primeiros 50 clientes, validando a proposta de valor e consolidando as bases da plataforma com feedback real de operações.",
-  },
-  {
-    ano: "2020",
-    titulo: "Escala e automação",
-    descricao:
-      "Lançamos o motor de regras inteligentes, permitindo que marcas automatizassem 80% das decisões de troca sem intervenção humana.",
-  },
-  {
-    ano: "2021",
-    titulo: "Expansão nacional",
-    descricao:
-      "Ultrapassamos 150 clientes ativos. Tramontina, Ri Happy e Hugo Boss passam a usar a Aftersale para gerenciar sua logística reversa.",
-  },
-  {
-    ano: "2022",
-    titulo: "Integração omnichannel",
-    descricao:
-      "Lançamos integrações nativas com VTEX, Shopify e os principais ERPs do mercado, tornando a adoção ainda mais simples.",
-  },
-  {
-    ano: "2023",
-    titulo: "IA no pós-venda",
-    descricao:
-      "Incorporamos inteligência artificial à plataforma para prever devoluções, identificar padrões e sugerir ações preventivas automaticamente.",
-  },
-  {
-    ano: "2024",
-    titulo: "+400 clientes",
-    descricao:
-      "Chegamos à marca de 400 clientes e consolidamos nossa posição como a principal plataforma de gestão de trocas e devoluções do Brasil.",
-  },
-];
-
-type CardProps = {
+type Item = {
   ano: string;
   titulo: string;
   descricao: string;
-  isLeft: boolean;
-  index: number;
+  badge?: string;
 };
 
-function TimelineCard({ ano, titulo, descricao, isLeft, index }: CardProps) {
+const timeline: Item[] = [
+  {
+    ano: "2017-18",
+    titulo: "O começo",
+    descricao:
+      "Nascemos como empresa de pontos de entrega e criamos o produto de troca e devolução.",
+  },
+  {
+    ano: "2019-20",
+    titulo: "Vale do Silício",
+    descricao:
+      "Única empresa brasileira aceita no programa 500 Startups no Vale do Silício.",
+  },
+  {
+    ano: "2021-22",
+    titulo: "Ecossistema Confi",
+    descricao:
+      "A soma de experiências consolida. Nos tornamos parte do ecossistema Confi.",
+  },
+  {
+    ano: "2023+",
+    titulo: "Liderança consolidada",
+    descricao:
+      "+400 clientes, +6M reversas. Líderes consolidados no mercado de troca e devolução.",
+  },
+  {
+    ano: "2025",
+    titulo: "Reposicionamento tecnológico",
+    descricao:
+      "Reestruturação do produto com foco em operações maduras, orientadas a dados e governança.",
+  },
+  {
+    ano: "2026",
+    titulo: "Aquisição da Genius Returns",
+    descricao:
+      "Embarcamos portfólio, tecnologia, capital intelectual e market share — consolidando a Aftersale como a plataforma definitiva de pós-venda no Brasil, agora orientada a inteligência artificial.",
+    badge: "Novo ciclo · IA First",
+  },
+];
+
+function CardContent({ ano, titulo, descricao, badge }: Item) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        background: "#FFFFFF",
+        borderRadius: 12,
+        padding: "18px 22px",
+        maxWidth: 380,
+        width: "100%",
+        border: "1px solid rgba(92,21,155,0.08)",
+        boxShadow: hov
+          ? "0 4px 24px rgba(92,21,155,0.13), 0 1px 4px rgba(0,0,0,0.06)"
+          : "0 2px 16px rgba(92,21,155,0.07), 0 1px 4px rgba(0,0,0,0.04)",
+        transform: hov ? "translateY(-2px)" : "translateY(0)",
+        transition: "box-shadow 0.2s ease, transform 0.2s ease",
+      }}
+    >
+      {badge && (
+        <span
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 5,
+            background: "rgba(92,21,155,0.07)",
+            border: "1px solid rgba(92,21,155,0.18)",
+            borderRadius: "999px",
+            padding: "2px 10px",
+            fontSize: 11,
+            fontWeight: 600,
+            color: "#5C159B",
+            letterSpacing: "0.03em",
+            marginBottom: 10,
+          }}
+        >
+          🔮 {badge}
+        </span>
+      )}
+
+      <span
+        style={{
+          display: "inline-block",
+          background: "rgba(92,21,155,0.07)",
+          border: "1px solid rgba(92,21,155,0.15)",
+          borderRadius: "999px",
+          padding: "2px 10px",
+          fontSize: 11,
+          fontWeight: 700,
+          color: "#5C159B",
+          letterSpacing: "0.05em",
+          marginBottom: 8,
+        }}
+      >
+        {ano}
+      </span>
+
+      <h3
+        style={{
+          fontSize: 15,
+          fontWeight: 700,
+          color: "#0A0A0A",
+          lineHeight: 1.3,
+          margin: "0 0 6px",
+        }}
+      >
+        {titulo}
+      </h3>
+
+      <p style={{ fontSize: 13, lineHeight: 1.65, color: "#666", margin: 0 }}>
+        {descricao}
+      </p>
+    </div>
+  );
+}
+
+type CardProps = Item & {
+  isLeft: boolean;
+  index: number;
+  dotVisible: boolean;
+};
+
+function TimelineCard({
+  ano,
+  titulo,
+  descricao,
+  isLeft,
+  index,
+  dotVisible,
+  badge,
+}: CardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
           setVisible(true);
-          observer.disconnect();
+          obs.disconnect();
         }
       },
       { threshold: 0.15 }
     );
-    observer.observe(el);
-    return () => observer.disconnect();
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
   return (
     <div
       ref={ref}
       style={{
-        gridColumn: isLeft ? "1" : "3",
-        display: "flex",
-        justifyContent: isLeft ? "flex-end" : "flex-start",
-        paddingRight: isLeft ? 16 : 0,
-        paddingLeft: isLeft ? 0 : 16,
+        display: "grid",
+        gridTemplateColumns: "1fr 48px 1fr",
+        alignItems: "center",
+        minHeight: 120,
         opacity: visible ? 1 : 0,
-        transform: visible
-          ? "translateX(0)"
-          : isLeft
-            ? "translateX(-20px)"
-            : "translateX(20px)",
-        transition: `opacity 0.45s ease ${index * 0.06}s, transform 0.45s ease ${index * 0.06}s`,
+        transform: visible ? "translateY(0)" : "translateY(16px)",
+        transition: `opacity 0.5s ease ${index * 0.08}s, transform 0.5s ease ${index * 0.08}s`,
       }}
     >
+      <div style={{ display: "flex", justifyContent: "flex-end", paddingRight: 24 }}>
+        {isLeft && (
+          <CardContent ano={ano} titulo={titulo} descricao={descricao} badge={badge} />
+        )}
+      </div>
+
       <div
         style={{
-          background: "#FFFFFF",
-          border: "1px solid #EAE0F5",
-          borderRadius: 12,
-          padding: "20px 22px",
-          maxWidth: 400,
-          width: "100%",
-          boxShadow: visible ? "0 2px 12px rgba(92,21,155,0.07)" : "none",
-          transition: "box-shadow 0.4s ease",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          height: "100%",
         }}
       >
-        <span
+        <div
           style={{
-            display: "inline-block",
-            background: "rgba(92,21,155,0.07)",
-            border: "1px solid rgba(92,21,155,0.18)",
-            borderRadius: "999px",
-            padding: "2px 10px",
-            fontSize: 11,
-            fontWeight: 700,
-            color: "#5C159B",
-            letterSpacing: "0.04em",
-            marginBottom: 8,
+            width: 12,
+            height: 12,
+            borderRadius: "50%",
+            background: dotVisible ? "#5C159B" : "rgba(92,21,155,0.2)",
+            border: "3px solid #FFFFFF",
+            boxShadow: dotVisible
+              ? "0 0 0 3px rgba(92,21,155,0.2), 0 2px 8px rgba(92,21,155,0.3)"
+              : "none",
+            transition: "background 0.5s ease, box-shadow 0.5s ease",
+            zIndex: 3,
+            flexShrink: 0,
           }}
-        >
-          {ano}
-        </span>
+        />
+      </div>
 
-        <h3
-          style={{
-            fontSize: 16,
-            fontWeight: 700,
-            color: "#0A0A0A",
-            lineHeight: 1.3,
-            marginBottom: 6,
-          }}
-        >
-          {titulo}
-        </h3>
-
-        <p
-          style={{
-            fontSize: 13,
-            lineHeight: 1.65,
-            color: "#666666",
-            margin: 0,
-          }}
-        >
-          {descricao}
-        </p>
+      <div style={{ display: "flex", justifyContent: "flex-start", paddingLeft: 24 }}>
+        {!isLeft && (
+          <CardContent ano={ano} titulo={titulo} descricao={descricao} badge={badge} />
+        )}
       </div>
     </div>
   );
@@ -157,8 +222,8 @@ export function Timeline() {
     const observers = dotRefs.current.map((el, i) => {
       if (!el) return null;
       const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
+        ([e]) => {
+          if (e.isIntersecting) {
             setDotsVisible((prev) => {
               const next = [...prev];
               next[i] = true;
@@ -180,12 +245,13 @@ export function Timeline() {
       id="historia"
       style={{
         background:
-          "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(92,21,155,0.04) 0%, transparent 70%), #F8F7FC",
-        padding: "72px 64px",
+          "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(92,21,155,0.04) 0%, transparent 70%), #F8F7FC",
+        padding: "80px 48px",
         fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
+        overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 16 }}>
           <span
             style={{
@@ -213,86 +279,57 @@ export function Timeline() {
             letterSpacing: "-0.03em",
             color: "#0A0A0A",
             textAlign: "center",
-            marginBottom: 56,
+            marginBottom: 64,
           }}
         >
           De ideia a referência no Brasil
         </h2>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 24px 1fr",
-            rowGap: 24,
-            position: "relative",
-          }}
-        >
+        <div style={{ position: "relative" }}>
           <div
             style={{
-              gridColumn: "2",
-              gridRow: `1 / ${timeline.length + 1}`,
-              display: "flex",
-              justifyContent: "center",
-              pointerEvents: "none",
+              position: "absolute",
+              left: "50%",
+              top: 0,
+              bottom: 0,
+              transform: "translateX(-50%)",
+              width: 2,
+              background: `repeating-linear-gradient(
+                to bottom,
+                rgba(92,21,155,0.25) 0px,
+                rgba(92,21,155,0.25) 5px,
+                transparent 5px,
+                transparent 12px
+              )`,
+              zIndex: 1,
             }}
-          >
-            <div
-              style={{
-                width: 1,
-                background: "rgba(92,21,155,0.12)",
-                borderRadius: 1,
-              }}
-            />
-          </div>
+          />
 
-          {timeline.map((item, i) => {
-            const isLeft = i % 2 === 0;
-            return [
-              <TimelineCard
-                key={`card-${item.ano}`}
-                {...item}
-                isLeft={isLeft}
-                index={i}
-              />,
-              <div
-                key={`dot-${item.ano}`}
-                ref={(el) => {
-                  dotRefs.current[i] = el;
-                }}
-                style={{
-                  gridColumn: "2",
-                  display: "flex",
-                  alignItems: "flex-start",
-                  justifyContent: "center",
-                  paddingTop: 28,
-                }}
-              >
+          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+            {timeline.map((item, i) => (
+              <div key={item.ano} style={{ position: "relative" }}>
                 <div
+                  ref={(el) => {
+                    dotRefs.current[i] = el;
+                  }}
                   style={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    background: dotsVisible[i]
-                      ? "#5C159B"
-                      : "rgba(92,21,155,0.2)",
-                    border: "2px solid #F8F7FC",
-                    boxShadow: dotsVisible[i]
-                      ? "0 0 0 2px rgba(92,21,155,0.2)"
-                      : "none",
-                    transition:
-                      "background 0.5s ease, box-shadow 0.5s ease",
-                    flexShrink: 0,
-                    position: "relative",
-                    zIndex: 2,
+                    position: "absolute",
+                    left: "50%",
+                    top: "50%",
+                    width: 1,
+                    height: 1,
+                    pointerEvents: "none",
                   }}
                 />
-              </div>,
-              <div
-                key={`empty-${item.ano}`}
-                style={{ gridColumn: isLeft ? "3" : "1" }}
-              />,
-            ];
-          })}
+                <TimelineCard
+                  {...item}
+                  isLeft={i % 2 === 0}
+                  index={i}
+                  dotVisible={dotsVisible[i]}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
