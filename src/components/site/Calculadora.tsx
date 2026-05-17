@@ -1,0 +1,279 @@
+import { useState, useMemo } from "react";
+
+type SliderProps = {
+  label: string;
+  sublabel?: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  onChange: (v: number) => void;
+  format: (v: number) => string;
+};
+
+function Slider({ label, sublabel, value, min, max, step, onChange, format }: SliderProps) {
+  const pct = ((value - min) / (max - min)) * 100;
+  return (
+    <div style={{ marginBottom: 28 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+        <div>
+          <p style={{ fontSize: 14, fontWeight: 600, color: "#1A1A1A", margin: 0 }}>{label}</p>
+          {sublabel && <p style={{ fontSize: 12, color: "#888", margin: "2px 0 0" }}>{sublabel}</p>}
+        </div>
+        <span style={{
+          fontSize: 18, fontWeight: 800, color: "#5C159B", letterSpacing: "-0.02em",
+          background: "rgba(92,21,155,0.06)", padding: "4px 12px", borderRadius: 8,
+        }}>
+          {format(value)}
+        </span>
+      </div>
+      <div style={{ position: "relative", height: 6, background: "#E8E0F4", borderRadius: 99 }}>
+        <div style={{
+          position: "absolute", left: 0, width: `${pct}%`, height: "100%",
+          background: "linear-gradient(90deg, #7B2FBE, #5C159B)", borderRadius: 99, transition: "width 0.1s",
+        }} />
+        <input
+          type="range" min={min} max={max} step={step} value={value}
+          onChange={(e) => onChange(Number(e.target.value))}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0, cursor: "pointer", margin: 0 }}
+        />
+        <div style={{
+          position: "absolute", top: "50%", left: `${pct}%`,
+          transform: "translate(-50%, -50%)",
+          width: 20, height: 20, background: "#5C159B", borderRadius: "50%",
+          border: "3px solid #FFFFFF", boxShadow: "0 2px 8px rgba(92,21,155,0.35)",
+          pointerEvents: "none", transition: "left 0.1s",
+        }} />
+      </div>
+      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
+        <span style={{ fontSize: 11, color: "#BBB" }}>{format(min)}</span>
+        <span style={{ fontSize: 11, color: "#BBB" }}>{format(max)}</span>
+      </div>
+    </div>
+  );
+}
+
+const fmtNum = (v: number) => v.toLocaleString("pt-BR");
+const fmtBRL = (v: number) => `R$ ${v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+const fmtPct = (v: number) => `${v}%`;
+
+type CompareBarProps = {
+  label: string;
+  valueBefore: number;
+  valueAfter: number;
+  max: number;
+  format: (v: number) => string;
+};
+
+function CompareBar({ label, valueBefore, valueAfter, max, format }: CompareBarProps) {
+  const pctBefore = Math.min((valueBefore / max) * 100, 100);
+  const pctAfter = Math.min((valueAfter / max) * 100, 100);
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+        <span style={{ fontSize: 13, fontWeight: 600, color: "#444" }}>{label}</span>
+        <div style={{ display: "flex", gap: 16 }}>
+          <span style={{ fontSize: 13, color: "#999" }}>Antes: <b style={{ color: "#1A1A1A" }}>{format(valueBefore)}</b></span>
+          <span style={{ fontSize: 13, color: "#5C159B" }}>Depois: <b>{format(valueAfter)}</b></span>
+        </div>
+      </div>
+      <div style={{ height: 8, background: "#F0EAF8", borderRadius: 99, marginBottom: 4, overflow: "hidden" }}>
+        <div style={{ width: `${pctBefore}%`, height: "100%", background: "#CCC", borderRadius: 99, transition: "width 0.4s ease" }} />
+      </div>
+      <div style={{ height: 8, background: "#F0EAF8", borderRadius: 99, overflow: "hidden" }}>
+        <div style={{ width: `${pctAfter}%`, height: "100%", background: "linear-gradient(90deg,#7B2FBE,#5C159B)", borderRadius: 99, transition: "width 0.4s ease" }} />
+      </div>
+    </div>
+  );
+}
+
+export function Calculadora() {
+  const [reversasMes, setReversasMes] = useState(500);
+  const [custoManual, setCustoManual] = useState(35);
+  const [tempoPorReversa, setTempoPorReversa] = useState(12);
+  const [percentAuto, setPercentAuto] = useState(70);
+
+  const calc = useMemo(() => {
+    const custoAtualMes = reversasMes * custoManual;
+    const minutosTotal = reversasMes * tempoPorReversa;
+    const horasAntes = minutosTotal / 60;
+    const reversasAuto = reversasMes * (percentAuto / 100);
+    const reversasManuais = reversasMes - reversasAuto;
+    const horasDepois = (reversasManuais * tempoPorReversa) / 60;
+    const custoPlataforma = 0;
+    const custoDepoisMes = (reversasManuais * custoManual) + custoPlataforma;
+    const economiaMes = custoAtualMes - custoDepoisMes;
+    const economiaAno = economiaMes * 12;
+    const horasLiberadasMes = horasAntes - horasDepois;
+    const operadoresLiberados = (horasLiberadasMes / 176).toFixed(1);
+    return {
+      custoAtualMes, custoDepoisMes, economiaMes, economiaAno,
+      horasAntes: Math.round(horasAntes),
+      horasDepois: Math.round(horasDepois),
+      horasLiberadasMes: Math.round(horasLiberadasMes),
+      reversasAuto: Math.round(reversasAuto),
+      operadoresLiberados,
+    };
+  }, [reversasMes, custoManual, tempoPorReversa, percentAuto]);
+
+  return (
+    <section
+      id="calculadora"
+      style={{
+        background: "linear-gradient(180deg, #F9F7FD 0%, #FFFFFF 100%)",
+        padding: "80px 24px",
+        fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
+      }}
+    >
+      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 16 }}>
+          <span style={{
+            display: "inline-block",
+            background: "rgba(92,21,155,0.07)",
+            border: "1px solid rgba(92,21,155,0.18)",
+            borderRadius: "999px",
+            padding: "4px 14px",
+            fontSize: 12,
+            fontWeight: 600,
+            color: "#5C159B",
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+          }}>
+            Calculadora
+          </span>
+        </div>
+
+        <h2 style={{
+          fontSize: 38, fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.03em",
+          color: "#0A0A0A", textAlign: "center", marginBottom: 12,
+        }}>
+          Quanto você pode economizar?
+        </h2>
+        <p style={{
+          fontSize: 16, color: "#666", textAlign: "center",
+          maxWidth: 520, margin: "0 auto 56px", lineHeight: 1.6,
+        }}>
+          Ajuste os parâmetros da sua operação e veja o impacto real da automação de reversas.
+        </p>
+
+        <div className="calc-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
+          <div style={{
+            background: "#FFFFFF", border: "1px solid #EAE0F5", borderRadius: 20,
+            padding: "36px 32px", boxShadow: "0 4px 24px rgba(92,21,155,0.06)",
+          }}>
+            <p style={{
+              fontSize: 13, fontWeight: 700, color: "#5C159B",
+              textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 28,
+            }}>
+              Sua operação atual
+            </p>
+
+            <Slider label="Reversas por mês" sublabel="Trocas e devoluções processadas"
+              value={reversasMes} min={50} max={5000} step={50} onChange={setReversasMes} format={fmtNum} />
+            <Slider label="Custo médio por reversa" sublabel="Custo total incluindo logística e atendimento"
+              value={custoManual} min={10} max={150} step={5} onChange={setCustoManual} format={(v) => `R$ ${v}`} />
+            <Slider label="Tempo médio por reversa" sublabel="Minutos que um operador gasta em cada caso"
+              value={tempoPorReversa} min={5} max={60} step={1} onChange={setTempoPorReversa} format={(v) => `${v} min`} />
+            <Slider label="Taxa de automação esperada" sublabel="% das reversas resolvidas sem intervenção manual"
+              value={percentAuto} min={10} max={95} step={5} onChange={setPercentAuto} format={fmtPct} />
+
+            <p style={{ fontSize: 11, color: "#BBB", marginTop: 8, lineHeight: 1.5 }}>
+              * Valores estimados para fins de referência. A economia real varia conforme a operação.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div style={{
+              background: "#5C159B", borderRadius: 20, padding: "32px 28px",
+              boxShadow: "0 8px 32px rgba(92,21,155,0.25)",
+            }}>
+              <p style={{
+                fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)",
+                textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8,
+              }}>
+                Economia estimada por mês
+              </p>
+              <p style={{
+                fontSize: 44, fontWeight: 800, color: "#FFFFFF",
+                letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 6,
+              }}>
+                {fmtBRL(calc.economiaMes)}
+              </p>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", marginBottom: 0 }}>
+                {fmtBRL(calc.economiaAno)} por ano
+              </p>
+
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.15)", margin: "20px 0" }} />
+
+              <div style={{ display: "flex", gap: 12 }}>
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>
+                    {calc.reversasAuto.toLocaleString("pt-BR")}
+                  </p>
+                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", margin: "4px 0 0" }}>
+                    reversas automatizadas/mês
+                  </p>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>
+                    {calc.horasLiberadasMes}h
+                  </p>
+                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", margin: "4px 0 0" }}>
+                    horas operacionais liberadas
+                  </p>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>
+                    {calc.operadoresLiberados}
+                  </p>
+                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", margin: "4px 0 0" }}>
+                    operadores realocáveis
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div style={{
+              background: "#FFFFFF", border: "1px solid #EAE0F5", borderRadius: 20,
+              padding: "28px 28px", boxShadow: "0 4px 24px rgba(92,21,155,0.05)",
+            }}>
+              <p style={{
+                fontSize: 13, fontWeight: 700, color: "#5C159B",
+                textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 20,
+              }}>
+                Comparativo
+              </p>
+
+              <CompareBar label="Custo mensal (R$)"
+                valueBefore={calc.custoAtualMes} valueAfter={calc.custoDepoisMes}
+                max={calc.custoAtualMes * 1.2}
+                format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} />
+              <CompareBar label="Horas de operação/mês"
+                valueBefore={calc.horasAntes} valueAfter={calc.horasDepois}
+                max={calc.horasAntes * 1.2}
+                format={(v) => `${v}h`} />
+            </div>
+
+            <a
+              href="#cta"
+              style={{
+                background: "#5C159B", color: "#FFFFFF", border: "none", borderRadius: 14,
+                padding: "16px 28px", fontSize: 15, fontWeight: 700, cursor: "pointer",
+                fontFamily: "inherit", width: "100%", textAlign: "center", textDecoration: "none",
+                display: "block",
+              }}
+            >
+              Quero economizar com a Aftersale
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 860px) {
+          .calc-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
