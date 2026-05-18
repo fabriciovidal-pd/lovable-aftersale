@@ -145,9 +145,9 @@ export function Calculadora() {
 
         <h2 style={{
           fontSize: 38, fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.03em",
-          color: "#0A0A0A", textAlign: "center", marginBottom: 12,
+          color: "#5C159B", textAlign: "center", marginBottom: 12,
         }}>
-          Quanto você pode economizar?
+          Saiba o quanto você pode economizar
         </h2>
         <p style={{
           fontSize: 16, color: "#666", textAlign: "center",
