@@ -22,8 +22,12 @@ export function Hero() {
                   Líder em trocas e devoluções desde 2017
                 </span>
               </span>
-              <span style={pillStyle}>+6M reversas processadas</span>
-              <span style={pillStyle}>IA-First</span>
+              <span className="inline-flex items-center rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5 text-xs font-medium text-brand">
+                +6M reversas processadas
+              </span>
+              <span className="inline-flex items-center rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5 text-xs font-medium text-brand">
+                IA-First
+              </span>
             </motion.div>
 
             <motion.h1
