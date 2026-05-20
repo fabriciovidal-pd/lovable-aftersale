@@ -19,14 +19,14 @@ export function Hero() {
   return (
     <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-white">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid lg:grid-cols-[minmax(0,520px)_1fr] gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[minmax(0,640px)_1fr] gap-12 lg:gap-16 items-center">
           {/* Copy — left */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}
+              style={{ display: "flex", gap: 8, flexWrap: "nowrap", alignItems: "center" }}
             >
               <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5">
                 <span className="size-1.5 rounded-full bg-brand" />
