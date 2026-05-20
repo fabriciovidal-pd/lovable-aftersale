@@ -115,7 +115,7 @@ export function Logos() {
           <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-9 text-center">
             +400 clientes confiam
           </h2>
-          <LogoCarousel />
+          <LogoGrid />
         </div>
       </section>
 
