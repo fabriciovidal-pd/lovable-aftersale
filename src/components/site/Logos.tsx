@@ -1,95 +1,95 @@
 import { motion } from "framer-motion";
 
 const logos = [
-  { name: "Samsung",      src: "/samsung.svg" },
-  { name: "Decathlon",    src: "/decathlon.svg" },
-  { name: "Malwee",       src: "/malwee.svg" },
-  { name: "Calvin Klein", src: "/calvin-klein.svg" },
-  { name: "Chilli Beans", src: "/chilli-beans.svg" },
-  { name: "Farm",         src: "/farm.svg" },
-  { name: "Ri Happy",     src: "/ri-happy.svg" },
-  { name: "Hugo Boss",    src: "/hugo-boss.svg" },
-  { name: "FTD",          src: "/ftd.svg" },
-  { name: "Hope",         src: "/hope.svg" },
-  { name: "Le Creuset",   src: "/le-creuset.svg" },
-  { name: "Tramontina",   src: "/tramontina.svg" },
+  { name: "Seilia",        src: "/logos/seilia.svg" },
+  { name: "Samsung",       src: "/logos/samsung.svg" },
+  { name: "Decathlon",     src: "/logos/decathlon.svg" },
+  { name: "Calvin Klein",  src: "/logos/calvin-klien.svg" },
+  { name: "Chilli Beans",  src: "/logos/chilli-beans.svg" },
+  { name: "Ri Happy",      src: "/logos/ri-happy.svg" },
+  { name: "Tramontina",    src: "/logos/tramontina.svg" },
+  { name: "Malwee",        src: "/logos/malwee.svg" },
+  { name: "Le Creuset",    src: "/logos/le-creuset.svg" },
+  { name: "Hope",          src: "/logos/hope.svg" },
+  { name: "FTD",           src: "/logos/ftd.svg" },
+  { name: "Arezzo",        src: "/logos/arezzo.svg" },
+  { name: "Reserva",       src: "/logos/reserva.svg" },
+  { name: "Bagaggio",      src: "/logos/bagaggio.svg" },
+  { name: "Mormaii",       src: "/logos/mormaii.svg" },
+  { name: "Speedo",        src: "/logos/speedo.svg" },
+  { name: "Levis",         src: "/logos/levis.svg" },
+  { name: "Mr Cat",        src: "/logos/mr-cat.svg" },
+  { name: "Santa Lolla",   src: "/logos/santa-lolla.svg" },
+  { name: "Melitta",       src: "/logos/melitta.svg" },
+  { name: "Monte Carlo",   src: "/logos/monte-carlo.svg" },
+  { name: "Morena Rosa",   src: "/logos/morena-rosa.svg" },
+  { name: "Multilaser",    src: "/logos/multilaser.svg" },
+  { name: "Natural One",   src: "/logos/natural-one.svg" },
+  { name: "Philips",       src: "/logos/phlips.svg" },
+  { name: "Samsonite",     src: "/logos/samsonite.svg" },
+  { name: "Universal",     src: "/logos/universal.svg" },
+  { name: "AOC",           src: "/logos/aoc.svg" },
+  { name: "Britânia",      src: "/logos/britania.svg" },
+  { name: "DUX",           src: "/logos/dux.svg" },
+  { name: "Grendene",      src: "/logos/grendene.svg" },
+  { name: "Inbrands",      src: "/logos/inbrands.svg" },
+  { name: "Infra Commerce",src: "/logos/infra-commerce.svg" },
+  { name: "Integral Médica",src: "/logos/integral-medica.svg" },
+  { name: "Lór Espresso",  src: "/logos/lor-espresso.svg" },
 ];
 
-function LogoCarousel() {
-  const doubled = [...logos, ...logos];
+function LogoGrid() {
   return (
     <div
       style={{
-        marginTop: 56,
-        background: "#F4F4F6",
-        borderRadius: 20,
-        padding: "32px 0",
-        overflow: "hidden",
-        position: "relative",
+        marginTop: 48,
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, 245px)",
+        gap: 16,
+        justifyContent: "center",
       }}
     >
-      <style>{`
-        @keyframes scrollLogos {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .scroll-logos-track { animation: scrollLogos 28s linear infinite; }
-        .scroll-logos-track:hover { animation-play-state: paused; }
-      `}</style>
-      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(90deg, #F4F4F6 0%, transparent 100%)", zIndex: 2, pointerEvents: "none" }} />
-      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(270deg, #F4F4F6 0%, transparent 100%)", zIndex: 2, pointerEvents: "none" }} />
-      <div
-        className="scroll-logos-track"
-        style={{ display: "flex", gap: 16, width: "max-content" }}
-      >
-        {doubled.map((logo, i) => (
-          <div
-            key={i}
+      {logos.map((logo) => (
+        <div
+          key={logo.name}
+          style={{
+            width: 245,
+            height: 144,
+            background: "#FFFFFF",
+            borderRadius: 18,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "0 32px",
+            boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+          }}
+        >
+          <img
+            src={logo.src}
+            alt={logo.name}
             style={{
-              width: 140,
-              height: 80,
-              background: "#FFFFFF",
-              borderRadius: 14,
-              border: "1px solid #E8E8EC",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "0 20px",
-              flexShrink: 0,
-              boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
+              maxWidth: "100%",
+              maxHeight: 72,
+              objectFit: "contain",
             }}
-          >
-            <img
-              src={logo.src}
-              alt={logo.name}
-              style={{
-                maxWidth: "100%",
-                maxHeight: 36,
-                objectFit: "contain",
-                filter: "grayscale(1)",
-                opacity: 0.7,
-                transition: "filter 0.2s, opacity 0.2s",
-              }}
-              onError={(e) => {
-                const img = e.currentTarget;
-                const parent = img.parentElement;
-                if (parent && !parent.querySelector("span")) {
-                  img.style.display = "none";
-                  const span = document.createElement("span");
-                  span.textContent = logo.name;
-                  span.style.cssText = "font-size:13px;font-weight:600;color:#999;text-align:center;letter-spacing:0.02em;";
-                  parent.appendChild(span);
-                }
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.filter = "grayscale(0)"; e.currentTarget.style.opacity = "1"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.filter = "grayscale(1)"; e.currentTarget.style.opacity = "0.7"; }}
-            />
-          </div>
-        ))}
-      </div>
+            onError={(e) => {
+              const img = e.currentTarget;
+              const parent = img.parentElement;
+              if (parent && !parent.querySelector("span")) {
+                img.style.display = "none";
+                const span = document.createElement("span");
+                span.textContent = logo.name;
+                span.style.cssText = "font-size:14px;font-weight:600;color:#999;text-align:center;";
+                parent.appendChild(span);
+              }
+            }}
+          />
+        </div>
+      ))}
     </div>
   );
 }
+
 
 export function Logos() {
   return (
@@ -115,7 +115,7 @@ export function Logos() {
           <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-9 text-center">
             +400 clientes confiam
           </h2>
-          <LogoCarousel />
+          <LogoGrid />
         </div>
       </section>
 
