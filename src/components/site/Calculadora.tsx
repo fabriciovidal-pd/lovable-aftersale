@@ -163,8 +163,8 @@ export function Calculadora() {
               </span>
             </div>
 
-            <p style={{ fontSize: 11, color: "#BBB", marginTop: 8, lineHeight: 1.5 }}>
-              * Valores estimados para fins de referência. A economia real varia conforme a operação.
+            <p className="text-neutral-950 text-xs font-medium" style={{ marginTop: 8, lineHeight: 1.5 }}>
+              * Valores estimados para fins de referência. A economia real pode variar conforme as necessidade e características da operação.
             </p>
           </div>
 
