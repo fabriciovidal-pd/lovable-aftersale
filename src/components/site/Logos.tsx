@@ -38,54 +38,76 @@ const logos = [
   { name: "Lór Espresso",  src: "/logos/lor-espresso.svg" },
 ];
 
-function LogoGrid() {
+function LogoRow({ items, duration, reverse = false }: { items: typeof logos; duration: number; reverse?: boolean }) {
+  const loop = [...items, ...items];
   return (
     <div
       style={{
-        marginTop: 48,
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, 245px)",
-        gap: 16,
-        justifyContent: "center",
+        overflow: "hidden",
+        width: "100%",
+        maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
       }}
     >
-      {logos.map((logo) => (
-        <div
-          key={logo.name}
-          style={{
-            width: 245,
-            height: 144,
-            background: "#FFFFFF",
-            borderRadius: 18,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "0 32px",
-            boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
-          }}
-        >
-          <img
-            src={logo.src}
-            alt={logo.name}
+      <div
+        style={{
+          display: "flex",
+          gap: 16,
+          width: "max-content",
+          animation: `logo-scroll ${duration}s linear infinite`,
+          animationDirection: reverse ? "reverse" : "normal",
+        }}
+      >
+        {loop.map((logo, i) => (
+          <div
+            key={`${logo.name}-${i}`}
             style={{
-              maxWidth: "100%",
-              maxHeight: 72,
-              objectFit: "contain",
+              width: 245,
+              height: 144,
+              flexShrink: 0,
+              background: "#FFFFFF",
+              borderRadius: 18,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "0 32px",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
             }}
-            onError={(e) => {
-              const img = e.currentTarget;
-              const parent = img.parentElement;
-              if (parent && !parent.querySelector("span")) {
-                img.style.display = "none";
-                const span = document.createElement("span");
-                span.textContent = logo.name;
-                span.style.cssText = "font-size:14px;font-weight:600;color:#999;text-align:center;";
-                parent.appendChild(span);
-              }
-            }}
-          />
-        </div>
-      ))}
+          >
+            <img
+              src={logo.src}
+              alt={logo.name}
+              style={{ maxWidth: "100%", maxHeight: 72, objectFit: "contain" }}
+              onError={(e) => {
+                const img = e.currentTarget;
+                const parent = img.parentElement;
+                if (parent && !parent.querySelector("span")) {
+                  img.style.display = "none";
+                  const span = document.createElement("span");
+                  span.textContent = logo.name;
+                  span.style.cssText = "font-size:14px;font-weight:600;color:#999;text-align:center;";
+                  parent.appendChild(span);
+                }
+              }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LogoGrid() {
+  const perRow = Math.ceil(logos.length / 3);
+  const row1 = logos.slice(0, perRow);
+  const row2 = logos.slice(perRow, perRow * 2);
+  const row3 = logos.slice(perRow * 2);
+  return (
+    <div style={{ marginTop: 48, display: "flex", flexDirection: "column", gap: 16 }}>
+      <style>{`@keyframes logo-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+      <LogoRow items={row1} duration={50} reverse />
+      <LogoRow items={row2} duration={60} reverse />
+      <LogoRow items={row3} duration={55} reverse />
     </div>
   );
 }
