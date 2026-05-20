@@ -164,7 +164,7 @@ export function Calculadora() {
             </div>
 
             <p className="text-neutral-950 text-xs font-medium" style={{ marginTop: 8, lineHeight: 1.5 }}>
-              * Valores estimados para fins de referência. A economia real pode variar conforme as necessidade e características da operação.
+              * Valores estimados para fins de referência. A economia real pode variar conforme as necessidades e características da operação.
             </p>
           </div>
 
