@@ -61,7 +61,7 @@ export function Calculadora() {
   const [ticketMedio, setTicketMedio] = useState(250);
   const [tempoPorReversa, setTempoPorReversa] = useState(12);
 
-  const TAXA_AUTO = 0.70;
+  const TAXA_AUTO = 0.90;
   const CUSTO_PCT_TICKET = 0.15;
 
   const calc = useMemo(() => {
@@ -137,9 +137,9 @@ export function Calculadora() {
             </p>
 
             <Slider label="Reversas por mês" sublabel="Trocas e devoluções processadas"
-              value={reversasMes} min={50} max={5000} step={50} onChange={setReversasMes} format={fmtNum} />
+              value={reversasMes} min={50} max={30000} step={50} onChange={setReversasMes} format={fmtNum} />
             <Slider label="Ticket médio" sublabel="Valor médio do produto envolvido em cada reversa"
-              value={ticketMedio} min={50} max={2000} step={10} onChange={setTicketMedio}
+              value={ticketMedio} min={50} max={10000} step={10} onChange={setTicketMedio}
               format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} />
             <Slider label="Tempo médio por reversa" sublabel="Minutos que um operador gasta em cada caso"
               value={tempoPorReversa} min={5} max={60} step={1} onChange={setTempoPorReversa} format={(v) => `${v} min`} />
