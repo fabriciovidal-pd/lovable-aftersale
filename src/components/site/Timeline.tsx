@@ -271,18 +271,8 @@ export function Timeline() {
           </span>
         </div>
 
-        <h2
-          style={{
-            fontSize: 40,
-            fontWeight: 800,
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-            color: "#0A0A0A",
-            textAlign: "center",
-            marginBottom: 64,
-          }}
-        >
-          De ideia a referência no Brasil
+        <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-9 text-center">
+          Da concepção à consolidação como referência nacional.
         </h2>
 
         <div style={{ position: "relative" }}>
