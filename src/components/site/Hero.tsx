@@ -1,12 +1,19 @@
 import { motion } from "framer-motion";
-import { Check, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import dashboard from "@/assets/dashboard-new.png";
 
-const trustSignals = [
-  "Líder desde 2017",
-  "+6M reversas processadas",
-  "IA-First",
-];
+const pillStyle = {
+  display: "inline-block",
+  background: "rgba(92,21,155,0.07)",
+  border: "1px solid rgba(92,21,155,0.18)",
+  borderRadius: "999px",
+  padding: "4px 14px",
+  fontSize: 12,
+  fontWeight: 600,
+  color: "#5C159B",
+  letterSpacing: "0.06em",
+  textTransform: "uppercase" as const,
+};
 
 export function Hero() {
   return (
@@ -19,13 +26,17 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5"
+              style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}
             >
-              <span className="size-1.5 rounded-full bg-brand" />
-              <Sparkles className="size-3.5 text-brand" />
-              <span className="text-xs font-medium text-brand">
-                Líder em trocas e devoluções desde 2017
+              <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5">
+                <span className="size-1.5 rounded-full bg-brand" />
+                <Sparkles className="size-3.5 text-brand" />
+                <span className="text-xs font-medium text-brand">
+                  Líder em trocas e devoluções desde 2017
+                </span>
               </span>
+              <span style={pillStyle}>+6M reversas processadas</span>
+              <span style={pillStyle}>IA-First</span>
             </motion.div>
 
             <motion.h1
@@ -70,21 +81,6 @@ export function Hero() {
               </a>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2"
-            >
-              {trustSignals.map((f) => (
-                <div key={f} className="flex items-center gap-1.5">
-                  <span className="inline-flex size-4 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                    <Check className="size-2.5" strokeWidth={3} />
-                  </span>
-                  <span className="text-xs text-zinc-500">{f}</span>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           {/* Product screenshot — right */}

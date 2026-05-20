@@ -1,74 +1,90 @@
 import { motion } from "framer-motion";
 
-const clientLogos = [
-  "Samsung", "Tramontina", "Decathlon", "Malwee", "Calvin Klein",
-  "Chilli Beans", "Farm", "Ri Happy", "Hugo Boss", "FTD", "Hope", "Le Creuset",
+const logos = [
+  { name: "Samsung",      src: "/samsung.svg" },
+  { name: "Decathlon",    src: "/decathlon.svg" },
+  { name: "Malwee",       src: "/malwee.svg" },
+  { name: "Calvin Klein", src: "/calvin-klein.svg" },
+  { name: "Chilli Beans", src: "/chilli-beans.svg" },
+  { name: "Farm",         src: "/farm.svg" },
+  { name: "Ri Happy",     src: "/ri-happy.svg" },
+  { name: "Hugo Boss",    src: "/hugo-boss.svg" },
+  { name: "FTD",          src: "/ftd.svg" },
+  { name: "Hope",         src: "/hope.svg" },
+  { name: "Le Creuset",   src: "/le-creuset.svg" },
+  { name: "Tramontina",   src: "/tramontina.svg" },
 ];
 
-function LogoPlaceholder({ name }: { name: string }) {
+function LogoCarousel() {
+  const doubled = [...logos, ...logos];
   return (
     <div
       style={{
-        height: 48,
-        minWidth: 120,
-        padding: "0 20px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#F3F0F7",
-        borderRadius: 8,
-        fontSize: 13,
-        fontWeight: 700,
-        color: "#5C159B",
-        letterSpacing: "-0.01em",
-        whiteSpace: "nowrap",
-        flexShrink: 0,
+        marginTop: 56,
+        background: "#F4F4F6",
+        borderRadius: 20,
+        padding: "32px 0",
+        overflow: "hidden",
+        position: "relative",
       }}
     >
-      {name}
-    </div>
-  );
-}
-
-function LogoCarousel() {
-  const doubled = [...clientLogos, ...clientLogos];
-
-  return (
-    <div style={{ overflow: "hidden", width: "100%", position: "relative" }}>
       <style>{`
-        @keyframes logo-marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+        @keyframes scrollLogos {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-        .logo-marquee-track {
-          animation: logo-marquee 35s linear infinite;
-        }
-        .logo-marquee-track:hover { animation-play-state: paused; }
+        .scroll-logos-track { animation: scrollLogos 28s linear infinite; }
+        .scroll-logos-track:hover { animation-play-state: paused; }
       `}</style>
+      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(90deg, #F4F4F6 0%, transparent 100%)", zIndex: 2, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(270deg, #F4F4F6 0%, transparent 100%)", zIndex: 2, pointerEvents: "none" }} />
       <div
-        style={{
-          position: "absolute", left: 0, top: 0, bottom: 0, width: 80,
-          background: "linear-gradient(to right, #FAFAFA, transparent)",
-          zIndex: 2, pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute", right: 0, top: 0, bottom: 0, width: 80,
-          background: "linear-gradient(to left, #FAFAFA, transparent)",
-          zIndex: 2, pointerEvents: "none",
-        }}
-      />
-      <div
-        className="logo-marquee-track"
-        style={{
-          display: "flex",
-          gap: 16,
-          width: "max-content",
-        }}
+        className="scroll-logos-track"
+        style={{ display: "flex", gap: 16, width: "max-content" }}
       >
-        {doubled.map((name, i) => (
-          <LogoPlaceholder key={i} name={name} />
+        {doubled.map((logo, i) => (
+          <div
+            key={i}
+            style={{
+              width: 140,
+              height: 80,
+              background: "#FFFFFF",
+              borderRadius: 14,
+              border: "1px solid #E8E8EC",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "0 20px",
+              flexShrink: 0,
+              boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
+            }}
+          >
+            <img
+              src={logo.src}
+              alt={logo.name}
+              style={{
+                maxWidth: "100%",
+                maxHeight: 36,
+                objectFit: "contain",
+                filter: "grayscale(1)",
+                opacity: 0.7,
+                transition: "filter 0.2s, opacity 0.2s",
+              }}
+              onError={(e) => {
+                const img = e.currentTarget;
+                const parent = img.parentElement;
+                if (parent && !parent.querySelector("span")) {
+                  img.style.display = "none";
+                  const span = document.createElement("span");
+                  span.textContent = logo.name;
+                  span.style.cssText = "font-size:13px;font-weight:600;color:#999;text-align:center;letter-spacing:0.02em;";
+                  parent.appendChild(span);
+                }
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.filter = "grayscale(0)"; e.currentTarget.style.opacity = "1"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.filter = "grayscale(1)"; e.currentTarget.style.opacity = "0.7"; }}
+            />
+          </div>
         ))}
       </div>
     </div>

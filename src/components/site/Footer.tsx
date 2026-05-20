@@ -1,5 +1,3 @@
-import selo1 from "@/assets/selo-1.svg";
-import selo2 from "@/assets/selo-2.png";
 
 const IconInstagram = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -58,26 +56,6 @@ export function Footer() {
               alt="Aftersale"
               style={{ width: 320, height: "auto", objectFit: "contain", maxWidth: "100%" }}
             />
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <div
-                className="rounded-xl p-2 flex items-center justify-center h-14"
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                }}
-              >
-                <img src={selo1} alt="Selo de parceiro" className="h-9 w-auto" style={{ filter: "brightness(0) invert(1)" }} />
-              </div>
-              <div
-                className="rounded-xl p-2 flex items-center justify-center h-14"
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                }}
-              >
-                <img src={selo2} alt="Shopify Partner" className="h-9 w-auto" style={{ filter: "brightness(0) invert(1)" }} />
-              </div>
-            </div>
           </div>
 
           {/* Colunas de menus balanceadas */}
