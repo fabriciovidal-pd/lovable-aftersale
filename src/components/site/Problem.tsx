@@ -12,7 +12,7 @@ const items = [
     icon: Zap,
     title: "O maior erro é a devolução rápido demais",
     description:
-      "Velocidade sem inteligência gera retrabalho. Nossa engine analisa o motivo antes de processar — e sugere o melhor caminho para preservar a receita.",
+      "Automação sem inteligência gera retrabalho.",
   },
   {
     icon: BarChart3,
