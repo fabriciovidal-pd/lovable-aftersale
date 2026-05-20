@@ -2,19 +2,6 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import dashboard from "@/assets/dashboard-new.png";
 
-const pillStyle = {
-  display: "inline-block",
-  background: "rgba(92,21,155,0.07)",
-  border: "1px solid rgba(92,21,155,0.18)",
-  borderRadius: "999px",
-  padding: "4px 14px",
-  fontSize: 12,
-  fontWeight: 600,
-  color: "#5C159B",
-  letterSpacing: "0.06em",
-  textTransform: "uppercase" as const,
-};
-
 export function Hero() {
   return (
     <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-white">
