@@ -55,66 +55,34 @@ function Slider({ label, sublabel, value, min, max, step, onChange, format }: Sl
 
 const fmtNum = (v: number) => v.toLocaleString("pt-BR");
 const fmtBRL = (v: number) => `R$ ${v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-const fmtPct = (v: number) => `${v}%`;
-
-type CompareBarProps = {
-  label: string;
-  valueBefore: number;
-  valueAfter: number;
-  max: number;
-  format: (v: number) => string;
-};
-
-function CompareBar({ label, valueBefore, valueAfter, max, format }: CompareBarProps) {
-  const pctBefore = Math.min((valueBefore / max) * 100, 100);
-  const pctAfter = Math.min((valueAfter / max) * 100, 100);
-  return (
-    <div style={{ marginBottom: 20 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-        <span style={{ fontSize: 13, fontWeight: 600, color: "#444" }}>{label}</span>
-        <div style={{ display: "flex", gap: 16 }}>
-          <span style={{ fontSize: 13, color: "#999" }}>Antes: <b style={{ color: "#1A1A1A" }}>{format(valueBefore)}</b></span>
-          <span style={{ fontSize: 13, color: "#5C159B" }}>Depois: <b>{format(valueAfter)}</b></span>
-        </div>
-      </div>
-      <div style={{ height: 8, background: "#F0EAF8", borderRadius: 99, marginBottom: 4, overflow: "hidden" }}>
-        <div style={{ width: `${pctBefore}%`, height: "100%", background: "#CCC", borderRadius: 99, transition: "width 0.4s ease" }} />
-      </div>
-      <div style={{ height: 8, background: "#F0EAF8", borderRadius: 99, overflow: "hidden" }}>
-        <div style={{ width: `${pctAfter}%`, height: "100%", background: "linear-gradient(90deg,#7B2FBE,#5C159B)", borderRadius: 99, transition: "width 0.4s ease" }} />
-      </div>
-    </div>
-  );
-}
 
 export function Calculadora() {
   const [reversasMes, setReversasMes] = useState(500);
-  const [custoManual, setCustoManual] = useState(35);
+  const [ticketMedio, setTicketMedio] = useState(250);
   const [tempoPorReversa, setTempoPorReversa] = useState(12);
-  const [percentAuto, setPercentAuto] = useState(70);
+
+  const TAXA_AUTO = 0.70;
+  const CUSTO_PCT_TICKET = 0.15;
 
   const calc = useMemo(() => {
-    const custoAtualMes = reversasMes * custoManual;
-    const minutosTotal = reversasMes * tempoPorReversa;
-    const horasAntes = minutosTotal / 60;
-    const reversasAuto = reversasMes * (percentAuto / 100);
+    const custoManual = ticketMedio * CUSTO_PCT_TICKET;
+    const reversasAuto = Math.round(reversasMes * TAXA_AUTO);
     const reversasManuais = reversasMes - reversasAuto;
-    const horasDepois = (reversasManuais * tempoPorReversa) / 60;
-    const custoPlataforma = 0;
-    const custoDepoisMes = (reversasManuais * custoManual) + custoPlataforma;
+    const custoAtualMes = reversasMes * custoManual;
+    const custoDepoisMes = reversasManuais * custoManual;
     const economiaMes = custoAtualMes - custoDepoisMes;
     const economiaAno = economiaMes * 12;
+    const horasAntes = (reversasMes * tempoPorReversa) / 60;
+    const horasDepois = (reversasManuais * tempoPorReversa) / 60;
     const horasLiberadasMes = horasAntes - horasDepois;
     const operadoresLiberados = (horasLiberadasMes / 176).toFixed(1);
     return {
-      custoAtualMes, custoDepoisMes, economiaMes, economiaAno,
-      horasAntes: Math.round(horasAntes),
-      horasDepois: Math.round(horasDepois),
+      economiaMes, economiaAno, custoManual,
+      reversasAuto,
       horasLiberadasMes: Math.round(horasLiberadasMes),
-      reversasAuto: Math.round(reversasAuto),
       operadoresLiberados,
     };
-  }, [reversasMes, custoManual, tempoPorReversa, percentAuto]);
+  }, [reversasMes, ticketMedio, tempoPorReversa]);
 
   return (
     <section
@@ -170,12 +138,30 @@ export function Calculadora() {
 
             <Slider label="Reversas por mês" sublabel="Trocas e devoluções processadas"
               value={reversasMes} min={50} max={5000} step={50} onChange={setReversasMes} format={fmtNum} />
-            <Slider label="Custo médio por reversa" sublabel="Custo total incluindo logística e atendimento"
-              value={custoManual} min={10} max={150} step={5} onChange={setCustoManual} format={(v) => `R$ ${v}`} />
+            <Slider label="Ticket médio" sublabel="Valor médio do produto envolvido em cada reversa"
+              value={ticketMedio} min={50} max={2000} step={10} onChange={setTicketMedio}
+              format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} />
             <Slider label="Tempo médio por reversa" sublabel="Minutos que um operador gasta em cada caso"
               value={tempoPorReversa} min={5} max={60} step={1} onChange={setTempoPorReversa} format={(v) => `${v} min`} />
-            <Slider label="Taxa de automação esperada" sublabel="% das reversas resolvidas sem intervenção manual"
-              value={percentAuto} min={10} max={95} step={5} onChange={setPercentAuto} format={fmtPct} />
+
+            <div style={{
+              background: "rgba(92,21,155,0.04)", border: "1px solid rgba(92,21,155,0.12)",
+              borderRadius: 12, padding: "14px 16px",
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+              marginBottom: 20,
+            }}>
+              <div>
+                <p style={{ fontSize: 13, fontWeight: 600, color: "#5C159B", margin: 0 }}>
+                  Custo estimado por reversa
+                </p>
+                <p style={{ fontSize: 11, color: "#AAA", margin: "2px 0 0" }}>
+                  Calculado automaticamente (15% do ticket médio)
+                </p>
+              </div>
+              <span style={{ fontSize: 18, fontWeight: 800, color: "#5C159B" }}>
+                {fmtBRL(calc.custoManual)}
+              </span>
+            </div>
 
             <p style={{ fontSize: 11, color: "#BBB", marginTop: 8, lineHeight: 1.5 }}>
               * Valores estimados para fins de referência. A economia real varia conforme a operação.
@@ -184,7 +170,7 @@ export function Calculadora() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <div style={{
-              background: "#5C159B", borderRadius: 20, padding: "32px 28px",
+              background: "#5C159B", borderRadius: 20, padding: "40px 32px",
               boxShadow: "0 8px 32px rgba(92,21,155,0.25)",
             }}>
               <p style={{
@@ -194,64 +180,45 @@ export function Calculadora() {
                 Economia estimada por mês
               </p>
               <p style={{
-                fontSize: 44, fontWeight: 800, color: "#FFFFFF",
-                letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 6,
+                fontSize: 52, fontWeight: 800, color: "#FFFFFF",
+                letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 8,
               }}>
                 {fmtBRL(calc.economiaMes)}
               </p>
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", marginBottom: 0 }}>
-                {fmtBRL(calc.economiaAno)} por ano
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.15)", margin: "24px 0" }} />
+              <p style={{
+                fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)",
+                textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8,
+              }}>
+                Economia gerada por ano
               </p>
-
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.15)", margin: "20px 0" }} />
-
-              <div style={{ display: "flex", gap: 12 }}>
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>
-                    {calc.reversasAuto.toLocaleString("pt-BR")}
-                  </p>
-                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", margin: "4px 0 0" }}>
-                    reversas automatizadas/mês
-                  </p>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>
-                    {calc.horasLiberadasMes}h
-                  </p>
-                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", margin: "4px 0 0" }}>
-                    horas operacionais liberadas
-                  </p>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>
-                    {calc.operadoresLiberados}
-                  </p>
-                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", margin: "4px 0 0" }}>
-                    operadores realocáveis
-                  </p>
-                </div>
-              </div>
+              <p style={{
+                fontSize: 36, fontWeight: 800, color: "rgba(255,255,255,0.92)",
+                letterSpacing: "-0.03em", lineHeight: 1,
+              }}>
+                {fmtBRL(calc.economiaAno)}
+              </p>
             </div>
 
             <div style={{
               background: "#FFFFFF", border: "1px solid #EAE0F5", borderRadius: 20,
-              padding: "28px 28px", boxShadow: "0 4px 24px rgba(92,21,155,0.05)",
+              padding: "28px 32px", boxShadow: "0 4px 24px rgba(92,21,155,0.05)",
+              display: "flex", gap: 0,
             }}>
-              <p style={{
-                fontSize: 13, fontWeight: 700, color: "#5C159B",
-                textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 20,
-              }}>
-                Comparativo
-              </p>
-
-              <CompareBar label="Custo mensal (R$)"
-                valueBefore={calc.custoAtualMes} valueAfter={calc.custoDepoisMes}
-                max={calc.custoAtualMes * 1.2}
-                format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} />
-              <CompareBar label="Horas de operação/mês"
-                valueBefore={calc.horasAntes} valueAfter={calc.horasDepois}
-                max={calc.horasAntes * 1.2}
-                format={(v) => `${v}h`} />
+              {[
+                { v: calc.reversasAuto.toLocaleString("pt-BR"), l: "reversas automatizadas/mês" },
+                { v: `${calc.horasLiberadasMes}h`, l: "horas operacionais liberadas" },
+                { v: calc.operadoresLiberados, l: "operadores realocáveis" },
+              ].map(({ v, l }, i, arr) => (
+                <div key={l} style={{
+                  flex: 1, textAlign: "center",
+                  borderRight: i < arr.length - 1 ? "1px solid #EAE0F5" : "none",
+                  padding: "0 16px",
+                }}>
+                  <p style={{ fontSize: 26, fontWeight: 800, color: "#5C159B", letterSpacing: "-0.03em", margin: 0 }}>{v}</p>
+                  <p style={{ fontSize: 12, color: "#AAA", margin: "6px 0 0", lineHeight: 1.4 }}>{l}</p>
+                </div>
+              ))}
             </div>
 
             <a

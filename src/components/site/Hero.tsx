@@ -2,19 +2,6 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import dashboard from "@/assets/dashboard-new.png";
 
-const pillStyle = {
-  display: "inline-block",
-  background: "rgba(92,21,155,0.07)",
-  border: "1px solid rgba(92,21,155,0.18)",
-  borderRadius: "999px",
-  padding: "4px 14px",
-  fontSize: 12,
-  fontWeight: 600,
-  color: "#5C159B",
-  letterSpacing: "0.06em",
-  textTransform: "uppercase" as const,
-};
-
 export function Hero() {
   return (
     <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-white">
@@ -35,8 +22,12 @@ export function Hero() {
                   Líder em trocas e devoluções desde 2017
                 </span>
               </span>
-              <span style={pillStyle}>+6M reversas processadas</span>
-              <span style={pillStyle}>IA-First</span>
+              <span className="inline-flex items-center rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5 text-xs font-medium text-brand">
+                +6M reversas processadas
+              </span>
+              <span className="inline-flex items-center rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5 text-xs font-medium text-brand">
+                IA-First
+              </span>
             </motion.div>
 
             <motion.h1
