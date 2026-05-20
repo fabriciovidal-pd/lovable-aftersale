@@ -36,9 +36,9 @@ export function Hero() {
             >
               Reduza o custo de trocas e devoluções e{" "}
               <span className="bg-gradient-to-r from-brand to-[#AD7AFC] bg-clip-text text-transparent">
-                proteja sua receita
+                proteja a receita
               </span>{" "}
-              de sua operação
+              da sua operação
             </motion.h1>
 
             <motion.p
