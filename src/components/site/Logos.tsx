@@ -84,7 +84,7 @@ export function Logos() {
         className="py-12 lg:py-16"
         style={{ background: "#FAFAFA", borderTop: "1px solid #EEEEEE" }}
       >
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8 text-center">
           <span
             className="inline-block rounded-full px-3.5 py-1 text-[12px] font-semibold uppercase mb-4"
             style={{
@@ -96,7 +96,7 @@ export function Logos() {
           >
             Clientes
           </span>
-          <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-9">
+          <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-9 text-center">
             +400 clientes confiam
           </h2>
           <LogoCarousel />
