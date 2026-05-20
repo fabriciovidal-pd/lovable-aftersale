@@ -251,7 +251,7 @@ export function Timeline() {
         overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: 960, margin: "0 auto" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto" }} className="text-center">
         <div style={{ textAlign: "center", marginBottom: 16 }}>
           <span
             style={{
