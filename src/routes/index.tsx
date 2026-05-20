@@ -39,6 +39,7 @@ function Index() {
         <Hero />
         <Problem />
         <Metrics />
+        <TrocaProduto />
         <Features />
         <Calculadora />
         <Logos />
