@@ -109,7 +109,7 @@ export function Logos() {
         className="py-16 lg:py-20"
         style={{ background: "#FAFAFA" }}
       >
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8 text-center">
           <span
             className="inline-block rounded-full px-3.5 py-1 text-[12px] font-semibold uppercase mb-4"
             style={{
@@ -121,7 +121,7 @@ export function Logos() {
           >
             Parceiros
           </span>
-          <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-10">
+          <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-10 text-center">
             Nossos parceiros recomendam
           </h2>
 
