@@ -57,14 +57,7 @@ export function TrocaProduto() {
             </div>
 
             <h2
-              style={{
-                fontSize: 36,
-                fontWeight: 800,
-                lineHeight: 1.15,
-                letterSpacing: "-0.03em",
-                color: "#0A0A0A",
-                marginBottom: 16,
-              }}
+              className="text-[#7d00fa] px-0 text-5xl rounded-none font-extrabold tracking-tight leading-[1.1] mb-6"
             >
               Transforme devoluções em novas vendas
             </h2>
