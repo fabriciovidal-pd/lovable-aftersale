@@ -7,6 +7,7 @@ import { Logos } from "@/components/site/Logos";
 import { Timeline } from "@/components/site/Timeline";
 import { CTA } from "@/components/site/CTA";
 import { Features } from "@/components/site/Features";
+import { TrocaProduto } from "@/components/site/TrocaProduto";
 import { Calculadora } from "@/components/site/Calculadora";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
