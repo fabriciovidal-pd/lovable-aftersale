@@ -59,30 +59,16 @@ const fmtBRL = (v: number) => `R$ ${v.toLocaleString("pt-BR", { minimumFractionD
 export function Calculadora() {
   const [reversasMes, setReversasMes] = useState(500);
   const [ticketMedio, setTicketMedio] = useState(250);
-  const [tempoPorReversa, setTempoPorReversa] = useState(12);
 
-  const TAXA_AUTO = 0.90;
   const CUSTO_PCT_TICKET = 0.15;
+  const RETENCAO_PCT = 0.30;
 
   const calc = useMemo(() => {
     const custoManual = ticketMedio * CUSTO_PCT_TICKET;
-    const reversasAuto = Math.round(reversasMes * TAXA_AUTO);
-    const reversasManuais = reversasMes - reversasAuto;
-    const custoAtualMes = reversasMes * custoManual;
-    const custoDepoisMes = reversasManuais * custoManual;
-    const economiaMes = custoAtualMes - custoDepoisMes;
-    const economiaAno = economiaMes * 12;
-    const horasAntes = (reversasMes * tempoPorReversa) / 60;
-    const horasDepois = (reversasManuais * tempoPorReversa) / 60;
-    const horasLiberadasMes = horasAntes - horasDepois;
-    const operadoresLiberados = (horasLiberadasMes / 176).toFixed(1);
-    return {
-      economiaMes, economiaAno, custoManual,
-      reversasAuto,
-      horasLiberadasMes: Math.round(horasLiberadasMes),
-      operadoresLiberados,
-    };
-  }, [reversasMes, ticketMedio, tempoPorReversa]);
+    const receitaRetidaMes = reversasMes * ticketMedio * RETENCAO_PCT;
+    const receitaRetidaAno = receitaRetidaMes * 12;
+    return { custoManual, receitaRetidaMes, receitaRetidaAno };
+  }, [reversasMes, ticketMedio]);
 
   return (
     <section
@@ -115,7 +101,7 @@ export function Calculadora() {
           fontSize: 38, fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.03em",
           color: "#5C159B", textAlign: "center", marginBottom: 12,
         }}>
-          Saiba o quanto você pode economizar
+          Quanto você pode economizar?
         </h2>
         <p style={{
           fontSize: 16, color: "#666", textAlign: "center",
@@ -141,8 +127,6 @@ export function Calculadora() {
             <Slider label="Ticket médio" sublabel="Valor médio do produto envolvido em cada reversa"
               value={ticketMedio} min={50} max={10000} step={10} onChange={setTicketMedio}
               format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} />
-            <Slider label="Tempo médio por reversa" sublabel="Minutos que um operador gasta em cada caso"
-              value={tempoPorReversa} min={5} max={60} step={1} onChange={setTempoPorReversa} format={(v) => `${v} min`} />
 
             <div style={{
               background: "rgba(92,21,155,0.04)", border: "1px solid rgba(92,21,155,0.12)",
@@ -177,48 +161,27 @@ export function Calculadora() {
                 fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)",
                 textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8,
               }}>
-                Economia estimada por mês
+                Receita retida por mês de até
               </p>
               <p style={{
                 fontSize: 52, fontWeight: 800, color: "#FFFFFF",
                 letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 8,
               }}>
-                {fmtBRL(calc.economiaMes)}
+                {fmtBRL(calc.receitaRetidaMes)}
               </p>
               <div style={{ borderTop: "1px solid rgba(255,255,255,0.15)", margin: "24px 0" }} />
               <p style={{
                 fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)",
                 textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8,
               }}>
-                Economia gerada por ano
+                Receita retida por ano de até
               </p>
               <p style={{
                 fontSize: 36, fontWeight: 800, color: "rgba(255,255,255,0.92)",
                 letterSpacing: "-0.03em", lineHeight: 1,
               }}>
-                {fmtBRL(calc.economiaAno)}
+                {fmtBRL(calc.receitaRetidaAno)}
               </p>
-            </div>
-
-            <div style={{
-              background: "#FFFFFF", border: "1px solid #EAE0F5", borderRadius: 20,
-              padding: "28px 32px", boxShadow: "0 4px 24px rgba(92,21,155,0.05)",
-              display: "flex", gap: 0,
-            }}>
-              {[
-                { v: calc.reversasAuto.toLocaleString("pt-BR"), l: "reversas automatizadas/mês" },
-                { v: `${calc.horasLiberadasMes}h`, l: "horas operacionais liberadas" },
-                { v: calc.operadoresLiberados, l: "operadores realocáveis" },
-              ].map(({ v, l }, i, arr) => (
-                <div key={l} style={{
-                  flex: 1, textAlign: "center",
-                  borderRight: i < arr.length - 1 ? "1px solid #EAE0F5" : "none",
-                  padding: "0 16px",
-                }}>
-                  <p style={{ fontSize: 26, fontWeight: 800, color: "#5C159B", letterSpacing: "-0.03em", margin: 0 }}>{v}</p>
-                  <p style={{ fontSize: 12, color: "#AAA", margin: "6px 0 0", lineHeight: 1.4 }}>{l}</p>
-                </div>
-              ))}
             </div>
 
             <a
