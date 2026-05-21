@@ -14,7 +14,9 @@ export function CTA() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
-                href="#"
+                href="LINK_AGENDAMENTO"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full bg-background text-brand px-5 py-3 text-sm font-medium shadow-elegant hover:shadow-accent-glow transition-all"
               >
                 Agende uma reunião
