@@ -139,7 +139,7 @@ export function Calculadora() {
                   Custo estimado por reversa
                 </p>
                 <p style={{ fontSize: 11, color: "#AAA", margin: "2px 0 0" }}>
-                  Calculado automaticamente (15% do ticket médio)
+                  Calculado automaticamente (30% do ticket médio)
                 </p>
               </div>
               <span style={{ fontSize: 18, fontWeight: 800, color: "#5C159B" }}>
