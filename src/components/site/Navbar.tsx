@@ -115,7 +115,9 @@ export function Navbar() {
 
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="#cta"
+              href="LINK_AGENDAMENTO"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm px-4 py-2 rounded-full bg-brand text-white hover:bg-brand/90 transition-all shadow-elegant"
             >
               Agendar demonstração
