@@ -151,7 +151,7 @@ export function Navbar() {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-2">
-                <a href="#cta" className="text-sm px-4 py-2 rounded-full bg-brand-gradient text-brand-foreground text-center shadow-brand">
+                <a href="LINK_AGENDAMENTO" target="_blank" rel="noopener noreferrer" className="text-sm px-4 py-2 rounded-full bg-brand-gradient text-brand-foreground text-center shadow-brand">
                   Agendar demonstração
                 </a>
                 <div className="pt-2 flex justify-center">
