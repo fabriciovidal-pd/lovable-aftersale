@@ -1,11 +1,9 @@
 import { MessageCircle } from "lucide-react";
 
 export function WhatsAppFloat() {
-  const phone = "5511999999999";
-  const message = encodeURIComponent("Olá! Gostaria de saber mais sobre a Aftersale.");
   return (
     <a
-      href={`https://wa.me/${phone}?text=${message}`}
+      href="LINK_WHATSAPP"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco no WhatsApp"

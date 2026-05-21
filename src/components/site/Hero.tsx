@@ -59,7 +59,9 @@ export function Hero() {
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <a
-                href="#cta"
+                href="LINK_AGENDAMENTO"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-xl bg-brand text-white px-6 py-3.5 text-sm font-semibold shadow-elegant hover:bg-brand/90 hover:-translate-y-0.5 hover:shadow-brand transition-all"
               >
                 Agendar demonstração

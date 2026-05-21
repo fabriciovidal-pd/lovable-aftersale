@@ -185,7 +185,9 @@ export function Calculadora() {
             </div>
 
             <a
-              href="#cta"
+              href="LINK_AGENDAMENTO"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 background: "#5C159B", color: "#FFFFFF", border: "none", borderRadius: 14,
                 padding: "16px 28px", fontSize: 15, fontWeight: 700, cursor: "pointer",
