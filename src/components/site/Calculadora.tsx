@@ -60,7 +60,7 @@ export function Calculadora() {
   const [reversasMes, setReversasMes] = useState(500);
   const [ticketMedio, setTicketMedio] = useState(250);
 
-  const CUSTO_PCT_TICKET = 0.15;
+  const CUSTO_PCT_TICKET = 0.30;
   const RETENCAO_PCT = 0.30;
 
   const calc = useMemo(() => {
