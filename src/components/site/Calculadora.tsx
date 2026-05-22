@@ -136,6 +136,7 @@ export function Calculadora() {
         <h2 style={{
           fontSize: 38, fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.03em",
           color: "#5C159B", textAlign: "center", marginBottom: 12,
+          fontFamily: "'Rubik', 'Helvetica Neue', sans-serif",
         }}>
           Quanto você pode economizar?
         </h2>
