@@ -170,13 +170,6 @@ export function TrocaProduto() {
         @media (max-width: 860px) {
           .troca-grid { grid-template-columns: 1fr !important; }
         }
-        @keyframes browserFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-        .browser-float {
-          animation: browserFloat 6s ease-in-out infinite;
-        }
       `}</style>
     </section>
   );
