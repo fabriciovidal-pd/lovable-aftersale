@@ -162,7 +162,7 @@ export function Calculadora() {
               value={reversasMes} min={50} max={30000} step={50} onChange={setReversasMes} format={fmtNum} />
             <Slider label="Ticket médio" sublabel="Valor médio do produto envolvido em cada reversa"
               value={ticketMedio} min={50} max={10000} step={10} onChange={setTicketMedio}
-              format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} />
+              format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} prefix="R$" />
 
             <div style={{
               background: "rgba(92,21,155,0.04)", border: "1px solid rgba(92,21,155,0.12)",
