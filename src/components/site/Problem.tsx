@@ -12,7 +12,7 @@ const items = [
     icon: Zap,
     title: "O maior erro é a devolução rápido demais",
     description:
-      "Quatro perspectivas que sua operação precisa considerar antes de tratar troca e devolução como “mais um processo”.",
+      "Mais do que velocidade, operações eficientes precisam de contexto, estratégia e curadoria. Afinal, ser automatizado não significa, necessariamente, ser inteligente.",
   },
   {
     icon: BarChart3,
