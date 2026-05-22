@@ -12,7 +12,7 @@ const items = [
     icon: Zap,
     title: "O maior erro é a devolução rápido demais",
     description:
-      "Automação sem inteligência gera retrabalho.",
+      "Quatro perspectivas que sua operação precisa considerar antes de tratar troca e devolução como “mais um processo”.",
   },
   {
     icon: BarChart3,
