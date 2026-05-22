@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
 
 type Item = {
   ano: string;
@@ -6,46 +8,6 @@ type Item = {
   descricao: string;
   badge?: string;
 };
-
-const timeline: Item[] = [
-  {
-    ano: "2017-18",
-    titulo: "O começo",
-    descricao:
-      "Nascemos como empresa de pontos de entrega e criamos o produto de troca e devolução.",
-  },
-  {
-    ano: "2019-20",
-    titulo: "Vale do Silício",
-    descricao:
-      "Única empresa brasileira aceita no programa 500 Startups no Vale do Silício.",
-  },
-  {
-    ano: "2021-22",
-    titulo: "Ecossistema Confi",
-    descricao:
-      "A soma de experiências consolida. Nos tornamos parte do ecossistema Confi.",
-  },
-  {
-    ano: "2023+",
-    titulo: "Liderança consolidada",
-    descricao:
-      "+400 clientes, +6M reversas. Líderes consolidados no mercado de troca e devolução.",
-  },
-  {
-    ano: "2025",
-    titulo: "Reposicionamento tecnológico",
-    descricao:
-      "Reestruturação do produto com foco em operações maduras, orientadas a dados e governança.",
-  },
-  {
-    ano: "2026",
-    titulo: "Aquisição da Genius Returns",
-    descricao:
-      "Embarcamos portfólio, tecnologia, capital intelectual e market share — consolidando a Aftersale como a plataforma definitiva de pós-venda no Brasil, agora orientada a inteligência artificial.",
-    badge: "Novo ciclo · IA First",
-  },
-];
 
 function CardContent({ ano, titulo, descricao, badge }: Item) {
   const [hov, setHov] = useState(false);
