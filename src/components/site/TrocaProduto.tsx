@@ -110,40 +110,17 @@ export function TrocaProduto() {
               loop
               muted
               playsInline
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-            <div
               style={{
                 position: "absolute",
-                inset: 0,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 12,
-                background: "rgba(243,240,247,0.92)",
-                pointerEvents: "none",
+                left: "-2%",
+                width: "104%",
+                top: "-9%",
+                height: "120%",
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
               }}
-            >
-              <div
-                style={{
-                  width: 56,
-                  height: 56,
-                  background: "rgba(92,21,155,0.1)",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <polygon points="5,3 19,12 5,21" fill="#5C159B" opacity="0.7" />
-                </svg>
-              </div>
-              <p style={{ fontSize: 13, color: "#9B78C8", fontWeight: 500, margin: 0 }}>
-                {t("s4_demo", lang)}
-              </p>
-            </div>
+            />
           </div>
         </div>
       </div>
