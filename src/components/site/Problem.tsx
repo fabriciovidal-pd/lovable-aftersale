@@ -1,36 +1,18 @@
 import { motion } from "framer-motion";
 import { Package, Zap, BarChart3, Coins } from "lucide-react";
-
-const items = [
-  {
-    icon: Package,
-    title: "Cada devolução é uma decisão de negócio",
-    description:
-      "A maioria das plataformas trata devolução como um evento isolado. Nós conectamos cada troca ao estoque, à margem e ao comportamento do cliente em tempo real.",
-  },
-  {
-    icon: Zap,
-    title: "O maior erro é a devolução rápida demais",
-    description:
-      "Mais do que velocidade, operações eficientes precisam de contexto, estratégia e curadoria. Afinal, ser automatizado não significa, necessariamente, ser inteligente.",
-  },
-  {
-    icon: BarChart3,
-    title:
-      "Se sua taxa de devolução sobe e ninguém sabe por quê, você não está sozinho",
-    description:
-      "Dados fragmentados entre ERP, e-commerce e SAC criam pontos cegos. Centralizamos tudo em um painel acionável, não só relatórios.",
-  },
-  {
-    icon: Coins,
-    title:
-      "Todo mundo fala em vender mais. A gente fala em proteger e perder menos.",
-    description:
-      "Cada devolução mal gerida consome margem duas vezes: no custo logístico e na perda de confiança do cliente. Resolvemos os dois lados.",
-  },
-];
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
 
 export function Problem() {
+  const { lang } = useLang();
+
+  const items = [
+    { icon: Package, titulo: t("s2_card1_titulo", lang), desc: t("s2_card1_desc", lang) },
+    { icon: Zap, titulo: t("s2_card2_titulo", lang), desc: t("s2_card2_desc", lang) },
+    { icon: BarChart3, titulo: t("s2_card3_titulo", lang), desc: t("s2_card3_desc", lang) },
+    { icon: Coins, titulo: t("s2_card4_titulo", lang), desc: t("s2_card4_desc", lang) },
+  ];
+
   return (
     <section
       id="trocas"
@@ -47,20 +29,20 @@ export function Problem() {
               letterSpacing: "0.06em",
             }}
           >
-            Por que escalar muda tudo
+            {t("s2_eyebrow", lang)}
           </span>
           <h2 className="mt-4 text-4xl md:text-5xl font-display font-semibold tracking-tight text-white leading-[1.1]">
-            A troca e devolução que você conhece não foi feita para escalar
+            {t("s2_titulo", lang)}
           </h2>
           <p className="mt-5 text-lg text-white/65 leading-relaxed max-w-xl mx-auto">
-            Quatro perspectivas que sua operação precisa considerar antes de tratar troca e devolução como “mais um processo”.
+            {t("s2_subtitulo", lang)}
           </p>
         </div>
 
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-px rounded-2xl overflow-hidden bg-white/5">
           {items.map((c, i) => (
             <motion.article
-              key={c.title}
+              key={c.titulo}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -82,14 +64,14 @@ export function Problem() {
                   <c.icon className="size-[18px]" strokeWidth={1.75} />
                 </div>
                 <h3 className="text-base font-bold text-white leading-snug tracking-tight m-0">
-                  {c.title}
+                  {c.titulo}
                 </h3>
               </div>
               <p
                 className="text-[14px] text-white/60 leading-relaxed"
                 style={{ paddingLeft: 48, marginTop: 10 }}
               >
-                {c.description}
+                {c.desc}
               </p>
             </motion.article>
           ))}
