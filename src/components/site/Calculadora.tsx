@@ -9,23 +9,58 @@ type SliderProps = {
   step: number;
   onChange: (v: number) => void;
   format: (v: number) => string;
+  prefix?: string;
 };
 
-function Slider({ label, sublabel, value, min, max, step, onChange, format }: SliderProps) {
+function Slider({ label, sublabel, value, min, max, step, onChange, format, prefix }: SliderProps) {
   const pct = ((value - min) / (max - min)) * 100;
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/\D/g, "");
+    const num = Math.min(Math.max(Number(raw) || min, min), max);
+    onChange(num);
+  };
+
   return (
     <div style={{ marginBottom: 28 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
         <div>
           <p style={{ fontSize: 14, fontWeight: 600, color: "#1A1A1A", margin: 0 }}>{label}</p>
           {sublabel && <p style={{ fontSize: 12, color: "#888", margin: "2px 0 0" }}>{sublabel}</p>}
         </div>
-        <span style={{
-          fontSize: 18, fontWeight: 800, color: "#5C159B", letterSpacing: "-0.02em",
-          background: "rgba(92,21,155,0.06)", padding: "4px 12px", borderRadius: 8,
-        }}>
-          {format(value)}
-        </span>
+        <div
+          style={{
+            display: "flex", alignItems: "center", gap: 2,
+            background: "rgba(92,21,155,0.06)", borderRadius: 8,
+            padding: "4px 10px",
+            border: "1px solid transparent",
+            transition: "border-color 0.15s",
+          }}
+          onFocusCapture={(e) => (e.currentTarget.style.borderColor = "rgba(92,21,155,0.3)")}
+          onBlurCapture={(e) => (e.currentTarget.style.borderColor = "transparent")}
+        >
+          {prefix && (
+            <span style={{ fontSize: 16, fontWeight: 700, color: "#5C159B" }}>{prefix}</span>
+          )}
+          <input
+            type="text"
+            inputMode="numeric"
+            value={value.toLocaleString("pt-BR")}
+            onChange={handleInputChange}
+            onFocus={(e) => e.target.select()}
+            style={{
+              fontSize: 18, fontWeight: 800, color: "#5C159B",
+              letterSpacing: "-0.02em",
+              background: "transparent",
+              border: "none",
+              outline: "none",
+              width: `${Math.max(String(value).length + 1, 4)}ch`,
+              textAlign: "right",
+              fontFamily: "inherit",
+              cursor: "text",
+            }}
+          />
+        </div>
       </div>
       <div style={{ position: "relative", height: 6, background: "#E8E0F4", borderRadius: 99 }}>
         <div style={{
@@ -52,6 +87,7 @@ function Slider({ label, sublabel, value, min, max, step, onChange, format }: Sl
     </div>
   );
 }
+
 
 const fmtNum = (v: number) => v.toLocaleString("pt-BR");
 const fmtBRL = (v: number) => `R$ ${v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -126,7 +162,7 @@ export function Calculadora() {
               value={reversasMes} min={50} max={30000} step={50} onChange={setReversasMes} format={fmtNum} />
             <Slider label="Ticket médio" sublabel="Valor médio do produto envolvido em cada reversa"
               value={ticketMedio} min={50} max={10000} step={10} onChange={setTicketMedio}
-              format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} />
+              format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} prefix="R$" />
 
             <div style={{
               background: "rgba(92,21,155,0.04)", border: "1px solid rgba(92,21,155,0.12)",
