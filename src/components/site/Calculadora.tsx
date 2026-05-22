@@ -1,4 +1,6 @@
 import { useState, useMemo } from "react";
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
 
 type SliderProps = {
   label: string;
