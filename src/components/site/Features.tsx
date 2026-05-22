@@ -11,71 +11,25 @@ import {
   Wallet,
   Truck,
 } from "lucide-react";
-
-const features = [
-  {
-    icon: ShieldCheck,
-    title: "Autorização Inteligente",
-    description:
-      "Aprove ou bloqueie trocas com base em regras de negócio personalizáveis.",
-  },
-  {
-    icon: GitBranch,
-    title: "Fluxo Personalizável",
-    description:
-      "Monte o fluxo ideal para troca, devolução ou crédito — sem código.",
-  },
-  {
-    icon: Plug,
-    title: "Integração — API Simples e Flexível",
-    description:
-      "Conecte com qualquer plataforma de e-commerce em minutos.",
-  },
-  {
-    icon: BarChart3,
-    title: "Dashboards em Tempo Real",
-    description:
-      "Monitore volume, motivos e impacto financeiro das devoluções ao vivo.",
-  },
-  {
-    icon: Gift,
-    title: "Retenção Programada",
-    description:
-      "Ofertas de recompra com vouchers e cashback automatizados.",
-  },
-  {
-    icon: Lock,
-    title: "Security First",
-    description:
-      "Dados protegidos com criptografia end-to-end e compliance PCI.",
-  },
-  {
-    icon: Repeat,
-    title: "Fluxo de Troca Contínua",
-    description:
-      "Transforme devoluções em novas vendas com sugestões automáticas de troca.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Solicitação via WhatsApp e e-mail",
-    description:
-      "Cliente abre a troca pelo canal que preferir, sem atrito.",
-  },
-  {
-    icon: Wallet,
-    title: "Estorno e vale-compras automatizado",
-    description:
-      "Processe reembolsos e registre novas compras de forma automática.",
-  },
-  {
-    icon: Truck,
-    title: "Logística Reversa Integrada",
-    description:
-      "Etiquetas, rastreio e reembolso centralizados em uma única tela.",
-  },
-];
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
 
 export function Features() {
+  const { lang } = useLang();
+
+  const features = [
+    { icon: ShieldCheck, title: t("s5_f1_titulo", lang), description: t("s5_f1_desc", lang) },
+    { icon: GitBranch, title: t("s5_f2_titulo", lang), description: t("s5_f2_desc", lang) },
+    { icon: Plug, title: t("s5_f3_titulo", lang), description: t("s5_f3_desc", lang) },
+    { icon: BarChart3, title: t("s5_f4_titulo", lang), description: t("s5_f4_desc", lang) },
+    { icon: Gift, title: t("s5_f5_titulo", lang), description: t("s5_f5_desc", lang) },
+    { icon: Lock, title: t("s5_f6_titulo", lang), description: t("s5_f6_desc", lang) },
+    { icon: Repeat, title: t("s5_f7_titulo", lang), description: t("s5_f7_desc", lang) },
+    { icon: MessageCircle, title: t("s5_f8_titulo", lang), description: t("s5_f8_desc", lang) },
+    { icon: Wallet, title: t("s5_f9_titulo", lang), description: t("s5_f9_desc", lang) },
+    { icon: Truck, title: t("s5_f10_titulo", lang), description: t("s5_f10_desc", lang) },
+  ];
+
   return (
     <section
       id="produtos"
@@ -92,14 +46,13 @@ export function Features() {
               letterSpacing: "0.06em",
             }}
           >
-            Plataforma completa
+            {t("s5_eyebrow", lang)}
           </span>
           <h2 className="mt-4 text-4xl md:text-5xl font-display font-semibold tracking-tight text-white leading-[1.1]">
-            Tudo que seu e-commerce precisa
+            {t("s5_titulo", lang)}
           </h2>
           <p className="mt-5 text-lg text-white/65 leading-relaxed max-w-xl mx-auto">
-            Funcionalidades que se encaixam na sua operação desde o primeiro
-            pedido de troca.
+            {t("s5_subtitulo", lang)}
           </p>
         </div>
 

@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
 
 const logos = [
   { name: "Seilia",        src: "/logos/seilia.svg" },
@@ -114,6 +116,7 @@ function LogoGrid() {
 
 
 export function Logos() {
+  const { lang } = useLang();
   return (
     <>
       {/* +400 clientes confiam — carrossel (vem ANTES) */}
@@ -132,10 +135,10 @@ export function Logos() {
               letterSpacing: "0.06em",
             }}
           >
-            Clientes
+            {t("s7_eyebrow", lang)}
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-9 text-center">
-            +400 clientes confiam
+            {t("s7_titulo", lang)}
           </h2>
           <LogoGrid />
         </div>
@@ -157,10 +160,10 @@ export function Logos() {
               letterSpacing: "0.06em",
             }}
           >
-            Parceiros
+            {t("s8_eyebrow", lang)}
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-10 text-center">
-            Nossos parceiros recomendam
+            {t("s8_titulo", lang)}
           </h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="max-md:!grid-cols-1">
@@ -182,14 +185,14 @@ export function Logos() {
                 className="text-[22px] lg:text-[24px] font-bold leading-[1.3] mb-4"
                 style={{ color: "#0A0A0A", letterSpacing: "-0.02em" }}
               >
-                "A Aftersale nos deu controle real sobre nossa operação de trocas em escala — algo que parecia impossível antes."
+                "{t("s8_dep1", lang)}"
               </p>
               <div style={{ width: 40, height: 2, background: "rgba(92,21,155,0.2)", borderRadius: 2, marginBottom: 16 }} />
               <p
                 className="text-[16px] font-medium leading-[1.55] italic"
                 style={{ color: "#555555" }}
               >
-                "Hoje processamos milhares de trocas por mês com fluxos automatizados e visibilidade total — uma transformação que impactou diretamente nossa margem."
+                "{t("s8_dep2", lang)}"
               </p>
             </motion.div>
 
@@ -211,14 +214,14 @@ export function Logos() {
                 className="text-[22px] lg:text-[24px] font-bold leading-[1.3] mb-4"
                 style={{ color: "#0A0A0A", letterSpacing: "-0.02em" }}
               >
-                "A integração foi simples e os resultados vieram rápido — a Aftersale virou parte essencial da nossa operação."
+                "{t("s8_dep3", lang)}"
               </p>
               <div style={{ width: 40, height: 2, background: "rgba(92,21,155,0.2)", borderRadius: 2, marginBottom: 16 }} />
               <p
                 className="text-[16px] font-medium leading-[1.55] italic"
                 style={{ color: "#555555" }}
               >
-                "Ganhamos visibilidade total da jornada de pós-venda e reduzimos drasticamente o tempo de tratamento de cada solicitação de troca."
+                "{t("s8_dep4", lang)}"
               </p>
             </motion.div>
           </div>

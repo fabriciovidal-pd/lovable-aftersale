@@ -1,20 +1,13 @@
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
+
 export function TrocaProduto() {
+  const { lang } = useLang();
+
   const bullets = [
-    {
-      titulo: "60–65% das devoluções em moda são por tamanho",
-      texto:
-        "A maioria dos clientes não quer devolver — quer trocar. Cada devolução sem oferta de troca é uma venda perdida que poderia ser retida.",
-    },
-    {
-      titulo: "Troca guiada no portal do cliente",
-      texto:
-        "O consumidor escolhe o novo tamanho ou cor diretamente no fluxo de reversa, sem precisar abrir chamado ou falar com atendimento.",
-    },
-    {
-      titulo: "Retenção de receita em vez de reembolso",
-      texto:
-        "Ao converter devoluções em trocas, sua operação reduz chargebacks, mantém o GMV e aumenta a satisfação pós-compra.",
-    },
+    { titulo: t("s4_b1_titulo", lang), texto: t("s4_b1_desc", lang) },
+    { titulo: t("s4_b2_titulo", lang), texto: t("s4_b2_desc", lang) },
+    { titulo: t("s4_b3_titulo", lang), texto: t("s4_b3_desc", lang) },
   ];
 
   return (
@@ -52,20 +45,18 @@ export function TrocaProduto() {
                   textTransform: "uppercase",
                 }}
               >
-                Troca de Produto
+                {t("s4_eyebrow", lang)}
               </span>
             </div>
 
             <h2
               className="text-[#7d00fa] px-0 text-5xl rounded-none font-extrabold tracking-tight leading-[1.1] mb-6"
             >
-              Transforme devoluções em novas vendas
+              {t("s4_titulo", lang)}
             </h2>
 
             <p style={{ fontSize: 16, color: "#555555", lineHeight: 1.7, marginBottom: 32 }}>
-              Em moda e acessórios, a maioria das devoluções não é rejeição ao produto
-              — é um problema de tamanho. Com a Aftersale, você oferece a troca certa
-              no momento certo, retendo a receita antes que ela vire reembolso.
+              {t("s4_subtitulo", lang)}
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
@@ -150,7 +141,7 @@ export function TrocaProduto() {
                 </svg>
               </div>
               <p style={{ fontSize: 13, color: "#9B78C8", fontWeight: 500, margin: 0 }}>
-                Demo em vídeo — em breve
+                {t("s4_demo", lang)}
               </p>
             </div>
           </div>

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
 
 type Item = {
   ano: string;
@@ -6,46 +8,6 @@ type Item = {
   descricao: string;
   badge?: string;
 };
-
-const timeline: Item[] = [
-  {
-    ano: "2017-18",
-    titulo: "O começo",
-    descricao:
-      "Nascemos como empresa de pontos de entrega e criamos o produto de troca e devolução.",
-  },
-  {
-    ano: "2019-20",
-    titulo: "Vale do Silício",
-    descricao:
-      "Única empresa brasileira aceita no programa 500 Startups no Vale do Silício.",
-  },
-  {
-    ano: "2021-22",
-    titulo: "Ecossistema Confi",
-    descricao:
-      "A soma de experiências consolida. Nos tornamos parte do ecossistema Confi.",
-  },
-  {
-    ano: "2023+",
-    titulo: "Liderança consolidada",
-    descricao:
-      "+400 clientes, +6M reversas. Líderes consolidados no mercado de troca e devolução.",
-  },
-  {
-    ano: "2025",
-    titulo: "Reposicionamento tecnológico",
-    descricao:
-      "Reestruturação do produto com foco em operações maduras, orientadas a dados e governança.",
-  },
-  {
-    ano: "2026",
-    titulo: "Aquisição da Genius Returns",
-    descricao:
-      "Embarcamos portfólio, tecnologia, capital intelectual e market share — consolidando a Aftersale como a plataforma definitiva de pós-venda no Brasil, agora orientada a inteligência artificial.",
-    badge: "Novo ciclo · IA First",
-  },
-];
 
 function CardContent({ ano, titulo, descricao, badge }: Item) {
   const [hov, setHov] = useState(false);
@@ -213,6 +175,17 @@ function TimelineCard({
 }
 
 export function Timeline() {
+  const { lang } = useLang();
+
+  const timeline: Item[] = [
+    { ano: "2017-18", titulo: t("s9_2017_label", lang), descricao: t("s9_2017_desc", lang) },
+    { ano: "2019-20", titulo: t("s9_2019_label", lang), descricao: t("s9_2019_desc", lang) },
+    { ano: "2021-22", titulo: t("s9_2021_label", lang), descricao: t("s9_2021_desc", lang) },
+    { ano: "2023+", titulo: t("s9_2023_label", lang), descricao: t("s9_2023_desc", lang) },
+    { ano: "2025", titulo: t("s9_2025_label", lang), descricao: t("s9_2025_desc", lang) },
+    { ano: "2026", titulo: t("s9_2026_label", lang), descricao: t("s9_2026_desc", lang), badge: t("s9_novo_ciclo", lang) },
+  ];
+
   const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [dotsVisible, setDotsVisible] = useState<boolean[]>(
     Array(timeline.length).fill(false)
@@ -267,12 +240,12 @@ export function Timeline() {
               textTransform: "uppercase",
             }}
           >
-            Nossa História
+            {t("s9_eyebrow", lang)}
           </span>
         </div>
 
         <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-9 text-center">
-          Da concepção à consolidação como referência nacional.
+          {t("s9_titulo", lang)}
         </h2>
 
         <div style={{ position: "relative" }}>

@@ -1,5 +1,7 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
 
 function Counter({
   to,
@@ -40,24 +42,20 @@ type Stat = {
   decimals?: number;
   display?: string;
   label: string;
-  source?: string;
 };
 
-const stats: Stat[] = [
-  { value: 90, suffix: "%", label: "Atendimento de troca rápido" },
-  { value: 30, suffix: "%", label: "Redução na retenção de chamados" },
-  { value: 40, suffix: "%", label: "Upsell entre trocas reversas" },
-  { value: 6, prefix: "+", suffix: "M", label: "Reversas processadas" },
-  { display: "Até 60%", label: "Redução em custo logístico com leilão de frete" },
-  {
-    value: 71,
-    suffix: "%",
-    label:
-      "dos consumidores satisfeitos com o atendimento pós-venda tendem a retornar e comprar novamente",
-  },
-];
-
 export function Metrics() {
+  const { lang } = useLang();
+
+  const stats: Stat[] = [
+    { value: 90, suffix: "%", label: t("s3_stat1", lang) },
+    { value: 30, suffix: "%", label: t("s3_stat2", lang) },
+    { value: 40, suffix: "%", label: t("s3_stat3", lang) },
+    { value: 6, prefix: "+", suffix: "M", label: t("s3_stat4", lang) },
+    { display: t("s3_stat5_display", lang), label: t("s3_stat5", lang) },
+    { value: 71, suffix: "%", label: t("s3_stat6", lang) },
+  ];
+
   return (
     <section id="resultados" className="py-24 lg:py-32 bg-surface">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -71,13 +69,13 @@ export function Metrics() {
               letterSpacing: "0.06em",
             }}
           >
-            Resultados
+            {t("s3_eyebrow", lang)}
           </span>
           <h2 className="mt-5 text-4xl md:text-5xl font-display font-medium tracking-tight text-brand">
-            Números que comprovam
+            {t("s3_titulo", lang)}
           </h2>
           <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-            Resultados reais de mais de 400 clientes que transformaram sua operação de troca e devolução.
+            {t("s3_subtitulo", lang)}
           </p>
         </div>
 
@@ -109,9 +107,6 @@ export function Metrics() {
                   )}
                 </div>
                 <div className="mt-4 text-sm font-medium text-foreground leading-snug">{s.label}</div>
-                {s.source && (
-                  <p className="mt-2 text-xs text-muted-foreground">Fonte: {s.source}</p>
-                )}
               </div>
             </motion.div>
           ))}
@@ -125,7 +120,7 @@ export function Metrics() {
           className="mt-20 text-center"
         >
           <p className="text-3xl md:text-5xl font-display font-medium tracking-tight">
-            <span className="text-brand-gradient">Tem muito dinheiro na mesa!</span>
+            <span className="text-brand-gradient">{t("s3_closing", lang)}</span>
           </p>
         </motion.div>
       </div>

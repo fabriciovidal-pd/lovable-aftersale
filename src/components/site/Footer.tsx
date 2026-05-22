@@ -1,3 +1,5 @@
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
 
 const IconInstagram = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -19,37 +21,38 @@ const IconX = () => (
   </svg>
 );
 
-const footerColumns = [
-  {
-    title: "Navegação",
-    links: [
-      { label: "Trocas e Devoluções", href: "#trocas" },
-      { label: "Resultados", href: "#resultados" },
-      { label: "Produto", href: "#produtos" },
-    ],
-  },
-  {
-    title: "Empresa",
-    links: [
-      { label: "Clientes", href: "#clientes" },
-      { label: "Nossa História", href: "#historia" },
-    ],
-  },
-  {
-    title: "Fale Conosco",
-    links: [
-      { label: "comercial@aftersale.com.br", href: "mailto:comercial@aftersale.com.br" },
-      { label: "Agendar demonstração", href: "#cta" },
-    ],
-  },
-];
-
 export function Footer() {
+  const { lang } = useLang();
+
+  const footerColumns = [
+    {
+      title: t("footer_nav", lang),
+      links: [
+        { label: t("nav_trocas", lang), href: "#trocas" },
+        { label: t("nav_resultados", lang), href: "#resultados" },
+        { label: t("nav_produtos", lang), href: "#produtos" },
+      ],
+    },
+    {
+      title: t("footer_empresa", lang),
+      links: [
+        { label: t("nav_clientes", lang), href: "#clientes" },
+        { label: t("nav_historia", lang), href: "#historia" },
+      ],
+    },
+    {
+      title: t("footer_fale", lang),
+      links: [
+        { label: "comercial@aftersale.com.br", href: "mailto:comercial@aftersale.com.br" },
+        { label: t("footer_agendar", lang), href: "#cta" },
+      ],
+    },
+  ];
+
   return (
     <footer style={{ background: "#5C159B" }} className="px-6 lg:px-16 pt-16 pb-8">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_2fr] gap-12 mb-12 items-start">
-          {/* Logo + selos */}
           <div>
             <img
               src="/Aftersale_negativo.svg"
@@ -58,7 +61,6 @@ export function Footer() {
             />
           </div>
 
-          {/* Colunas de menus balanceadas */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
             {footerColumns.map((col) => (
               <div key={col.title}>
@@ -107,7 +109,7 @@ export function Footer() {
             color: "rgba(255,255,255,0.45)",
           }}
         >
-          © {new Date().getFullYear()} Aftersale. Todos os direitos reservados.
+          © {new Date().getFullYear()} Aftersale. {t("footer_copyright", lang)}
         </div>
       </div>
     </footer>

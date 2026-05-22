@@ -1,21 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Globe, ChevronDown, Check } from "lucide-react";
-import logo from "@/assets/aftersale-logo.png";
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
+import type { Lang } from "@/i18n/translations";
 
-const links = [
-  { label: "Trocas e Devoluções", href: "#trocas" },
-  { label: "Resultados", href: "#resultados" },
-  { label: "Produto", href: "#produtos" },
-  { label: "Clientes", href: "#clientes" },
-  { label: "Nossa História", href: "#historia" },
-];
-
-type Lang = "PT" | "EN" | "ES";
-const langs: Lang[] = ["PT", "EN", "ES"];
+const langOptions: Lang[] = ["pt", "en", "es"];
 
 function LanguageDropdown() {
-  const [lang, setLang] = useState<Lang>("PT");
+  const { lang, setLang } = useLang();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -34,7 +27,7 @@ function LanguageDropdown() {
         className="inline-flex items-center gap-1.5 rounded-full border border-brand/25 px-3 py-1.5 text-xs font-medium text-brand hover:bg-brand/5 transition-colors"
       >
         <Globe className="size-3.5" />
-        <span>{lang}</span>
+        <span>{lang.toUpperCase()}</span>
         <ChevronDown className={`size-3 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       <AnimatePresence>
@@ -46,7 +39,7 @@ function LanguageDropdown() {
             transition={{ duration: 0.15 }}
             className="absolute right-0 mt-2 w-32 rounded-xl border border-zinc-200 bg-white shadow-lg overflow-hidden z-50"
           >
-            {langs.map((o) => (
+            {langOptions.map((o) => (
               <button
                 key={o}
                 onClick={() => {
@@ -57,7 +50,7 @@ function LanguageDropdown() {
                   lang === o ? "bg-brand/5 text-brand" : "text-zinc-700 hover:bg-zinc-50"
                 }`}
               >
-                <span>{o}</span>
+                <span>{o.toUpperCase()}</span>
                 {lang === o && <Check className="size-3" />}
               </button>
             ))}
@@ -69,8 +62,17 @@ function LanguageDropdown() {
 }
 
 export function Navbar() {
+  const { lang } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { label: t("nav_trocas", lang), href: "#trocas" },
+    { label: t("nav_resultados", lang), href: "#resultados" },
+    { label: t("nav_produtos", lang), href: "#produtos" },
+    { label: t("nav_clientes", lang), href: "#clientes" },
+    { label: t("nav_historia", lang), href: "#historia" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -120,7 +122,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="text-sm px-4 py-2 rounded-full bg-brand text-white hover:bg-brand/90 transition-all shadow-elegant"
             >
-              Agendar demonstração
+              {t("btn_agendar", lang)}
             </a>
             <LanguageDropdown />
           </div>
@@ -152,7 +154,7 @@ export function Navbar() {
               ))}
               <div className="flex flex-col gap-2 pt-2">
                 <a href="LINK_AGENDAMENTO" target="_blank" rel="noopener noreferrer" className="text-sm px-4 py-2 rounded-full bg-brand-gradient text-brand-foreground text-center shadow-brand">
-                  Agendar demonstração
+                  {t("btn_agendar", lang)}
                 </a>
                 <div className="pt-2 flex justify-center">
                   <LanguageDropdown />
