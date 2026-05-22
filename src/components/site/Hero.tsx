@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import dashboard from "@/assets/dashboard-new.png";
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
 
 export function Hero() {
+  const { lang } = useLang();
   return (
     <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-white">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -19,14 +22,14 @@ export function Hero() {
                 <span className="size-1.5 rounded-full bg-brand" />
                 <Sparkles className="size-3.5 text-brand" />
                 <span className="text-xs font-medium text-brand">
-                  Líder em trocas e devoluções desde 2017
+                  {t("hero_tag1", lang)}
                 </span>
               </span>
               <span className="inline-flex items-center rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5 text-xs font-medium text-brand">
-                +6M reversas processadas
+                {t("hero_tag2", lang)}
               </span>
               <span className="inline-flex items-center rounded-full border border-brand/20 bg-brand/5 px-3 py-1.5 text-xs font-medium text-brand">
-                IA-First
+                {t("hero_tag3", lang)}
               </span>
             </motion.div>
 
@@ -36,11 +39,11 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.05 }}
               className="mt-6 text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.05] text-brand"
             >
-              Reduza o custo de trocas e devoluções e{" "}
+              {t("hero_titulo_a", lang)}{" "}
               <span className="bg-gradient-to-r from-brand to-[#AD7AFC] bg-clip-text text-transparent">
-                proteja a receita
+                {t("hero_titulo_b", lang)}
               </span>{" "}
-              da sua operação
+              {t("hero_titulo_c", lang)}
             </motion.h1>
 
             <motion.p
@@ -49,7 +52,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mt-5 text-lg text-zinc-600 leading-relaxed"
             >
-              Reduzir devoluções começa antes do produto voltar. Trabalhamos para evitar ocorrências desnecessárias, diminuindo custos e aumentando a eficiência da operação.
+              {t("hero_subtitulo", lang)}
             </motion.p>
 
             <motion.div
@@ -64,13 +67,13 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-xl bg-brand text-white px-6 py-3.5 text-sm font-semibold shadow-elegant hover:bg-brand/90 hover:-translate-y-0.5 hover:shadow-brand transition-all"
               >
-                Agendar demonstração
+                {t("hero_cta", lang)}
               </a>
               <a
                 href="#produtos"
                 className="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-700 px-5 py-3 text-sm font-medium hover:bg-zinc-50 transition-colors"
               >
-                Conhecer plataforma
+                {t("hero_cta_secondary", lang)}
               </a>
             </motion.div>
 
@@ -104,7 +107,7 @@ export function Hero() {
           className="mt-16 lg:mt-20 pt-8 border-t border-zinc-100 flex flex-wrap items-center gap-x-10 gap-y-4"
         >
           <span className="text-xs uppercase tracking-widest text-zinc-400 whitespace-nowrap">
-            Marcas que confiam na Aftersale
+            {t("hero_social", lang)}
           </span>
           {["Samsung", "Hugo Boss", "Lofty", "Farm", "Ri Happy"].map((co) => (
             <span
