@@ -53,8 +53,7 @@ export function Problem() {
             A troca e devolução que você conhece não foi feita para escalar
           </h2>
           <p className="mt-5 text-lg text-white/65 leading-relaxed max-w-xl mx-auto">
-            Quem processava cem trocas por mês não tem os mesmos problemas de
-            troca e devolução com um volume mais alto.
+            Quatro perspectivas que sua operação precisa considerar antes de tratar troca e devolução como “mais um processo”.
           </p>
         </div>
 
