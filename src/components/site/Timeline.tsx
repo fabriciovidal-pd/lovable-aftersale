@@ -175,6 +175,17 @@ function TimelineCard({
 }
 
 export function Timeline() {
+  const { lang } = useLang();
+
+  const timeline: Item[] = [
+    { ano: "2017-18", titulo: t("s9_2017_label", lang), descricao: t("s9_2017_desc", lang) },
+    { ano: "2019-20", titulo: t("s9_2019_label", lang), descricao: t("s9_2019_desc", lang) },
+    { ano: "2021-22", titulo: t("s9_2021_label", lang), descricao: t("s9_2021_desc", lang) },
+    { ano: "2023+", titulo: t("s9_2023_label", lang), descricao: t("s9_2023_desc", lang) },
+    { ano: "2025", titulo: t("s9_2025_label", lang), descricao: t("s9_2025_desc", lang) },
+    { ano: "2026", titulo: t("s9_2026_label", lang), descricao: t("s9_2026_desc", lang), badge: t("s9_novo_ciclo", lang) },
+  ];
+
   const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [dotsVisible, setDotsVisible] = useState<boolean[]>(
     Array(timeline.length).fill(false)
@@ -229,12 +240,12 @@ export function Timeline() {
               textTransform: "uppercase",
             }}
           >
-            Nossa História
+            {t("s9_eyebrow", lang)}
           </span>
         </div>
 
         <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-brand leading-[1.1] mb-9 text-center">
-          Da concepção à consolidação como referência nacional.
+          {t("s9_titulo", lang)}
         </h2>
 
         <div style={{ position: "relative" }}>

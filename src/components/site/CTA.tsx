@@ -1,4 +1,8 @@
+import { useLang } from "@/i18n/LanguageContext";
+import { t } from "@/i18n/translations";
+
 export function CTA() {
+  const { lang } = useLang();
   return (
     <section id="cta" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -7,10 +11,10 @@ export function CTA() {
           <div className="absolute -bottom-40 -left-20 size-96 rounded-full bg-brand-gradient opacity-40 blur-3xl mix-blend-overlay" />
           <div className="relative max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-brand-foreground leading-tight">
-              Trocas e devoluções fazem parte de um sistema econômico, saiba como fazer bom uso dele.
+              {t("cta_titulo", lang)}
             </h2>
             <p className="mt-5 text-lg text-brand-foreground/80">
-              Pare de medir por volume de chamados, meça pelo impacto no seu P&amp;L. Agende uma conversa estratégica.
+              {t("cta_subtitulo", lang)}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
@@ -19,7 +23,7 @@ export function CTA() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full bg-background text-brand px-5 py-3 text-sm font-medium shadow-elegant hover:shadow-accent-glow transition-all"
               >
-                Agende uma reunião
+                {t("cta_btn", lang)}
               </a>
             </div>
           </div>
