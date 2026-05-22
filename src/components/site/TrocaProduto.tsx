@@ -1,5 +1,6 @@
 import { useLang } from "@/i18n/LanguageContext";
 import { t } from "@/i18n/translations";
+import trocaDetalhes from "@/assets/troca-detalhes.png";
 
 export function TrocaProduto() {
   const { lang } = useLang();
@@ -93,34 +94,56 @@ export function TrocaProduto() {
             </div>
           </div>
 
-          <div
-            style={{
-              background: "#F3F0F7",
-              borderRadius: 20,
-              overflow: "hidden",
-              position: "relative",
-              aspectRatio: "16/10",
-              boxShadow: "0 8px 40px rgba(92,21,155,0.12)",
-              border: "1px solid rgba(92,21,155,0.1)",
-            }}
-          >
-            <video
-              src="/demo-troca.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
+          <div className="tablet-float" style={{ display: "flex", justifyContent: "center" }}>
+            <div
               style={{
-                position: "absolute",
-                left: "-2%",
-                width: "104%",
-                top: "-9%",
-                height: "120%",
-                objectFit: "cover",
-                objectPosition: "center",
-                display: "block",
+                background: "linear-gradient(145deg, #1a1a1a, #2d2d2d)",
+                borderRadius: 28,
+                padding: 14,
+                boxShadow:
+                  "0 30px 80px -20px rgba(92,21,155,0.35), 0 10px 30px rgba(0,0,0,0.18), inset 0 0 0 1px rgba(255,255,255,0.06)",
+                position: "relative",
+                width: "100%",
+                maxWidth: 560,
               }}
-            />
+            >
+              {/* camera */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: 18,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "#0a0a0a",
+                  boxShadow: "inset 0 0 2px rgba(255,255,255,0.2)",
+                }}
+              />
+              <div
+                style={{
+                  background: "#fff",
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  aspectRatio: "16/10",
+                  position: "relative",
+                  marginTop: 14,
+                }}
+              >
+                <img
+                  src={trocaDetalhes}
+                  alt={t("s4_demo", lang)}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "top center",
+                    display: "block",
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -128,6 +151,14 @@ export function TrocaProduto() {
       <style>{`
         @media (max-width: 860px) {
           .troca-grid { grid-template-columns: 1fr !important; }
+        }
+        @keyframes tabletFloat {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(-0.4deg); }
+        }
+        .tablet-float > div {
+          animation: tabletFloat 6s ease-in-out infinite;
+          transform-origin: center;
         }
       `}</style>
     </section>
