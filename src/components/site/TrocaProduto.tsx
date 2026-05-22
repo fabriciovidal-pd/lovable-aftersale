@@ -1,9 +1,31 @@
+import { useEffect, useRef } from "react";
 import { useLang } from "@/i18n/LanguageContext";
 import { t } from "@/i18n/translations";
-import trocaDetalhes from "@/assets/troca-detalhes.png";
 
 export function TrocaProduto() {
   const { lang } = useLang();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const START = 7;
+    const END = 28;
+    const handleLoaded = () => {
+      try { v.currentTime = START; } catch {}
+    };
+    const handleTime = () => {
+      if (v.currentTime >= END || v.currentTime < START) {
+        try { v.currentTime = START; } catch {}
+      }
+    };
+    v.addEventListener("loadedmetadata", handleLoaded);
+    v.addEventListener("timeupdate", handleTime);
+    return () => {
+      v.removeEventListener("loadedmetadata", handleLoaded);
+      v.removeEventListener("timeupdate", handleTime);
+    };
+  }, []);
 
   const bullets = [
     { titulo: t("s4_b1_titulo", lang), texto: t("s4_b1_desc", lang) },
@@ -94,56 +116,76 @@ export function TrocaProduto() {
             </div>
           </div>
 
-          <div className="tablet-float" style={{ display: "flex", justifyContent: "center" }}>
+          <div className="browser-float" style={{ width: "100%" }}>
             <div
               style={{
-                background: "linear-gradient(145deg, #1a1a1a, #2d2d2d)",
-                borderRadius: 28,
-                padding: 14,
+                background: "#1E1E2E",
+                borderRadius: 16,
+                overflow: "hidden",
                 boxShadow:
-                  "0 30px 80px -20px rgba(92,21,155,0.35), 0 10px 30px rgba(0,0,0,0.18), inset 0 0 0 1px rgba(255,255,255,0.06)",
-                position: "relative",
-                width: "100%",
-                maxWidth: 560,
+                  "0 24px 64px rgba(92,21,155,0.18), 0 4px 16px rgba(0,0,0,0.2)",
+                border: "1px solid rgba(255,255,255,0.06)",
               }}
             >
-              {/* camera */}
               <div
                 style={{
-                  position: "absolute",
-                  top: 18,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: 6,
-                  height: 6,
-                  borderRadius: "50%",
-                  background: "#0a0a0a",
-                  boxShadow: "inset 0 0 2px rgba(255,255,255,0.2)",
-                }}
-              />
-              <div
-                style={{
-                  background: "#fff",
-                  borderRadius: 16,
-                  overflow: "hidden",
-                  aspectRatio: "16/10",
-                  position: "relative",
-                  marginTop: 14,
+                  background: "#2A2A3E",
+                  padding: "10px 16px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
                 }}
               >
-                <img
-                  src={trocaDetalhes}
-                  alt={t("s4_demo", lang)}
+                <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840" }} />
+                </div>
+                <div
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "top center",
-                    display: "block",
+                    flex: 1,
+                    background: "rgba(255,255,255,0.06)",
+                    borderRadius: 6,
+                    padding: "4px 12px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 6,
                   }}
+                >
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                  <span style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.01em" }}>
+                    troque-facil.aftersale.com.br
+                  </span>
+                </div>
+              </div>
+
+              <div style={{ position: "relative", width: "100%", aspectRatio: "960/450", background: "#FAFAFA" }}>
+                <video
+                  ref={videoRef}
+                  src="/troque-facil-demo.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
               </div>
             </div>
+
+            <div
+              style={{
+                height: 32,
+                marginTop: -1,
+                background: "linear-gradient(180deg, rgba(92,21,155,0.06) 0%, transparent 100%)",
+                borderRadius: "0 0 16px 16px",
+                filter: "blur(8px)",
+                transform: "scaleY(-1)",
+                opacity: 0.4,
+              }}
+            />
           </div>
         </div>
       </div>
@@ -152,13 +194,12 @@ export function TrocaProduto() {
         @media (max-width: 860px) {
           .troca-grid { grid-template-columns: 1fr !important; }
         }
-        @keyframes tabletFloat {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(-0.4deg); }
+        @keyframes browserFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
         }
-        .tablet-float > div {
-          animation: tabletFloat 6s ease-in-out infinite;
-          transform-origin: center;
+        .browser-float {
+          animation: browserFloat 6s ease-in-out infinite;
         }
       `}</style>
     </section>
