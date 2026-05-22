@@ -1,5 +1,6 @@
 import { useLang } from "@/i18n/LanguageContext";
 import { t } from "@/i18n/translations";
+import trocaDetalhes from "@/assets/troca-detalhes.png";
 
 export function TrocaProduto() {
   const { lang } = useLang();
