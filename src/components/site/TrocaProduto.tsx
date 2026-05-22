@@ -116,53 +116,41 @@ export function TrocaProduto() {
             </div>
           </div>
 
-          <div className="browser-float" style={{ width: "100%" }}>
+          <div style={{ width: "100%" }}>
             <div
               style={{
-                background: "#1E1E2E",
-                borderRadius: 16,
+                background: "#1c1c1e",
+                borderRadius: 28,
+                padding: "14px 14px 18px",
                 overflow: "hidden",
                 boxShadow:
-                  "0 24px 64px rgba(92,21,155,0.18), 0 4px 16px rgba(0,0,0,0.2)",
-                border: "1px solid rgba(255,255,255,0.06)",
+                  "0 24px 64px rgba(92,21,155,0.18), 0 4px 16px rgba(0,0,0,0.25)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                position: "relative",
               }}
             >
               <div
                 style={{
-                  background: "#2A2A3E",
-                  padding: "10px 16px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
+                  position: "absolute",
+                  top: 6,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "rgba(255,255,255,0.25)",
+                  zIndex: 2,
+                }}
+              />
+              <div
+                style={{
+                  borderRadius: 18,
+                  overflow: "hidden",
+                  background: "#0A0A0A",
+                  position: "relative",
+                  aspectRatio: "4/3",
                 }}
               >
-                <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57" }} />
-                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FFBD2E" }} />
-                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840" }} />
-                </div>
-                <div
-                  style={{
-                    flex: 1,
-                    background: "rgba(255,255,255,0.06)",
-                    borderRadius: 6,
-                    padding: "4px 12px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                  }}
-                >
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                  </svg>
-                  <span style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.01em" }}>
-                    troque-facil.aftersale.com.br
-                  </span>
-                </div>
-              </div>
-
-              <div style={{ position: "relative", width: "100%", aspectRatio: "960/450", background: "#FAFAFA" }}>
                 <video
                   ref={videoRef}
                   src="/troque-facil-demo.mp4"
@@ -174,18 +162,6 @@ export function TrocaProduto() {
                 />
               </div>
             </div>
-
-            <div
-              style={{
-                height: 32,
-                marginTop: -1,
-                background: "linear-gradient(180deg, rgba(92,21,155,0.06) 0%, transparent 100%)",
-                borderRadius: "0 0 16px 16px",
-                filter: "blur(8px)",
-                transform: "scaleY(-1)",
-                opacity: 0.4,
-              }}
-            />
           </div>
         </div>
       </div>
