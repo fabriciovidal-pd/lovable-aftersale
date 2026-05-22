@@ -10,7 +10,7 @@ const items = [
   },
   {
     icon: Zap,
-    title: "O maior erro é a devolução rápido demais",
+    title: "O maior erro é a devolução rápida demais",
     description:
       "Mais do que velocidade, operações eficientes precisam de contexto, estratégia e curadoria. Afinal, ser automatizado não significa, necessariamente, ser inteligente.",
   },
