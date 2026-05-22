@@ -95,6 +95,7 @@ const fmtNum = (v: number) => v.toLocaleString("pt-BR");
 const fmtBRL = (v: number) => `R$ ${v.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 export function Calculadora() {
+  const { lang } = useLang();
   const [reversasMes, setReversasMes] = useState(500);
   const [ticketMedio, setTicketMedio] = useState(250);
 
@@ -131,7 +132,7 @@ export function Calculadora() {
             letterSpacing: "0.06em",
             textTransform: "uppercase",
           }}>
-            Calculadora
+            {t("s6_eyebrow", lang)}
           </span>
         </div>
 
@@ -140,13 +141,13 @@ export function Calculadora() {
           color: "#5C159B", textAlign: "center", marginBottom: 12,
           fontFamily: "'Rubik', 'Helvetica Neue', sans-serif",
         }}>
-          Quanto você pode economizar?
+          {t("s6_titulo", lang)}
         </h2>
         <p style={{
           fontSize: 16, color: "#666", textAlign: "center",
           maxWidth: 520, margin: "0 auto 56px", lineHeight: 1.6,
         }}>
-          Ajuste os parâmetros da sua operação e veja o impacto real da automação de reversas.
+          {t("s6_subtitulo", lang)}
         </p>
 
         <div className="calc-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
@@ -158,12 +159,12 @@ export function Calculadora() {
               fontSize: 13, fontWeight: 700, color: "#5C159B",
               textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 28,
             }}>
-              Sua operação atual
+              {t("s6_panel_label", lang)}
             </p>
 
-            <Slider label="Reversas por mês" sublabel="Trocas e devoluções processadas"
+            <Slider label={t("s6_slider1_label", lang)} sublabel={t("s6_slider1_sub", lang)}
               value={reversasMes} min={50} max={30000} step={50} onChange={setReversasMes} format={fmtNum} />
-            <Slider label="Ticket médio" sublabel="Valor médio do produto envolvido em cada reversa"
+            <Slider label={t("s6_slider2_label", lang)} sublabel={t("s6_slider2_sub", lang)}
               value={ticketMedio} min={50} max={10000} step={10} onChange={setTicketMedio}
               format={(v) => `R$ ${v.toLocaleString("pt-BR")}`} prefix="R$" />
 
@@ -175,10 +176,10 @@ export function Calculadora() {
             }}>
               <div>
                 <p style={{ fontSize: 13, fontWeight: 600, color: "#5C159B", margin: 0 }}>
-                  Custo estimado por reversa
+                  {t("s6_custo_label", lang)}
                 </p>
                 <p style={{ fontSize: 11, color: "#AAA", margin: "2px 0 0" }}>
-                  Calculado automaticamente (30% do ticket médio)
+                  {t("s6_custo_sub", lang)}
                 </p>
               </div>
               <span style={{ fontSize: 18, fontWeight: 800, color: "#5C159B" }}>
@@ -187,7 +188,7 @@ export function Calculadora() {
             </div>
 
             <p className="text-neutral-950 text-xs font-medium" style={{ marginTop: 8, lineHeight: 1.5 }}>
-              * Valores estimados para fins de referência. A economia real pode variar conforme as necessidades e características da operação.
+              {t("s6_disclaimer", lang)}
             </p>
           </div>
 
@@ -200,7 +201,7 @@ export function Calculadora() {
                 fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)",
                 textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8,
               }}>
-                Receita retida por mês de até
+                {t("s6_card_mes", lang)}
               </p>
               <p style={{
                 fontSize: 52, fontWeight: 800, color: "#FFFFFF",
@@ -213,7 +214,7 @@ export function Calculadora() {
                 fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)",
                 textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8,
               }}>
-                Receita retida por ano de até
+                {t("s6_card_ano", lang)}
               </p>
               <p style={{
                 fontSize: 36, fontWeight: 800, color: "rgba(255,255,255,0.92)",
@@ -234,7 +235,7 @@ export function Calculadora() {
                 display: "block",
               }}
             >
-              Quero economizar com a Aftersale
+              {t("s6_cta", lang)}
             </a>
           </div>
         </div>
