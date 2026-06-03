@@ -33,7 +33,7 @@ export function Features() {
   return (
     <section
       id="produtos"
-      className="py-24 lg:py-32"
+      className="py-16 lg:py-20"
       style={{ backgroundColor: "#5C159B" }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

@@ -16,7 +16,7 @@ export function Problem() {
   return (
     <section
       id="trocas"
-      className="py-20 lg:py-24"
+      className="py-14 lg:py-16"
       style={{ backgroundColor: "#5C159B" }}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

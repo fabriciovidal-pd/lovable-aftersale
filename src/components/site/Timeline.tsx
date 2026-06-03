@@ -219,7 +219,7 @@ export function Timeline() {
       style={{
         background:
           "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(92,21,155,0.04) 0%, transparent 70%), #F8F7FC",
-        padding: "80px 48px",
+        padding: "48px 48px",
         fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
         overflow: "hidden",
       }}
