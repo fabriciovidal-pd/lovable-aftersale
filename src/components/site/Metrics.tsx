@@ -57,7 +57,7 @@ export function Metrics() {
   ];
 
   return (
-    <section id="resultados" className="py-24 lg:py-32 bg-surface">
+    <section id="resultados" className="py-16 lg:py-20 bg-surface">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <span

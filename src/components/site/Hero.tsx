@@ -7,7 +7,7 @@ import { t } from "@/i18n/translations";
 export function Hero() {
   const { lang } = useLang();
   return (
-    <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-white">
+    <section className="relative pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden bg-white">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-[minmax(0,640px)_1fr] gap-12 lg:gap-16 items-center">
           {/* Copy — left */}

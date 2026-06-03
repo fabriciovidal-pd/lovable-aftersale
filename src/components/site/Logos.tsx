@@ -122,7 +122,7 @@ export function Logos() {
       {/* +400 clientes confiam — carrossel (vem ANTES) */}
       <section
         id="clientes"
-        className="py-12 lg:py-16"
+        className="py-8 lg:py-10"
         style={{ background: "#FAFAFA", borderTop: "1px solid #EEEEEE" }}
       >
         <div className="mx-auto max-w-6xl px-6 lg:px-8 text-center">
@@ -147,7 +147,7 @@ export function Logos() {
       {/* Parceiros recomendam */}
       <section
         id="parceiros"
-        className="py-16 lg:py-20"
+        className="py-10 lg:py-12"
         style={{ background: "#FAFAFA" }}
       >
         <div className="mx-auto max-w-6xl px-6 lg:px-8 text-center">
