@@ -91,8 +91,8 @@ export const translations = {
   s5_f10_titulo: { pt: "Logística Reversa Integrada", en: "Integrated Reverse Logistics", es: "Logística Inversa Integrada" },
   s5_f10_desc: { pt: "Etiquetas, rastreio e reembolso centralizados em uma única tela.", en: "Labels, tracking and refunds centralized in a single screen.", es: "Etiquetas, seguimiento y reembolso centralizados en una sola pantalla." },
 
-  // SEÇÃO 6 — Calculadora
-  s6_eyebrow: { pt: "Calculadora", en: "Calculator", es: "Calculadora" },
+  // SEÇÃO 6 — Calculadora de Saving
+  s6_eyebrow: { pt: "Calculadora de Saving", en: "Savings Calculator", es: "Calculadora de Ahorro" },
   s6_titulo: { pt: "Quanto você pode economizar?", en: "How much can you save?", es: "¿Cuánto puedes ahorrar?" },
   s6_subtitulo: { pt: "Ajuste os parâmetros da sua operação e veja o impacto real da automação de reversas.", en: "Adjust your operation parameters and see the real impact of returns automation.", es: "Ajusta los parámetros de tu operación y ve el impacto real de la automatización de devoluciones." },
   s6_panel_label: { pt: "Sua operação atual", en: "Your current operation", es: "Tu operación actual" },
