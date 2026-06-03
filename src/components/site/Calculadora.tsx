@@ -114,7 +114,7 @@ export function Calculadora() {
       id="calculadora"
       style={{
         background: "linear-gradient(180deg, #F9F7FD 0%, #FFFFFF 100%)",
-        padding: "48px 24px",
+        padding: "80px 24px",
         fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
       }}
     >

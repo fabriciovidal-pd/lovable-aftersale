@@ -38,7 +38,7 @@ export function TrocaProduto() {
       id="troca-produto"
       style={{
         background: "#FFFFFF",
-        padding: "48px 64px",
+        padding: "80px 64px",
         fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
       }}
     >

@@ -4,7 +4,7 @@ import { t } from "@/i18n/translations";
 export function CTA() {
   const { lang } = useLang();
   return (
-    <section id="cta" className="py-16 lg:py-20">
+    <section id="cta" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-brand/20 bg-brand-gradient p-10 lg:p-16 shadow-brand-strong">
           <div className="absolute -top-32 -right-32 size-96 rounded-full bg-accent-gradient opacity-30 blur-3xl" />
