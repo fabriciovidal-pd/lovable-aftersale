@@ -55,7 +55,7 @@ export const translations = {
   s3_closing: { pt: "Tem muito dinheiro na mesa!", en: "There's a lot of money on the table!", es: "¡Hay mucho dinero sobre la mesa!" },
 
   // SEÇÃO 4 — TrocaProduto
-  s4_eyebrow: { pt: "Troca de Produto", en: "Product Exchange", es: "Cambio de Producto" },
+  s4_eyebrow: { pt: "Troca de Produto Automatizada", en: "Automated Product Exchange", es: "Cambio de Producto Automatizado" },
   s4_titulo: { pt: "Transforme devoluções em novas vendas", en: "Turn returns into new sales", es: "Convierte devoluciones en nuevas ventas" },
   s4_subtitulo: { pt: "Em moda e acessórios, a maioria das devoluções não é rejeição ao produto — é um problema de tamanho. Com a Aftersale, você oferece a troca certa no momento certo, retendo a receita antes que ela vire reembolso.", en: "In fashion and accessories, most returns aren't product rejection — they're sizing issues. With Aftersale, you offer the right exchange at the right time, retaining revenue before it becomes a refund.", es: "En moda y accesorios, la mayoría de las devoluciones no son rechazo al producto — son problemas de talla. Con Aftersale, ofreces el cambio correcto en el momento correcto, reteniendo ingresos antes de que se conviertan en reembolsos." },
   s4_b1_titulo: { pt: "60–65% das devoluções em moda são por tamanho", en: "60–65% of fashion returns are due to sizing", es: "60–65% de las devoluciones en moda son por talla" },
