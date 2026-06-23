@@ -43,7 +43,7 @@ export function Footer() {
     {
       title: t("footer_fale", lang),
       links: [
-        { label: "comercial@aftersale.com.br", href: "mailto:comercial@aftersale.com.br" },
+        { label: "comercial@after.sale", href: "mailto:comercial@after.sale" },
         { label: t("footer_agendar", lang), href: "#cta" },
       ],
     },
