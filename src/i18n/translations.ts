@@ -46,7 +46,7 @@ export const translations = {
   s3_titulo: { pt: "Números que comprovam", en: "Numbers that prove it", es: "Números que lo comprueban" },
   s3_subtitulo: { pt: "Resultados reais de mais de 400 clientes que transformaram sua operação de troca e devolução.", en: "Real results from over 400 clients who transformed their returns operation.", es: "Resultados reales de más de 400 clientes que transformaron su operación de cambios y devoluciones." },
   s3_stat1: { pt: "Atendimento de troca rápido", en: "Fast exchange processing", es: "Atención de cambio rápida" },
-  s3_stat2: { pt: "Redução na retenção de chamados", en: "Reduction in ticket retention", es: "Reducción en retención de tickets" },
+  s3_stat2: { pt: "Retenção da receita de devoluções", en: "Revenue retention from returns", es: "Retención de ingresos por devoluciones" },
   s3_stat3: { pt: "Upsell entre trocas reversas", en: "Upsell in reverse exchanges", es: "Upsell en cambios inversos" },
   s3_stat4: { pt: "Reversas processadas", en: "Returns processed", es: "Devoluciones procesadas" },
   s3_stat5: { pt: "Redução em custo logístico com leilão de frete", en: "Reduction in logistics cost with freight auction", es: "Reducción en costo logístico con subasta de flete" },
